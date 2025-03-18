@@ -30,3 +30,22 @@ This structured approach improves efficiency, accuracy, and user experience, hel
 Please refer to this link - https://drive.google.com/file/d/1My_7lp2iwR_VSw3lfs7sH44eKiqmCfHs/view?usp=sharing
 or the document labeled RoughSketch.pdf for more in depth details for the rough sketch and layout and features 
 
+
+### Ethical Issues: 
+
+
+
+
+
+
+
+### Timeline: 
+
+Please refer to this link - https://docs.google.com/spreadsheets/d/1QTe-mFRo7sTU4L_SmyDVEYZrcw_PVkqmXeAp4OfxzzY/edit?usp=sharing or the document labeled Timeline.png to see the prospective timeline for this project
+
+
+
+
+
+
+
