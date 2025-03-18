@@ -40,23 +40,38 @@ The idea is to create a user layout where there are two main tabs. First tab rep
 
 ### Ethical Issues:
 **Should we allow listings including race or ethnicity?**
+<br>
 An ethical dilemma we’ve encountered is whether users should have the option to filter or list race and ethnicity as part of their roommate preferences. In our personal lives, we have had friends and acquaintances express that they feel more comfortable living in an environment where they share cultural similarities with their roommates. This is something that we believe is more common than we would personally expect it to be, and many people believe that familiarity with certain cultural norms, traditions, and lifestyles can contribute to a more comfortable living situation. 
+<br>
 However, allowing users to filter based on race or ethnicity raises concerns about inclusivity and fairness. Implementing such filters could unintentionally create exclusionary practices, limiting housing options for all users and reinforcing divisions. Additionally, from a legal and ethical standpoint, this approach could conflict with anti-discrimination policies that many institutions and housing platforms may uphold. 
+<br>
 
 **Should religious preferences be included as a filter?**
+<br>
 Another question we’ve considered is whether users should be able to filter roommates based on religious beliefs. Religion plays a major role in many people’s daily lives, influencing social norms and lifestyle choices (such as diet or prayer practices). Some individuals may prefer to live with roommates who share similar religious values. 
+<br>
 While religious preferences are personal, allowing filters based solely on religion raises similar concerns that the race and ethnicity filters did. It could lead to exclusionary practices and unintentionally discourage diversity in shared living spaces. However, we also recognize that for some, religious observances may require specific accommodations. These could include quiet space for prayer, dietary restrictions, or the observance of specific customs. 
+<br>
 
-**Our solution**
+**Our Solution**
+<br>
 Rather than allowing users to filter by race or ethnicity, we believe a more inclusive approach is to provide an option for users to specify language preferences or requirements. This serves the practical purpose of ensuring effective communication in shared living spaces while also allowing individuals to find roommates that they may share cultural or linguistic backgrounds with. 
+<br>
 By focusing on language rather than race or ethnicity, we aim to strike a balance between personal comfort and inclusivity. This approach supports connections between roommates while ensuring that our platform remains both welcoming and fair to all users. 
 Overall, we want to make sure that there are options for lifestyle preferences for users, such as: 
+<br>
 **Language Preferences**
-Ensure effective communication in shared living spaces. 
+<br>
+Ensure effective communication in shared living spaces.
+<br> 
 **Dietary Restrictions**
+<br>
 Allows users to indicate if they follow specific dietary laws. This could include things like halal, kosher, vegetarian, and vegan. 
+<br>
 **Religious Observances**
+<br>
 Provide an option for users to mention if they require a quiet space for prayer, observe a certain holiday, or have other religious practices that could impact shared space. 
+<br>
 By focusing on practical accommodations, we aim to create a platform that respects individual needs while fostering inclusivity and fairness. 
 
 ### Timeline: 
