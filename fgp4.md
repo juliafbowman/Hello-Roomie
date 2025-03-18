@@ -137,6 +137,6 @@ Please refer to the timeline document to see the work divided in more specific m
 - Julia : UI Design + Combining Backend with Frontend
 
 # Links 
-- [Rough Sketch (Google Drive)](https://docs.google.com/spreadsheets/d/1QTe-mFRo7sTU4L_SmyDVEYZrcw_PVkqmXeAp4OfxzzY/edit?usp=sharing)
+- [Rough Sketch (Google Drive)](https://drive.google.com/file/d/1My_7lp2iwR_VSw3lfs7sH44eKiqmCfHs/view?usp=drive_link)
 - [Prospective Timeline (Google Drive)](https://docs.google.com/spreadsheets/d/1QTe-mFRo7sTU4L_SmyDVEYZrcw_PVkqmXeAp4OfxzzY/edit?usp=sharing)
 - [Database Schema(Google Drive)](https://docs.google.com/document/d/1toPXoWXzk6dNUHmIP1TO_cQGtIG-yduFB97hK3J5E0c/edit?usp=sharing)
