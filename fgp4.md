@@ -38,7 +38,7 @@ Please refer to this link [Rough Sketch (Google Drive)](https://docs.google.com/
 
 The idea is to create a user layout where there are two main tabs. First tab represents a filter bar and all the posts present in the database, Second tab can will get user details and then fetch best matches. UI will be made using react which will send API requests to the backend in Python (Flask), which will then query the data from a custom SQLite Database
 
-### Ethical Issues: TODO 
+### Ethical Issues : TODO 
 [TEXT HERE] - JULIA : ETHICAL ISSUES
 
 
@@ -47,7 +47,7 @@ The idea is to create a user layout where there are two main tabs. First tab rep
 Please refer to this link [Prospective Timeline (Google Drive)](https://docs.google.com/spreadsheets/d/1QTe-mFRo7sTU4L_SmyDVEYZrcw_PVkqmXeAp4OfxzzY/edit?usp=sharing) or the document labeled Timeline.png to see the timeline for this project
 
 
-# Frontend 
+# Frontend : TODO
 [CONTENT HERE] - JASON AND JULIA : UI FIGMAS AND SHORT DESCRIPTION OF OUR THOUGHT PROCESS FOR THE UI 
 
 # Data 
@@ -131,7 +131,7 @@ p= matches
 
 
 # Dividing the work : 
-Please refer to the timeline document to see the work divided in more specific manner!
+Please refer to the timeline document to see the work divided in more specific manner! The way we divide work is basically what we said in FGP3, so far everyone is okay with their work and we plan on addressing any problems related to timeline, work distribution, etc as a group through voting and proper reasoning!
 - Jash : Backend + Database Design
 - Jason : Combining Backend with Frontend + Project Manager
 - Julia : UI Design + Combining Backend with Frontend
