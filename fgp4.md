@@ -28,14 +28,15 @@ Contact & Social Details:
 
 This structured approach improves efficiency, accuracy, and user experience, helping students quickly and effectively find the right roommate.
 
-Please refer to this link - https://drive.google.com/file/d/1My_7lp2iwR_VSw3lfs7sH44eKiqmCfHs/view?usp=sharing
-or the document labeled RoughSketch.pdf for more in depth details for the rough sketch and layout and features 
 
 ### Approach: 
-Detailed view - RouchSketch.pdf
+Please refer to this link [Rough Sketch (Google Drive)](https://docs.google.com/spreadsheets/d/1QTe-mFRo7sTU4L_SmyDVEYZrcw_PVkqmXeAp4OfxzzY/edit?usp=sharing) or the document labeled RoughSketch.pdf for more in depth details for the rough sketch and layout and features 
+
 Database: SQLite
 Backend: Python 
 Frontend: React
+
+The idea is to create a user layout where there are two main tabs. First tab represents a filter bar and all the posts present in the database, Second tab can will get user details and then fetch best matches. UI will be made using react which will send API requests to the backend in Python (Flask), which will then query the data from a custom SQLite Database
 
 ### Ethical Issues: TODO 
 
@@ -43,15 +44,14 @@ Frontend: React
 
 ### Timeline: 
 
-Please refer to this link - https://docs.google.com/spreadsheets/d/1QTe-mFRo7sTU4L_SmyDVEYZrcw_PVkqmXeAp4OfxzzY/edit?usp=sharing or the document labeled Timeline.png to see the prospective timeline for this project
-
+Please refer to this link [Prospective Timeline (Google Drive)](https://docs.google.com/spreadsheets/d/1QTe-mFRo7sTU4L_SmyDVEYZrcw_PVkqmXeAp4OfxzzY/edit?usp=sharing) or the document labeled Timeline.png to see the timeline for this project
 
 
 # Data 
 
 ### Data source :  
 Database Query Manager - SQLite with python 
-Database Schema - https://docs.google.com/document/d/1toPXoWXzk6dNUHmIP1TO_cQGtIG-yduFB97hK3J5E0c/edit?usp=sharing
+Database Schema - [Database Schema(Google Drive)](https://docs.google.com/document/d/1toPXoWXzk6dNUHmIP1TO_cQGtIG-yduFB97hK3J5E0c/edit?usp=sharing)
 
 For this project, we are planning to make our own database with each preference being a feature (column) with constraints. Each column is basically a user preference with constraints in SQLite, an example would be each entry will have an Unique ID (Integer), First Name (String), Last Name (String), Drinking (Boolean - 0/1) , Smoking (Boolean - 0/1), Rent (int - 300/6000). To keep track of each feature's constraints please follow the google doc above! 
 
@@ -119,3 +119,6 @@ Space -> O(k)
 
 k= size of the heap 
 p= matches
+
+
+
