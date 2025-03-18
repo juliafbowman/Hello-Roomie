@@ -46,6 +46,18 @@ Please refer to this link - https://docs.google.com/spreadsheets/d/1QTe-mFRo7sTU
 
 
 
+# Data 
+
+### Data source :  
+Database Query Manager - SQLite with python 
+Database Schema - https://docs.google.com/document/d/1toPXoWXzk6dNUHmIP1TO_cQGtIG-yduFB97hK3J5E0c/edit?usp=sharing
+
+For this project, we are planning to make our own database with each preference being a feature (column) with constraints. Each column is basically a user preference with constraints in SQLite, an example would be each entry will have an Unique ID (Integer), First Name (String), Last Name (String), Drinking (Boolean - 0/1) , Smoking (Boolean - 0/1), Rent (int - 300/6000). To keep track of each feature's constraints please follow the google doc above! 
 
 
+### Pulling Data into the Backend : 
+There are two methods here. The most simple is going to be using SQLite queries and just passing it to the frontend. However, the scope of our project requires using two advanced data structures so we will be adding an extra step to the data pulling, we will use SQLite queries to get the data and then generate a Trie from that data in our backend! The backend will send data to the frontend when GET/POST/PUT requests are made! 
+
+### Data cleaning and processing :
+The most important part here is making sure data is within constraints when inserting to the Database! We are implementing tests on both frontend and backend to make sure the data follows the constraints of the SQLite table and all errors are caught before the data is inserted! Example if user enters a string in price range then the error is caught in frontend and user is prompted to reenter, even if it passes the backend should ensure if the constraints are met before inserting data. This makes our SQL database very clean and processed! 
 
