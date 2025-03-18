@@ -80,7 +80,9 @@ Please refer to this link [Prospective Timeline (Google Drive)](https://docs.goo
 
 
 # Frontend : TODO
-[CONTENT HERE] - JASON AND JULIA : UI FIGMAS AND SHORT DESCRIPTION OF OUR THOUGHT PROCESS FOR THE UI 
+We used Figma to create our front-end layout. We wanted to lay out our design choices before beginning work on our code. 
+
+The use of Figma helped us put our ideas together regarding general layout, font sizing and style, and color palette. 
 
 # Data 
 
