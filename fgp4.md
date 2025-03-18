@@ -67,7 +67,8 @@ The most important part here is making sure data is within constraints when inse
 ### Application & Usage of two advanced data structure :
 We are using Trie and Priority Queue as our two advanced data structures. The trie is where the backend will store all the data from the user search parameters. Each node in tree will be an attribute and each attribute will have all the user profiles meeting those attributes. Priority Queue is used to find the best matches based on user's preferences. 
 
-1. Trie Search - So let's do a little bit of a deeper dive into the Trie Search. First lets visualize our Trie -> 
+### Trie Search :
+So let's do a little bit of a deeper dive into the Trie Search. First lets visualize our Trie -> 
 Lets say you want to find all users who drink but don't smoke and have rent range higher than 800, below is 
 
 ```
@@ -79,7 +80,7 @@ Root
 
 As you can see the Rent node is where all the users are which drink, dont smoke and also have rent >800!   
 
-Why trie? -> We thought about using HashMap but hashmap makes filtering really hard and long since we have to search each key however it does have fast lookup! Hence we settled on trie, one problem with trie would be loading in a lot of data but that can be solved by adding SQL filtered queries! 
+Why trie? -> We thought about using HashMap but hashmap makes filtering really hard and long since we have to search each key however it does have fast lookup! Hence we settled on trie, one problem with trie would be loading in a lot of data but that can be solved by adding SQL filtered queries! Hence, trie felt like the most optimal for us in this problem since it allows for fast lookups and also will help with filtering & priority queue generation in our second feature
 
 Complexity based on my calculations - 
 
@@ -97,7 +98,8 @@ k -> no of matches
 
 
 
-2. Priority Queue - This data structure will be used to find the best matches for a user. Lets understand a bit more so let's say the user preferences are as above they want someone who drinks, but doesnt smoke and their rent is above 800 we need to find best matches so we will generate our trie as we did above and then based on that tree we are going to assign scoring and priority and return the best matches that user can look through. I think this visual helps the best
+### Priority Queue : 
+This data structure will be used to find the best matches for a user. Lets understand a bit more so let's say the user preferences are as above they want someone who drinks, but doesnt smoke and their rent is above 800 we need to find best matches so we will generate our trie as we did above and then based on that tree we are going to assign scoring and priority and return the best matches that user can look through. I think this visual helps the best
 
 ```
 Root
@@ -108,7 +110,7 @@ Root
 
 Based on the above information we create a priority queue using heapq (min-heap) which has a list of users that going from highest score (best match) to lowest score (worst match)
 
-Why priority Queue? - We thought about using linkedin list but its slower since priority queue is O(nlogn) and linked list is O(n).
+Why priority Queue? - We thought about using linkedin list but its slower since priority queue is O(nlogn) and linked list is O(n). Hence,we think priority queue is the best option since it will be fast, structured and there is already a library to implement it saving us time as well!
 
 
 Complexity based on my calculations - 
@@ -125,9 +127,13 @@ k= size of the heap
 p= matches
 
 
+# Dividing the work : 
+Please refer to the timeline document to see the work divided in more specific manner!
+- Jash : Backend + Database Design
+- Jason : Combining Backend with Frontend + Project Manager
+- Julia : UI Design + Combining Backend with Frontend
 
 # Links 
-
 - [Rough Sketch (Google Drive)](https://docs.google.com/spreadsheets/d/1QTe-mFRo7sTU4L_SmyDVEYZrcw_PVkqmXeAp4OfxzzY/edit?usp=sharing)
 - [Prospective Timeline (Google Drive)](https://docs.google.com/spreadsheets/d/1QTe-mFRo7sTU4L_SmyDVEYZrcw_PVkqmXeAp4OfxzzY/edit?usp=sharing)
 - [Database Schema(Google Drive)](https://docs.google.com/document/d/1toPXoWXzk6dNUHmIP1TO_cQGtIG-yduFB97hK3J5E0c/edit?usp=sharing)
