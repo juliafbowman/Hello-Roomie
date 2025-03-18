@@ -79,10 +79,16 @@ By focusing on practical accommodations, we aim to create a platform that respec
 Please refer to this link [Prospective Timeline (Google Drive)](https://docs.google.com/spreadsheets/d/1QTe-mFRo7sTU4L_SmyDVEYZrcw_PVkqmXeAp4OfxzzY/edit?usp=sharing) or the document labeled Timeline.png to see the timeline for this project
 
 
-# Frontend : TODO
+# Frontend :
 We used Figma to create our front-end layout. We wanted to lay out our design choices before beginning work on our code. 
 
-The use of Figma helped us put our ideas together regarding general layout, font sizing and style, and color palette. 
+The use of Figma helped us put our ideas together regarding general layout, font sizing and style, and color palette.
+
+We used Coolors Picker to help pick colors. Our intention with the logo is to create a friendly and inviting Logo that represents finding a connected Roommate.
+
+Our intentions with the theme is a website that has inviting and cool colors.
+
+
 
 # Data 
 
@@ -174,3 +180,4 @@ Please refer to the timeline document to see the work divided in more specific m
 - [Rough Sketch (Google Drive)](https://drive.google.com/file/d/1My_7lp2iwR_VSw3lfs7sH44eKiqmCfHs/view?usp=drive_link)
 - [Prospective Timeline (Google Drive)](https://docs.google.com/spreadsheets/d/1QTe-mFRo7sTU4L_SmyDVEYZrcw_PVkqmXeAp4OfxzzY/edit?usp=sharing)
 - [Database Schema(Google Drive)](https://docs.google.com/document/d/1toPXoWXzk6dNUHmIP1TO_cQGtIG-yduFB97hK3J5E0c/edit?usp=sharing)
+- [Figma Rough Sketch(Google Drive)](https://docs.google.com/document/d/14qHr2KVwPxVlUUh1iHxi_fDFlvGA9cnESqPbq6GSUmM/edit?tab=t.0) 
