@@ -38,17 +38,57 @@ Please refer to this link [Rough Sketch (Google Drive)](https://docs.google.com/
 
 The idea is to create a user layout where there are two main tabs. First tab represents a filter bar and all the posts present in the database, Second tab can will get user details and then fetch best matches. UI will be made using react which will send API requests to the backend in Python (Flask), which will then query the data from a custom SQLite Database
 
-### Ethical Issues : TODO 
-[TEXT HERE] - JULIA : ETHICAL ISSUES
+### Ethical Issues:
+**Should we allow listings including race or ethnicity?**
+<br>
+An ethical dilemma we’ve encountered is whether users should have the option to filter or list race and ethnicity as part of their roommate preferences. In our personal lives, we have had friends and acquaintances express that they feel more comfortable living in an environment where they share cultural similarities with their roommates. This is something that we believe is more common than we would personally expect it to be, and many people believe that familiarity with certain cultural norms, traditions, and lifestyles can contribute to a more comfortable living situation. 
+<br>
+However, allowing users to filter based on race or ethnicity raises concerns about inclusivity and fairness. Implementing such filters could unintentionally create exclusionary practices, limiting housing options for all users and reinforcing divisions. Additionally, from a legal and ethical standpoint, this approach could conflict with anti-discrimination policies that many institutions and housing platforms may uphold. 
+<br>
 
+**Should religious preferences be included as a filter?**
+<br>
+Another question we’ve considered is whether users should be able to filter roommates based on religious beliefs. Religion plays a major role in many people’s daily lives, influencing social norms and lifestyle choices (such as diet or prayer practices). Some individuals may prefer to live with roommates who share similar religious values. 
+<br>
+While religious preferences are personal, allowing filters based solely on religion raises similar concerns that the race and ethnicity filters did. It could lead to exclusionary practices and unintentionally discourage diversity in shared living spaces. However, we also recognize that for some, religious observances may require specific accommodations. These could include quiet space for prayer, dietary restrictions, or the observance of specific customs. 
+<br>
+
+**Our Solution**
+<br>
+Rather than allowing users to filter by race or ethnicity, we believe a more inclusive approach is to provide an option for users to specify language preferences or requirements. This serves the practical purpose of ensuring effective communication in shared living spaces while also allowing individuals to find roommates that they may share cultural or linguistic backgrounds with. 
+<br>
+By focusing on language rather than race or ethnicity, we aim to strike a balance between personal comfort and inclusivity. This approach supports connections between roommates while ensuring that our platform remains both welcoming and fair to all users. 
+Overall, we want to make sure that there are options for lifestyle preferences for users, such as: 
+<br>
+**Language Preferences**
+<br>
+Ensure effective communication in shared living spaces.
+<br> 
+**Dietary Restrictions**
+<br>
+Allows users to indicate if they follow specific dietary laws. This could include things like halal, kosher, vegetarian, and vegan. 
+<br>
+**Religious Observances**
+<br>
+Provide an option for users to mention if they require a quiet space for prayer, observe a certain holiday, or have other religious practices that could impact shared space. 
+<br>
+By focusing on practical accommodations, we aim to create a platform that respects individual needs while fostering inclusivity and fairness. 
 
 ### Timeline: 
 
 Please refer to this link [Prospective Timeline (Google Drive)](https://docs.google.com/spreadsheets/d/1QTe-mFRo7sTU4L_SmyDVEYZrcw_PVkqmXeAp4OfxzzY/edit?usp=sharing) or the document labeled Timeline.png to see the timeline for this project
 
 
-# Frontend : TODO
-[CONTENT HERE] - JASON AND JULIA : UI FIGMAS AND SHORT DESCRIPTION OF OUR THOUGHT PROCESS FOR THE UI 
+# Frontend :
+We used Figma to create our front-end layout. We wanted to lay out our design choices before beginning work on our code. 
+
+The use of Figma helped us put our ideas together regarding general layout, font sizing and style, and color palette.
+
+We used Coolors Picker to help pick colors. Our intention with the logo is to create a friendly and inviting Logo that represents finding a connected Roommate.
+
+Our intentions with the theme is a website that has inviting and cool colors.
+
+
 
 # Data 
 
@@ -116,3 +156,4 @@ Please refer to the timeline document to see the work divided in more specific m
 - [Rough Sketch (Google Drive)](https://drive.google.com/file/d/1My_7lp2iwR_VSw3lfs7sH44eKiqmCfHs/view?usp=drive_link)
 - [Prospective Timeline (Google Drive)](https://docs.google.com/spreadsheets/d/1QTe-mFRo7sTU4L_SmyDVEYZrcw_PVkqmXeAp4OfxzzY/edit?usp=sharing)
 - [Database Schema(Google Drive)](https://docs.google.com/document/d/1toPXoWXzk6dNUHmIP1TO_cQGtIG-yduFB97hK3J5E0c/edit?usp=sharing)
+- [Figma Rough Sketch(Google Drive)](https://docs.google.com/document/d/14qHr2KVwPxVlUUh1iHxi_fDFlvGA9cnESqPbq6GSUmM/edit?tab=t.0) 
