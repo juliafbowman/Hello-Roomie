@@ -68,46 +68,35 @@ The most important part here is making sure data is within constraints when inse
 # Data Structures: 
 
 ### Application & Usage of two advanced data structure :
-We are using Trie and Priority Queue as our two advanced data structures. The trie is where the backend will store all the data from the user search parameters. Each node in tree will be an attribute and each attribute will have all the user profiles meeting those attributes. Priority Queue is used to find the best matches based on user's preferences. 
+We are using Filter tree tree and Priority Queue as our two advanced data structures. The Filter tree tree is where the backend will store all the data from the user search parameters. Each node in tree will be an attribute and each attribute will have all the user profiles meeting those attributes. Priority Queue is used to find the best matches based on user's preferences. 
 
-### Trie Search :
-So let's do a little bit of a deeper dive into the Trie Search. First lets visualize our Trie -> 
+### Filter tree  Search :
+So let's do a little bit of a deeper dive into the Filter tree  Search. First lets visualize our Filter tree -> 
 Lets say you want to find all users who drink but don't smoke and have rent range higher than 800, below is 
 
 ```
 Root
  ├── Drinking: 1 → [User A, User B, User C, User D]
       ├── Smoking: 0 → [User A, User B, User C]
+          Smoking: 1 → [User D, User E]
           ├── Rent: >800 → [User A, User B]
+ ├── Drinking: 0 → [User A, User B, User C, User D]
 ```
 
 As you can see the Rent node is where all the users are which drink, dont smoke and also have rent >800!   
 
-Why trie? -> We thought about using HashMap but hashmap makes filtering really hard and long since we have to search each key however it does have fast lookup! Hence we settled on trie, one problem with trie would be loading in a lot of data but that can be solved by adding SQL filtered queries! Hence, trie felt like the most optimal for us in this problem since it allows for fast lookups and also will help with filtering & priority queue generation in our second feature
-
-Complexity based on my calculations - 
-
-Insert 
-Time -> O(nm)
-Space -> O(nm)
-
-Search 
-Time -> O(m+k)
-Space -> O(nm)
-
-n -> total roommates posts
-m -> attribute/features
-k -> no of matches 
+Why Filter tree? -> We thought about using HashMap but hashmap makes filtering really hard and long since we have to search each key however it does have fast lookup! Hence we settled on Filter tree tree, one problem with Filter tree tree would be loading in a lot of data but that can be solved by adding SQL filtered queries! Hence, Filter tree tree felt like the most optimal for us in this problem since it allows for fast lookups and also will help with filtering & priority queue generation in our second feature.
 
 
 
 ### Priority Queue : 
-This data structure will be used to find the best matches for a user. Lets understand a bit more so let's say the user preferences are as above they want someone who drinks, but doesnt smoke and their rent is above 800 we need to find best matches so we will generate our trie as we did above and then based on that tree we are going to assign scoring and priority and return the best matches that user can look through. I think this visual helps the best
+This data structure will be used to find the best matches for a user. Lets understand a bit more so let's say the user preferences are as above they want someone who drinks, but doesnt smoke and their rent is above 800 we need to find best matches so we will generate our Filter tree tree as we did above and then based on that tree we are going to assign scoring and priority and return the best matches that user can look through. I think this visual helps the best
 
 ```
 Root
  ├── Drinking: 1 → [User A, User B, User C, User D]    -> Users here will have score of 1
       ├── Smoking: 0 → [User A, User B, User C]         -> Users here will have score of 2 
+          Smoking: 1 → [User D, User E]                 -> users here will have a score of 2.5
            ├── Rent: >800 → [User A, User B]            -> Users here will have score of 3
 ```
 
@@ -115,19 +104,6 @@ Based on the above information we create a priority queue using heapq (min-heap)
 
 Why priority Queue? - We thought about using linkedin list but its slower since priority queue is O(nlogn) and linked list is O(n). Hence,we think priority queue is the best option since it will be fast, structured and there is already a library to implement it saving us time as well!
 
-
-Complexity based on my calculations - 
-
-Insert 
-Time -> O(klogk)
-Space -> O(k)
-
-Search 
-Time -> O(plogp)
-Space -> O(k)
-
-k= size of the heap 
-p= matches
 
 
 # Dividing the work : 
