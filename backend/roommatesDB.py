@@ -3,10 +3,9 @@ import sqlite3
 class DatabaseManager: 
     def __init__(self, db_name="roommmatesDB.db"):
         self.conn = sqlite3.connect(db_name)
+        self.conn.row_factory = sqlite3.Row 
         self.cursor = self.conn.cursor()
         self.createTablePosts()
-
-
     
     def createTablePosts(self):
         '''Create a table named posts if it doesnt exist 

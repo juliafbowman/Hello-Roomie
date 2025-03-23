@@ -1,4 +1,6 @@
 from roommatesDB import * 
+from roommatesAPI import *
+import json
 
 #test profiles to insert into the database
 # firstname, last name, age, smoking, drinking socially, subleasing, country, language1, language 2, sex, email, social, phone number, description
@@ -40,3 +42,7 @@ def printDB():
         print(row)
     db.close()
     
+def convertDBtoDict():
+    '''Function to test conversion of database into a dictionary and then into a jsonified dictionary'''
+    profiles = json.dumps(getAllProfiles())
+    print(profiles)
