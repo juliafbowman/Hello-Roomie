@@ -10,4 +10,15 @@
     - Method : GET 
     - Input : NULL
     - Output : returns all profiles in the database as a dictionary or JSON (key-value pairs)
+    Error Code -> 200 : Successful 
+                  500 : Unsuccessful with exception E returned in a JSON Dictionary 
+                
+
+- 2. url/insertProfile : 
+    - Method : POST
+    - Input : Dictionary -> contains the post information 
+    - Output : In Progress
+    Error Code -> 200 : Successful 
+                  500 : Unsuccessful with exception E returned in a JSON Dictionary
+                  400 : Bad request, invalid data -> returned as JSON, format is not right, a non nullable value is given a null value, etc
 
