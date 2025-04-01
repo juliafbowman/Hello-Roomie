@@ -19,5 +19,15 @@ def get_all_profiles():
         return jsonify({"error": str(e)}),500
     
 
+@app.route("/insertProfile", methods = ["POST"])
+def insert_profile():
+
+
+
+
+    
+    return None
+
+
 if __name__ == "__main__":
     app.run(debug=True)
