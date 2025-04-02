@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Roommate Profiles</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .profile {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Roommate Profiles</h1>
+    <button onclick="fetchProfiles()">Load Profiles</button>
+    <div id="profilesContainer"></div>
+
+    <script>
+        function fetchProfiles() {
+            fetch("http://127.0.0.1:5000/profiles", {
+                method: "GET"
+            })
+            .then(response => {
+                if (!response.ok) throw new Error("Failed to fetch profiles");
+                return response.json();
+            })
+            .then(data => {
+                const container = document.getElementById("profilesContainer");
+                container.innerHTML = ""; // Clear any old content
+
+                // Loop through each profile and render it
+                Object.values(data).forEach(profile => {
+                    const div = document.createElement("div");
+                    div.className = "profile";
+                    div.innerHTML = `
+                        <strong>Name:</strong> ${profile.first_name} ${profile.last_name}<br>
+                        <strong>Age:</strong> ${profile.age}<br>
+                        <strong>Sex:</strong> ${profile.sex}<br>
+                        <strong>Country:</strong> ${profile.country}<br>
+                        <strong>Languages:</strong> ${profile.language}${profile.language_2 ? ", " + profile.language_2 : ""}<br>
+                        <strong>Description:</strong> ${profile.description}<br>
+                        <strong>Drinks Socially?:</strong> ${profile.drinking_socially ? "Yes" : "No"}<br>
+                        <strong>Smokes?:</strong> ${profile.smoking ? "Yes" : "No"}<br>
+                        <strong>Subleasing?:</strong> ${profile.subleasing ? "Yes" : "No"}<br>
+                        <strong>Email:</strong> ${profile.email}<br>
+                        <strong>Phone:</strong> ${profile.phone_number}<br>
+                        <strong>Social Link:</strong> <a href="https://${profile.social_link}" target="_blank">${profile.social_link}</a>
+                    `;
+                    container.appendChild(div);
+                });
+            })
+            .catch(error => {
+                document.getElementById("profilesContainer").innerHTML =
+                    `<p style="color:red;">Error: ${error.message}</p>`;
+            });
+        }
+    </script>
+</body>
+</html>
