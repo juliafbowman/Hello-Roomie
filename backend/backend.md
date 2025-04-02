@@ -5,6 +5,10 @@
 - Flask (host.py) - where the functions from roommatesAlgo.py are called based on the API call done through GET requests (from frontend)
 - Testing (tests.py) - file where i test some basic functionality of all the function calls 
 
+
+
+pip install -r requirements.txt
+
 # API Information 
 - 1. url/profiles :
     - Method : GET 

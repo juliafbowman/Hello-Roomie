@@ -1,8 +1,9 @@
 from flask import Flask, jsonify
 from roommatesAPI import *
+from flask_cors import CORS
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route("/profiles",methods = ["GET"])
 def get_all_profiles():
@@ -20,12 +21,7 @@ def get_all_profiles():
     
 
 @app.route("/insertProfile", methods = ["POST"])
-def insert_profile():
-
-
-
-
-    
+def insert_profile(): 
     return None
 
 
