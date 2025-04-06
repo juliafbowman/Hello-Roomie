@@ -1,0 +1,143 @@
+/* css for the navigation bar */
+:root {
+    --primary-color: #8ea1ff; /* we can change this - just wanted a cornflower blueish color */ 
+    --text-color: #333;
+    --light-color: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --hover-shadow: rgba(0, 0, 0, 0.15);
+    --transition-speed: 0.3s;
+}
+
+.navbar {
+    width: 100vw;
+    margin: 0;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--light-color);
+    box-shadow: 0 2px 6px var(--shadow-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* this is just to keep it way top */
+    transition: box-shadow var(--transition-speed) ease;
+}
+
+.navbar:hover {
+    box-shadow: 0 4px 8px var(--hover-shadow);
+}
+
+.navbar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    user-select: none;
+}
+
+/* toggle stuff */
+.navbar-toggle {
+    display: none;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: color var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+
+.navbar-toggle:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+/* navigation links */
+.navbar-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.navbar-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color var(--transition-speed) ease;
+}
+
+.navbar-links a:hover {
+    color: var(--primary-color);
+}
+
+/* underline on the links when u hover */
+.navbar-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width var(--transition-speed) ease;
+}
+
+.navbar-links a:hover::after {
+    width: 100%;
+}
+
+/* sizing stuff - hypothetically for mobile if we wanted to */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.8rem 1.5rem;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    /* most of this is trying to stop the flash of the menu when u shrink the window */ 
+    /* got it mostly working */ 
+    .navbar-links {
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--light-color);
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 2rem;
+        opacity: 0;
+        visibility: hidden;
+        height: 0;
+        overflow: hidden;
+        transform: translateY(-10px);
+        transition: opacity var(--transition-speed) ease, 
+                    visibility var(--transition-speed) ease,
+                    transform var(--transition-speed) ease,
+                    height 0s var(--transition-speed);
+        box-shadow: 0 4px 8px var(--shadow-color);
+    }
+
+    .navbar-links.active {
+        opacity: 1;
+        visibility: visible;
+        height: auto;
+        transform: translateY(0);
+        transition: opacity var(--transition-speed) ease, 
+                    visibility var(--transition-speed) ease,
+                    transform var(--transition-speed) ease,
+                    height 0s 0s;
+    }
+
+    .navbar-links a {
+        width: 100%;
+        text-align: center;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .navbar-links a:last-child {
+        border-bottom: none;
+    }
+}
