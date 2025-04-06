@@ -3,7 +3,7 @@ Please note that this is the required layout for the weekly notes.
 
 ## Overview:
 **When**:  4/2/2025
-**Duration**:  38 Minutes
+**Duration**:  48 Minutes
 **Where**:  Discord
 
 ## Attendance
