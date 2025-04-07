@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 // so im trying it 
 import axios from 'axios';
 
-// this page i will probably change a lot
-// getting 403 errors - something going on with the connection to front and back end
+// fixed the errors i was getting - had the wrong url 
 
 const AddProfilePage = () => {
   const [formData, setFormData] = useState({
@@ -47,7 +46,7 @@ const AddProfilePage = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:5000/insertProfile', formattedData);
+      const response = await axios.post('http://127.0.0.1:5000/insertProfile', formattedData);
       if (response.data["200"]) {
         setMessage("✅ Profile added!");
       } else {
