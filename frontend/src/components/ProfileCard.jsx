@@ -16,29 +16,26 @@ function ProfileCard({
             <p className = "description"><strong>Description:</strong> {description}</p>
             
             <div className = "preferences-section">
-                <div className = "preference-item">
-                    <span className = "preference-label">Smokes</span>
-                    <div className={smoking ? "preference-toggle preference-toggle-yes" : "preference-toggle preference-toggle-no"}>
-                        <i className="icon">{smoking ? "○" : "×"}</i>
-                        {smoking ? "Yes" : "No"}
-                    </div>
+            <div className="preference-item">
+                <div className={smoking ? "preference-toggle preference-toggle-yes" : "preference-toggle preference-toggle-no"}>
+                    {smoking ? "Smokes" : "Doesn't Smoke"}
                 </div>
+            </div>
 
-                <div className = "preference-item">
-                    <span className = "preference-label">Drinks</span>
-                    <div className={drinking ? "preference-toggle preference-toggle-yes" : "preference-toggle preference-toggle-no"}>
-                        <i className="icon">{drinking ? "○" : "×"}</i>
-                        {drinking ? "Yes" : "No"}
-                    </div>
-                </div>
 
-                <div className = "preference-item">
-                    <span className = "preference-label">Subleasing</span>
-                    <div className={subleasing ? "preference-toggle preference-toggle-yes" : "preference-toggle preference-toggle-no"}>
-                        <i className="icon">{smoking ? "○" : "×"}</i>
-                        {subleasing ? "Yes" : "No"}
-                    </div>
+            <div className="preference-item">
+                <div className={drinking ? "preference-toggle preference-toggle-yes" : "preference-toggle preference-toggle-no"}>
+                    {drinking ? "Drinks" : "Doesn't Drink"}
                 </div>
+            </div>
+
+
+            <div className="preference-item">
+                <div className={subleasing ? "preference-toggle preference-toggle-yes" : "preference-toggle preference-toggle-no"}>
+                    {subleasing ? "Subleases" : "Doesn't Sublease"}
+                </div>
+            </div>
+
             </div> {/* preferences section end */}
                 
             <div className = "contact-info">
