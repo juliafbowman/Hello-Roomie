@@ -14,15 +14,31 @@ pip install -r requirements.txt
     - Method : GET 
     - Input : NULL
     - Output : returns all profiles in the database as a dictionary or JSON (key-value pairs)
-    Error Code -> 200 : Successful 
-                  500 : Unsuccessful with exception E returned in a JSON Dictionary 
+    Error Code -> 200 : Successful,
+                  500 : Unsuccessful with exception E returned in a JSON Dictionary.
                 
 
 - 2. url/insertProfile : 
     - Method : POST
     - Input : Dictionary -> contains the post information 
+    - {"first_name": "string (required, no enforced max length in DB, but recommended < 50) - e.g., 'Spiderman'",
+    - "last_name": "string (required, no enforced max length in DB, but recommended < 50) - e.g., 'Parker'",
+    - "age": "integer (required) - e.g., 21",
+    - "smoking": "integer (required, must be 0 or 1) - e.g., 0",
+    - "drinking_socially": "integer (required, must be 0 or 1) - e.g., 1",
+    - "subleasing": "integer (required, must be 0 or 1) - e.g., 0",
+    - "country": "string (required, max 99 characters) - e.g., 'United States of America'",
+    - "language": "string (required, max 49 characters) - e.g., 'English'",
+    - "language_2": "string or null (optional, max 49 characters) - e.g., 'Spanish' or null",
+    - "sex": "string (required, 1 character: 'M' or 'F') - e.g., 'M'",
+    - "email": "string (required, max 199 characters) - e.g., 'spiderman@gmail.com'",
+    - "social_link": "string or null (optional, max 299 characters) - e.g., 'https://instagram.com/spidey'",
+    - "phone_number": "string or null (optional, max 49 characters) - e.g., '1234567890'",
+    - "description": "string or null (optional, max 299 characters) - e.g., 'Looking for a clean and quiet space to swing by.'"
+    - }
+
     - Output : In Progress
-    Error Code -> 200 : Successful 
-                  500 : Unsuccessful with exception E returned in a JSON Dictionary
-                  400 : Bad request, invalid data -> returned as JSON, format is not right, a non nullable value is given a null value, etc
+    Error Code -> 200 : Successful, 
+                  500 : Unsuccessful with exception E returned in a JSON Dictionary, 
+                  400 : Bad request, invalid data -> returned as JSON, format is not right, a non nullable value is given a null value, etc.
 

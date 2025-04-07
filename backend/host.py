@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, request, jsonify
 from roommatesAPI import *
 from flask_cors import CORS
 
@@ -21,8 +21,22 @@ def get_all_profiles():
     
 
 @app.route("/insertProfile", methods = ["POST"])
-def insert_profile(): 
-    return None
+def insert_profile():
+    try:
+        # Parse JSON input from frontend
+        user_data = request.get_json()
+
+        if not user_data:
+            return jsonify({500: "No JSON data provided"}), 400
+
+        result = insertProfile(user_data)
+
+       
+        status_code = 200 if 200 in result else 500
+        return jsonify(result), status_code
+
+    except Exception as e:
+        return jsonify({500: f"Server error: {str(e)}"}), 500
 
 
 if __name__ == "__main__":
