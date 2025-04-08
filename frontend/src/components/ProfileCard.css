@@ -27,10 +27,18 @@
     transition: box-shadow var(--transition-speed); 
     overflow: hidden; 
     position: relative;
+    animation: fadeInUp 0.4s ease-out both; /* transition that idk about */ 
 }
 
-.profile-card:hover {
-    box-shadow: 0 6px 18px var(--shadow-color);
+@keyframes fadeInUp {
+    from {
+        opacity: 0; 
+        transform: translateY(12px); 
+    }
+    to {
+        opacity: 1; 
+        transform: translateY(0); 
+    }
 }
 
 .profile-card::before {
@@ -44,43 +52,38 @@
     border-radius: 0; 
 }
 
-/* inside the card - header */ 
-.profile-card h2 {
-    margin-top: 0; 
-    margin-bottom: 1rem; 
-    color: var(--primary-color); 
-    font-size: 1.5rem;
-    border-bottom: 1px solid var(--border-color); 
-    padding-bottom: 0.75rem; 
-    font-weight: 600; /* increase? */
-    letter-spacing: 0.01em; 
+/* inside the card - header (where name/age are) */ 
+.profile-header {
+    display: flex;
+    align-items: center; 
+    gap: 1rem; /* from image to right */ 
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
 }
 
-/* inside the card - paragraph */ 
+/* profile photo */ 
+.profile-img-wrapper {
+    position: relative;
+    transform: none; 
+}
+
+.profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* inside the card - paragraph */
+/* SPACING */ 
 .profile-card p {
     margin: 0.75rem 0; 
     line-height: 1.5; 
 }
 
-/* inside the card - bolded */
-.profile-card strong {
-    color: var(--secondary-color); 
-    font-weight: 400; 
-}
-
-/* inside the card - link */ 
-.profile-card a {
-    color: var(--primary-color);
-    text-decoration: none; 
-    transition: color var(--transition-speed) ease; 
-}
-
-.profile-card a:hover {
-    color: #0056b3; /* might change this - just darker primary kinda */ 
-    text-decoration: underline; 
-}
-
-/* preferences stuff */
+/* preferences stuff - keeps the bubbles in a single line */
 .preferences-section {
     display: flex; 
     flex-wrap: wrap; 
@@ -89,23 +92,56 @@
     justify-content: flex-start; 
 }
 
-.preference-item {
+/* .preference-item {
     flex: 0 1 auto; 
     min-width: 120px; 
-    text-align: center; /* centers bubble text */
-}
+    text-align: center; /* centers bubble text 
+} */
 
-.preference-label {
+/* .preference-label {
     display: block; 
     margin-bottom: 0.35rem; 
     font-weight: 600;
     color: var(--secondary-color); 
     font-size: 0.85rem; 
+} */
+
+.header-text h2 {
+    color: var(--primary-color); 
+    font-size: 1.4rem; 
+    margin: 0rem 0rem -0.5rem; 
+    font-weight: 600; 
+    /* outline: 2px solid yellow;  */
+}
+
+.age-sex {
+    color: var(--text-secondary); 
+    font-size: 0.95rem;
+    /* outline: 4px solid red;  */
+}
+
+.section-title {
+    font-size: 0.95rem; 
+    font-weight: 600; 
+    color: var(--secondary-color); 
+    padding-bottom: 0.5rem; /* space before the line under heading */ 
+    padding-top: 0.7rem; 
+    text-transform: uppercase; 
+    letter-spacing: 0.04em; 
+    border-bottom: 1px solid var(--border-color);
+}
+
+.profile-card strong {
+    color: var(--secondary-color); 
+    font-weight: 600;
 }
 
 .preference-toggle {
-    display: inline-block;
-    padding: 0.5rem 1.25rem;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding: 0.5rem 1rem;
+    min-width: 100px; 
     border-radius: 999px; /* super rounded */
     font-size: 0.875rem;
     font-weight: 600;
@@ -113,6 +149,11 @@
     cursor: default;
     transition: all var(--transition-speed) ease;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.contact-info a:hover {
+    text-decoration: underline; 
+    opacity: 0.85; 
 }
 
 .preference-toggle-yes {
@@ -127,42 +168,50 @@
     border-color: rgba(108, 117, 125, 0.2); 
 }
 
-.preference-toggle i {
-    margin-right: 0.4rem;
-    font-size: 0.75rem; 
-}
-
-/* all the contact info stuff */ 
+/* contact info spacing - took this out */ 
 .profile-card .contact-info {
-    margin-top: 1.5rem; 
-    padding-top: 1rem; 
-    border-top: 1px solid var(--border-color); 
+    padding: 0; 
 }
 
-/* description */ 
+/* description (ABOUT) text */ 
 .profile-card .description {
     font-style: italic; 
     color: var(--text-secondary); 
     margin: 1rem 0; 
 }
 
-/* profile photo */ 
-.profile-img {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    margin-bottom: 0.75rem;
-}
 
 /* just incase we do mobile stuff - again idk how well it woudl work */ 
+/* mainly centering everything */ 
 @media (max-width: 768px) {
     .profile-card {
-        padding: 1.25rem; 
+        padding: 1.25rem;
+        text-align: center;
     }
 
-    .profile-card::before {
-        width: 4px; 
+    .profile-header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-text {
+        margin-top: 0rem;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-img {
+        width: 100px;
+        height: 100px;
+        margin-top: 1rem; 
+    }
+
+    .preferences-section {
+        justify-content: center;
+    }
+
+    .contact-info {
+        align-items: center;
     }
 }
+

@@ -19,32 +19,41 @@ const profileImages = [
     return profileImages[index];
   };
   
-
+// the info that will fill each profile card 
 function ProfileCard({
     name, age, location, sex, description, 
     email, social, phone, languages, 
     smoking, drinking, subleasing
 })
 {
+    // the image will be based on email or name 
     const imageSrc = getStableRandomImage(email || name); 
     return (
         <div className = "profile-card">
             {/* profile photo at the top */}
-            <img src={imageSrc} alt="Profile" className="profile-img" />
-            <h2>{name} ({sex}, {age})</h2>
+            <div className="profile-header">
+                <div className="profile-img-wrapper">
+                    <img src={imageSrc} alt="Profile" className="profile-img" />
+                </div>
+            <div className="header-text">
+                <h2>{name}</h2>
+                <p className="age-sex">({sex}, {age})</p>
+            </div>
+        </div> {/* end of profile header */}
 
-            <p><strong>Location:</strong> {location}</p>
-            <p><strong>Languages:</strong> {languages}</p>
+        <p><strong>Location:</strong> {location}</p>
+        <p><strong>Languages:</strong> {languages}</p>
 
-            <p className = "description"><strong>Description:</strong> {description}</p>
+        <p className = "section-title">About</p>
+        <p className = "description">{description}</p>
             
-            <div className = "preferences-section">
+        <p className = "section-title">Preferences</p>
+        <div className = "preferences-section">
             <div className="preference-item">
                 <div className={smoking ? "preference-toggle preference-toggle-yes" : "preference-toggle preference-toggle-no"}>
                     {smoking ? "Smokes" : "Doesn't Smoke"}
                 </div>
             </div>
-
 
             <div className="preference-item">
                 <div className={drinking ? "preference-toggle preference-toggle-yes" : "preference-toggle preference-toggle-no"}>
@@ -52,15 +61,14 @@ function ProfileCard({
                 </div>
             </div>
 
-
             <div className="preference-item">
                 <div className={subleasing ? "preference-toggle preference-toggle-yes" : "preference-toggle preference-toggle-no"}>
                     {subleasing ? "Subleases" : "Doesn't Sublease"}
                 </div>
             </div>
-
-            </div> {/* preferences section end */}
-                
+        </div> {/* preferences section end */}
+        
+        <p className = "section-title">Contact</p>
             <div className = "contact-info">
                 <p><strong>Email:</strong> {email}</p>
                 <p><strong>Phone:</strong> {phone}</p>
