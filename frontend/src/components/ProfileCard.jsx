@@ -1,13 +1,36 @@
 import './ProfileCard.css';
 
+/* this will assign a random image (tied to name/email) for each post - like our reddit idea */ 
+const profileImages = [
+    '/images/bear.jpg',
+    '/images/bunny.jpg',
+    '/images/dog.jpg',
+    '/images/fox.jpg',
+    '/images/goat.jpg',
+    '/images/monkey.jpg',
+    '/images/mouse.jpg',
+    '/images/pig.jpg',
+    '/images/sheep.jpg'
+  ];
+  
+  const getStableRandomImage = (key) => {
+    const sum = key.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    const index = sum % profileImages.length;
+    return profileImages[index];
+  };
+  
+
 function ProfileCard({
     name, age, location, sex, description, 
     email, social, phone, languages, 
     smoking, drinking, subleasing
 })
 {
+    const imageSrc = getStableRandomImage(email || name); 
     return (
         <div className = "profile-card">
+            {/* profile photo at the top */}
+            <img src={imageSrc} alt="Profile" className="profile-img" />
             <h2>{name} ({sex}, {age})</h2>
 
             <p><strong>Location:</strong> {location}</p>

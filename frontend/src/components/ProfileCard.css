@@ -146,6 +146,16 @@
     margin: 1rem 0; 
 }
 
+/* profile photo */ 
+.profile-img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-bottom: 0.75rem;
+}
+
 /* just incase we do mobile stuff - again idk how well it woudl work */ 
 @media (max-width: 768px) {
     .profile-card {
