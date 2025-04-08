@@ -88,7 +88,7 @@
 /* dropdown styling */
 .add-profile-select {
     appearance: none;
-    min-width: 100%; 
+    min-width: 99.5%; /* need to change this - doesnt work on mobile */ 
 }
 
 /* labels for the bools */
