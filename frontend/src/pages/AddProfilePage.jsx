@@ -4,8 +4,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './AddProfilePage.css';
 
-// fixed the errors i was getting - had the wrong url 
-
 const AddProfilePage = () => {
     const [formData, setFormData] = useState({
         first_name: '',
@@ -50,10 +48,10 @@ const AddProfilePage = () => {
             const response = await axios.post('http://127.0.0.1:5000/insertProfile', formattedData);
             
             if (response.data["200"]) {
-                setMessage("✅ Profile added!");
+                setMessage("٩(＾◡＾)۶ Profile Added!");
             } 
             else {
-                setMessage(`⚠️ Error: ${JSON.stringify(response.data)}`);
+                setMessage(`┐(´～｀)┌ Error: ${JSON.stringify(response.data)}`);
             }
         } 
         catch (err) {
@@ -82,7 +80,7 @@ const AddProfilePage = () => {
         <input name="language_2" placeholder="Secondary Language (Optional)" onChange={handleChange} className="add-profile-input" />
         <input name="social_link" placeholder="Social Link (Optional)" onChange={handleChange} className="add-profile-input" />
         <input name="phone_number" placeholder="Phone Number (Optional)" onChange={handleChange} className="add-profile-input" />
-        
+
         <textarea name="description" placeholder="Description (Optional)" onChange={handleChange} className="add-profile-textarea" />
 
         <label>
