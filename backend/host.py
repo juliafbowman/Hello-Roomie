@@ -32,7 +32,8 @@ def insert_profile():
         result = insertProfile(user_data)
 
        
-        status_code = 200 if 200 in result else 500
+        status_code = 500 if 500 in result else 200
+        print(result)
         return jsonify(result), status_code
 
     except Exception as e:

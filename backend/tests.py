@@ -17,9 +17,6 @@ test_profiles = [
     ["Peter", "Parker", 21, 0, 1, 0, "United States of America", "English", "Spanish", 'M', "spiderman@gmail.com", "instagram.com/spidey", "9988776655", "Looking for someone who won’t mind web on the ceiling."]
 ]
 
-
-
-
 def printDB():
     '''Function to print the whole database'''
     db = DatabaseManager()
@@ -81,7 +78,7 @@ def testInsertProfiles():
 
 def deleteLastElement():
     db = DatabaseManager()
-    db.execute_query("DELETE from posts where id=?", params=(33,))
+    db.execute_query("DELETE from posts where id=?", params=(38,))
     db.close()
 if __name__ == '__main__':
     deleteLastElement()
