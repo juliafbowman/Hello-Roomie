@@ -44,9 +44,14 @@ function ProfileCard({
         <p><strong>Location:</strong> {location}</p>
         <p><strong>Languages:</strong> {languages}</p>
 
-        <p className = "section-title">About</p>
-        <p className = "description">{description}</p>
-            
+        {/* just display description if there is one */}
+        {description && (
+            <>
+            <p className="section-title">About</p>
+            <p className="description">{description}</p>
+            </>
+        )}
+      
         <p className = "section-title">Preferences</p>
         <div className = "preferences-section">
             <div className="preference-item">
@@ -71,7 +76,9 @@ function ProfileCard({
         <p className = "section-title">Contact</p>
             <div className = "contact-info">
                 <p><strong>Email:</strong> {email}</p>
-                <p><strong>Phone:</strong> {phone}</p>
+                {/* phone wont display if they dont put one in */}
+                {phone && <p><strong>Phone:</strong> {phone}</p>}
+
                 {/* socials wont show if null */}
                 {social ? (
                     <p>

@@ -76,6 +76,12 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
+/* little glow on the images when u hover */ 
+.profile-img:hover {
+    box-shadow: 0 0 15px 4px var(--light-blue);
+    transition: box-shadow var(--transition-speed) ease;
+}
+
 /* inside the card - paragraph */
 /* SPACING */ 
 .profile-card p {
@@ -162,15 +168,28 @@
     border-color: rgba(0, 123, 255, 0.3); 
 }
 
+.preference-toggle-yes:hover {
+    background-color: var(--light-green); /* CHANGE THIS - dont like the green */ 
+    color: var(--secondary-color);
+    border-color: var(--light-green);
+}
+
 .preference-toggle-no {
     background-color: rgba(108, 117, 125, 0.05); 
     color: var(--text-secondary); 
     border-color: rgba(108, 117, 125, 0.2); 
 }
 
-/* contact info spacing - took this out */ 
+.preference-toggle-no:hover {
+    background-color: var(--light-purple); 
+    color: var(--text-secondary); 
+    border-color: var(--secondary-color); 
+}
+
+/* contact info text and spacing */ 
 .profile-card .contact-info {
     padding: 0; 
+    color: var(--text-secondary); 
 }
 
 /* description (ABOUT) text */ 
@@ -179,7 +198,6 @@
     color: var(--text-secondary); 
     margin: 1rem 0; 
 }
-
 
 /* just incase we do mobile stuff - again idk how well it woudl work */ 
 /* mainly centering everything */ 
