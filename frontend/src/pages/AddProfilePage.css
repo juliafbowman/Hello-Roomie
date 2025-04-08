@@ -48,6 +48,7 @@
     gap: 1rem;
 }
 
+/* this is for the gradient at the top */ 
 .add-profile-form::before {
     content: '';
     position: absolute;
@@ -63,7 +64,8 @@
 .add-profile-input, 
 .add-profile-select, 
 .add-profile-textarea {
-    width: 95%;
+    max-width: 95%; /* max width to keep the description pull locked */ 
+    max-height: 6rem; /* should keep description box from getting too long - need to test for mobile still */ 
     padding: 0.75rem 1rem;
     border: 1px solid var(--border-color);
     border-radius: 8px;
@@ -73,27 +75,30 @@
     transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
 }
 
+/* when user clicks on an input field */ 
 .add-profile-input:focus, 
 .add-profile-select:focus, 
 .add-profile-textarea:focus {
     border-color: var(--primary-color);
     outline: none;
     box-shadow: 0 0 0 3px rgba(94, 124, 226, 0.1);
+
 }
 
 /* dropdown styling */
 .add-profile-select {
     appearance: none;
+    min-width: 100%; 
 }
 
 /* labels for the bools */
-label {
+/* label {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     font-weight: 500;
     color: var(--secondary-color);
-}
+} */
 
 /* buttons */
 .add-profile-button {
@@ -127,6 +132,36 @@ label {
 label select {
     width: auto;
     min-width: 120px;
+}
+
+/* might get rid of this - its for the bool value preferences */ 
+
+/* override select dropdowns in preferences to match the toggles on front page */
+.preferences-section .add-profile-select {
+    appearance: none; /* remove default arrow */
+    padding: 0.5rem 1.25rem;
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    transition: all var(--transition-speed) ease; /* might get rid of this - thinking about using the red/green */ 
+    background-color: rgba(108, 117, 125, 0.05); 
+    color: var(--text-secondary); 
+}
+
+/* yes */
+.preferences-section .add-profile-select option[value="1"] {
+    background-color: rgba(0, 123, 255, 0.1); 
+    color: var(--primary-color); 
+}
+
+/* no */
+.preferences-section .add-profile-select option[value="0"] {
+    background-color: rgba(108, 117, 125, 0.05); 
+    color: var(--text-secondary); 
 }
 
 /* smaller screens */

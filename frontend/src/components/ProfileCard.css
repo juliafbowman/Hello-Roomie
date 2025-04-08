@@ -92,7 +92,7 @@
 .preference-item {
     flex: 0 1 auto; 
     min-width: 120px; 
-    text-align: center; /* center text over bubbles */
+    text-align: center; /* centers bubble text */
 }
 
 .preference-label {
