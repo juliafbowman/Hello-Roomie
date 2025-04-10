@@ -49,8 +49,8 @@ const AddProfilePage = () => {
 
         try {
             const response = await axios.post('http://127.0.0.1:5000/insertProfile', formattedData);
-            
-            if (response.data["200"]) {
+            console.log(response.data)
+            if (response.status === 200) {
                 setMessage("٩(＾◡＾)۶ Profile Added!");
             } 
             else {
