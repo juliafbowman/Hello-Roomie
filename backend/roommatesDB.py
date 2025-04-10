@@ -42,10 +42,10 @@ class DatabaseManager:
 
     #commented out for merges
     '''def fetch_query(self, query, params=()):
-        '''Query = SQL Query with placeholders
-        params = Values you want to pass into the SQL Query
-        Refer to utils.py to see an example
-        '''
+        #Query = SQL Query with placeholders
+        #params = Values you want to pass into the SQL Query
+        #Refer to utils.py to see an example
+        
         self.cursor.execute(query, params)
         return self.cursor.fetchall()
     '''
