@@ -76,6 +76,7 @@ def insertProfile(user_data):
 
     try:
         db.execute_query(query, tuple(values))
-        return {200: "User inserted successfully"}
+        allProfiles = db.fetch_query(query="SELECT * FROM posts ORDER BY id DESC")
+        return [dict(row) for row in allProfiles]
     except Exception as e:
         return {500: f"Database error: {str(e)}"}

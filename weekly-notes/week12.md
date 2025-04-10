@@ -2,40 +2,35 @@
 Please note that this is the required layout for the weekly notes.
 
 ## Overview:
-**When**:  4/2/2025
-**Duration**:  48 Minutes
-**Where**:  Discord
+**When**:  4/8/2025 
+**Duration**:  45 minutes
+**Where**:  CS Lounge
 
 ## Attendance
-Jason, Jash, Julia
+Everyone is Present
 
 ## Recent Progress:
-Jash:
-    Created a text document to  install dependencies with instructions in backend.md
-    Created database
-    Inserted Raw Data
-Julia:
-    Installed dependencies
+Main Page displays what is in the database
+Basic insert/filtering/databse pushed into git
+Updates being pushed into updates.md
+
 ## Meeting Notes: 
+Jash wanted to show us how to insert layout
+Data gets converted into a dict and then is inserted into the database file
+For Jason: 
+    Do the filtering:
+        just SQL query
+        Front -> Sql query -> get the users -> return
+        Return profiles that we get from one sql query
 
-    
-    Created Databases with Raw Data
-        Run server : python host.y
-    Suggests Jason and Julia connect the backend to frontend together
-    
-    Working together by using TO DO statements in react?
-    Setting things together and working to fix bugs
+Filter by age, sex, country, primary lang, secondary lang, smoking, drinking, subleasing
 
-    Created branches for individual work :3
-    
+Data struct plan:
+Planning on using suffix trees to find the best match. 
+Use keywords on desc to filter the best matches
 
 
 ## Action Items (Work In Progress):
-    TO DO FOR JASON : 
-        1.Install dependencies on both Mac + Windows Desktop
-        2. Check to see if everything is working
-        3. Get React working
+Filtering Backend-> Filter function
+Filtering Frontend-> Create posts
 
-    TO DO FOR JULIA:
-        1. Get React Working
-        2. Get started on Landing Page Basics Due Tuesday

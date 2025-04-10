@@ -14,7 +14,7 @@
             margin-bottom: 15px;
             border-radius: 10px;
         }
-        .form-section input, .form-section textarea {
+        .form-section input, .form-section textarea, .form-section select {
             display: block;
             margin-bottom: 10px;
             padding: 8px;
@@ -23,16 +23,26 @@
         button {
             padding: 10px 15px;
             font-size: 16px;
+            cursor: pointer;
+        }
+        #topButtons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
     <h1>Roommate Profiles</h1>
 
-    <button onclick="fetchProfiles()">Load Profiles</button>
+    <div id="topButtons">
+        <button onclick="fetchAllProfiles()">🔄 Reload Profiles</button>
+        <button onclick="scrollToForm()">➕ Add New Profile</button>
+    </div>
+
     <div id="profilesContainer"></div>
 
-    <h2>Add a New Profile</h2>
+    <h2 id="formSection">Add a New Profile</h2>
     <div class="form-section">
         <input type="text" id="first_name" placeholder="First Name" required>
         <input type="text" id="last_name" placeholder="Last Name" required>
@@ -67,39 +77,23 @@
             </select>
         </label>
 
-        <button onclick="submitProfile()">Submit Profile</button>
+        <button onclick="submitProfile()">✅ Submit Profile</button>
         <p id="submitResult"></p>
     </div>
 
     <script>
-        function fetchProfiles() {
+        // Load profiles automatically on page load
+        window.onload = fetchAllProfiles;
+
+        function fetchAllProfiles() {
             fetch("http://127.0.0.1:5000/profiles")
                 .then(response => {
                     if (!response.ok) throw new Error("Failed to fetch profiles");
                     return response.json();
                 })
                 .then(data => {
-                    const container = document.getElementById("profilesContainer");
-                    container.innerHTML = "";
-                    Object.values(data).forEach(profile => {
-                        const div = document.createElement("div");
-                        div.className = "profile";
-                        div.innerHTML = `
-                            <strong>Name:</strong> ${profile.first_name} ${profile.last_name}<br>
-                            <strong>Age:</strong> ${profile.age}<br>
-                            <strong>Sex:</strong> ${profile.sex}<br>
-                            <strong>Country:</strong> ${profile.country}<br>
-                            <strong>Languages:</strong> ${profile.language}${profile.language_2 ? ", " + profile.language_2 : ""}<br>
-                            <strong>Description:</strong> ${profile.description}<br>
-                            <strong>Drinks Socially?:</strong> ${profile.drinking_socially ? "Yes" : "No"}<br>
-                            <strong>Smokes?:</strong> ${profile.smoking ? "Yes" : "No"}<br>
-                            <strong>Subleasing?:</strong> ${profile.subleasing ? "Yes" : "No"}<br>
-                            <strong>Email:</strong> ${profile.email}<br>
-                            <strong>Phone:</strong> ${profile.phone_number || "N/A"}<br>
-                            <strong>Social Link:</strong> ${profile.social_link ? `<a href="https://${profile.social_link}" target="_blank">${profile.social_link}</a>` : "N/A"}
-                        `;
-                        container.appendChild(div);
-                    });
+                    const sorted = data.sort((a, b) => b.id - a.id); // sort by highest ID
+                    renderProfiles(sorted);
                 })
                 .catch(error => {
                     document.getElementById("profilesContainer").innerHTML =
@@ -136,31 +130,59 @@
             .then(data => {
                 const msg = data[200] || data[500];
                 document.getElementById("submitResult").textContent = msg;
+
                 if (data[200]) {
-                    resetFormFields();     // ✅ Clear form on success
-                    fetchProfiles();       // ✅ Refresh profile list
+                    resetFormFields();
+                    if (data.profiles) {
+                        const sorted = data.profiles.sort((a, b) => b.id - a.id);
+                        renderProfiles(sorted);
+                    }
                 }
             })
             .catch(error => {
-                document.getElementById("submitResult").textContent = "Error submitting profile: " + error.message;
+                document.getElementById("submitResult").textContent =
+                    "Error submitting profile: " + error.message;
+            });
+        }
+
+        function renderProfiles(profiles) {
+            const container = document.getElementById("profilesContainer");
+            container.innerHTML = "";
+            profiles.forEach(profile => {
+                const div = document.createElement("div");
+                div.className = "profile";
+                div.innerHTML = `
+                    <strong>Name:</strong> ${profile.first_name} ${profile.last_name}<br>
+                    <strong>Age:</strong> ${profile.age}<br>
+                    <strong>Sex:</strong> ${profile.sex}<br>
+                    <strong>Country:</strong> ${profile.country}<br>
+                    <strong>Languages:</strong> ${profile.language}${profile.language_2 ? ", " + profile.language_2 : ""}<br>
+                    <strong>Description:</strong> ${profile.description || "N/A"}<br>
+                    <strong>Drinks Socially?:</strong> ${profile.drinking_socially ? "Yes" : "No"}<br>
+                    <strong>Smokes?:</strong> ${profile.smoking ? "Yes" : "No"}<br>
+                    <strong>Subleasing?:</strong> ${profile.subleasing ? "Yes" : "No"}<br>
+                    <strong>Email:</strong> ${profile.email}<br>
+                    <strong>Phone:</strong> ${profile.phone_number || "N/A"}<br>
+                    <strong>Social Link:</strong> ${profile.social_link ? `<a href="https://${profile.social_link}" target="_blank">${profile.social_link}</a>` : "N/A"}
+                `;
+                container.appendChild(div);
             });
         }
 
         function resetFormFields() {
-            document.getElementById("first_name").value = "";
-            document.getElementById("last_name").value = "";
-            document.getElementById("age").value = "";
-            document.getElementById("sex").value = "";
-            document.getElementById("country").value = "";
-            document.getElementById("language").value = "";
-            document.getElementById("language_2").value = "";
-            document.getElementById("email").value = "";
-            document.getElementById("social_link").value = "";
-            document.getElementById("phone_number").value = "";
-            document.getElementById("description").value = "";
+            const fields = [
+                "first_name", "last_name", "age", "sex", "country",
+                "language", "language_2", "email", "social_link",
+                "phone_number", "description"
+            ];
+            fields.forEach(id => document.getElementById(id).value = "");
             document.getElementById("smoking").value = "0";
             document.getElementById("drinking_socially").value = "0";
             document.getElementById("subleasing").value = "0";
+        }
+
+        function scrollToForm() {
+            document.getElementById("formSection").scrollIntoView({ behavior: "smooth" });
         }
     </script>
 </body>
