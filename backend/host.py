@@ -33,7 +33,6 @@ def insert_profile():
 
        
         status_code = 500 if 500 in result else 200
-        print(result)
         return jsonify(result), status_code
 
     except Exception as e:
