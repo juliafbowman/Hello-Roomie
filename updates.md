@@ -42,3 +42,7 @@ Jason pushed updates.md to his branch.
 
 ## 4/7/25
 We had a missing dependency for front end, Jason pushed package-lock.json file with an added dependency for easier installation
+
+## 4/8/25
+Weekly meeting notes pushed
+Most importantly, Insert Functionality is added!
