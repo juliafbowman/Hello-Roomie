@@ -1,6 +1,3 @@
-# Sample Weekly Meeting Notes:
-Please note that this is the required layout for the weekly notes.
-
 ## Overview:
 **When**:  4/2/2025
 **Duration**:  48 Minutes
