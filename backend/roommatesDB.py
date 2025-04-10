@@ -39,36 +39,38 @@ class DatabaseManager:
         '''
         self.cursor.execute(query, params)
         self.conn.commit()
-
-    #commented out for merges
-    '''def fetch_query(self, query, params=()):
-        #Query = SQL Query with placeholders
-        #params = Values you want to pass into the SQL Query
-        #Refer to utils.py to see an example
         
+    def fetch_query(self, query, params=()):
+        '''
+        Query = SQL Query with placeholders
+        params = Values you want to pass into the SQL Query
+        Refer to utils.py to see an example
+        '''
+
         self.cursor.execute(query, params)
         return self.cursor.fetchall()
-    '''
-    #function intention to filter query and return a fetched table
-    def filter_query(self, query, filter_params):
-        '''Query = SQL Query
-        filter_params = Values you want to find in query
-        '''
         
-        if filter_params is None:
-            filter_params = {}
+
+    #function intention to filter query and return a fetched table
+    #def filter_query(self, query, filter_params):
+        #'''Query = SQL Query
+        #filter_params = Values you want to find in query
+        #'''
+        
+        #if filter_params is None:
+            #filter_params = {}
         
         # build base query
-        query = "SELECT * FROM posts"
-        where_clauses = []
-        params = []
+        #query = "SELECT * FROM posts"
+        #where_clauses = []
+        #params = []
 
         # define filter mappings with their sql conditions
 
-        filter_mappings = {
-            'age' : 
-        }
-        return self.fetch_query(query, params);
+        #filter_mappings = {
+            #'age' : 
+        #}
+        #return self.fetch_query(query, params);
         
     def close(self):
         '''Close the connection with the database'''
