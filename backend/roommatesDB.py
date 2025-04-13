@@ -19,6 +19,7 @@ class DatabaseManager:
                 age INTEGER NOT NULL,
                 smoking INTEGER NOT NULL CHECK (smoking IN (0, 1)),
                 drinking_socially INTEGER NOT NULL CHECK (drinking_socially IN (0, 1)),
+                max_rent INTEGER NOT NULL CHECK (max_rent >= 300 AND max_rent <= 10000),
                 subleasing INTEGER NOT NULL CHECK (subleasing IN (0, 1)),
                 country TEXT NOT NULL CHECK (length(country) < 100),
                 language TEXT NOT NULL CHECK (length(language) < 50),

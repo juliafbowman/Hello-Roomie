@@ -15,11 +15,12 @@ def insertProfile(user_data):
         "age": int,
         "smoking": int,
         "drinking_socially": int,
+        "max_rent": int,
         "subleasing": int,
         "country": str,
         "language": str,
         "sex": str,
-        "email": str
+        "email": str,
     }
 
     optional_fields = {
@@ -46,6 +47,10 @@ def insertProfile(user_data):
     if user_data["sex"] not in ('M', 'F'):
         return {500: "Field 'sex' must be 'M' or 'F'"}
 
+    # Validate max_rent range
+    if not (300 <= user_data["max_rent"] <= 10000):
+        return {500: "Field 'max_rent' must be between 300 and 10000"}
+
     # Validate the size of text fields
     if len(user_data["country"]) >= 100:
         return {500: "Field 'country' must be less than 100 characters"}
@@ -54,7 +59,7 @@ def insertProfile(user_data):
     if len(user_data["email"]) >= 200:
         return {500: "Field 'email' must be less than 200 characters"}
 
-    # Validate optional fields, (nullable ones)
+    # Validate optional fields (nullable ones)
     for field, max_length in [("language_2", 50), ("social_link", 300), ("phone_number", 50), ("description", 300)]:
         if field in user_data and user_data[field] is not None and len(user_data[field]) >= max_length:
             return {500: f"Field '{field}' must be less than {max_length} characters"}
@@ -77,6 +82,8 @@ def insertProfile(user_data):
     try:
         db.execute_query(query, tuple(values))
         allProfiles = db.fetch_query(query="SELECT * FROM posts ORDER BY id DESC")
+        db.close()
         return [dict(row) for row in allProfiles]
     except Exception as e:
+        db.close()
         return {500: f"Database error: {str(e)}"}

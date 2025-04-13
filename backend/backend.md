@@ -26,6 +26,7 @@ pip install -r requirements.txt
     - "age": "integer (required) - e.g., 21",
     - "smoking": "integer (required, must be 0 or 1) - e.g., 0",
     - "drinking_socially": "integer (required, must be 0 or 1) - e.g., 1",
+    - "max_rent" : "integer (required, must be between 300 and 10000) - e.g. 500 ", 
     - "subleasing": "integer (required, must be 0 or 1) - e.g., 0",
     - "country": "string (required, max 99 characters) - e.g., 'United States of America'",
     - "language": "string (required, max 49 characters) - e.g., 'English'",
