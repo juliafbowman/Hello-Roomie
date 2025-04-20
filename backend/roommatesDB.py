@@ -52,27 +52,9 @@ class DatabaseManager:
         return self.cursor.fetchall()
         
 
-    #function intention to filter query and return a fetched table
-    #def filter_query(self, query, filter_params):
-        #'''Query = SQL Query
-        #filter_params = Values you want to find in query
-        #'''
-        
-        #if filter_params is None:
-            #filter_params = {}
-        
-        # build base query
-        #query = "SELECT * FROM posts"
-        #where_clauses = []
-        #params = []
-
-        # define filter mappings with their sql conditions
-
-        #filter_mappings = {
-            #'age' : 
-        #}
-        #return self.fetch_query(query, params);
-        
+    
+    
+    
     def close(self):
         '''Close the connection with the database'''
         self.conn.close()

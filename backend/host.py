@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from roommatesAPI import *
 from flask_cors import CORS
+from profileManager import * 
 
 app = Flask(__name__)
 CORS(app)
@@ -23,6 +24,8 @@ def get_all_profiles():
 @app.route("/insertProfile", methods = ["POST"])
 def insert_profile():
     try:
+        manager = ProfileManager() # to update the local data structure
+
         # Parse JSON input from frontend
         user_data = request.get_json()
 
@@ -33,11 +36,44 @@ def insert_profile():
 
        
         status_code = 500 if 500 in result else 200
+
+        if (status_code != 500): 
+            manager.insert_profile(user_data) #update the local singleton data structure everytime something is installed 
         return jsonify(result), status_code
 
     except Exception as e:
         return jsonify({500: f"Server error: {str(e)}"}), 500
 
+@app.route("/matchProfiles", methods=["POST"])
+def find_best_matches():
+    try:
+
+        user_prefs = request.get_json()
+
+        if not user_prefs:
+            return jsonify({500: "No JSON data provided"}), 400
+
+        result = matchProfiles(user_prefs)
+        status_code = 500 if 500 in result else 200
+        print(result)
+        return jsonify(result), status_code
+
+    except Exception as e:
+        return jsonify({500: f"Server error: {str(e)}"}), 500
+
+@app.route("/filterProfile", methods =["POST"])
+def filter_profiles():
+    filters = request.get_json()
+    
+    if not filters:
+        return jsonify({"error" : "No filter parameters provided"}),500
+    
+    try:
+        results = filter_query(filters)
+        return jsonify(results), 200
+    except Exception as e:
+        return jsonify({"error" : str(e)}), 500
+        
 
 if __name__ == "__main__":
     app.run(debug=True)

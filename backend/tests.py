@@ -1,5 +1,7 @@
 from roommatesDB import * 
 from roommatesAPI import *
+from profileManager import * 
+from findBestMatches import *
 import json
 
 #test profiles to insert into the database
@@ -51,6 +53,7 @@ def convertDBtoDict():
     profiles = json.dumps(getAllProfiles())
     print(profiles)
 
+
 def testInsertProfiles(): 
     for profile in all_test_profiles:
         profile_dict = {
@@ -73,11 +76,73 @@ def testInsertProfiles():
         result = insertProfile(profile_dict)
         print(result)
 
+def testFilterQuery():
+    """
+    Test the filter_query function with example filters
+    """
+    
+    examples = [
+        {'country' : 'United States'},
+        {'age' : [('>', 25), ('<', 30)], 'country' : 'United States'},
+        {'age' : [('<', 50)], 'country' : 'United States'},
+        {'country' : 'United States', 'max_rent' : ("<=", 3000)}
+    ]
+    for filters in examples:
+        print(f"\n>>>Filters: {filters}")
+        try:
+            results = filter_query(filters)
+        except Exception as e:
+            print("Error running filter_query:", e)
+            continue
+        
+        if not results:
+            print("no matching profiles.")
+        for r in results:
+            print(r)
+
+def clearPosts():
+    db = DatabaseManager()
+    db.execute_query("DELETE FROM posts")
+    db.close()
+from roommatesAPI import filter_query, insertProfile, getAllProfiles
+import json
 
 def deleteElement(id):
     db = DatabaseManager()
     db.execute_query("DELETE from posts where id=?", params=(id,))
     db.close()
 
-# if __name__ == '__main__':
-#     deleteElement(10)
+
+def testProfielManager():
+    manager = ProfileManager()
+    print(manager.get_all_profiles())
+
+
+if __name__ == '__main__':
+    preferences = {
+    "age": 22,
+    "smoking": 0,
+    "drinking_socially": 1,
+    "subleasing": 1,
+    "country": "USA",
+    "language": "English",
+    "language_2": None,
+    "sex": "M",
+    "max_rent": 900,
+    "description_tags": ["clean", "quiet", "friendly"]
+    }
+
+    top_profiles = get_best_matches(preferences, limit=3)
+    print(top_profiles)
+    
+    # #testProfielManager()
+    # clearPosts()
+    # testInsertProfiles()
+    # print("\n=== All profiles in DB ===")
+    # printDB()
+     
+    # print("\n=== Convert DB to JSON ===")
+    # convertDBtoDict()
+     
+    # print("\n=== Running FilterQuery Tests ===")
+    # testFilterQuery()
