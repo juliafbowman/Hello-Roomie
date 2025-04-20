@@ -46,3 +46,12 @@ We had a missing dependency for front end, Jason pushed package-lock.json file w
 ## 4/8/25
 Weekly meeting notes pushed
 Most importantly, Insert Functionality is added!
+
+## 4/14/25
+Fixed bug issues
+Added max_rent and re filled the whole database
+Added dropdowns for countries on frontend 
+
+## 4/20/25
+Added data structures and best match functionality
+Loading data into a backend data struct (list of dicts with a trie) -> returns best matches

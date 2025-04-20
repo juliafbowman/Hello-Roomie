@@ -230,13 +230,34 @@ def matchProfiles(user_prefs):
 
     try:
         matches = get_best_matches(user_prefs, limit=5)
-        
-        # Remove non-serializable fields
-        for m in matches:
-            if "description" in m and hasattr(m["description"], "__class__"):
-                m["descriptionTrie"] = None  # Optional: set to None or remove
-                del m["descriptionTrie"]         # safest: remove the Trie entirely
 
-        return {"matches": matches}
+        serialized_matches = []
+        for m in matches:
+            desc_trie = m.get("description")
+
+            cleaned = {
+                "id": m.get("id"),
+                "first_name": m.get("first_name"),
+                "last_name": m.get("last_name"),
+                "age": m.get("age"),
+                "smoking": m.get("smoking"),
+                "drinking_socially": m.get("drinking_socially"),
+                "max_rent": m.get("max_rent"),
+                "subleasing": m.get("subleasing"),
+                "country": m.get("country"),
+                "language": m.get("language"),
+                "language_2": m.get("language_2"),
+                "sex": m.get("sex"),
+                "email": m.get("email"),
+                "social_link": m.get("social_link"),
+                "phone_number": m.get("phone_number"),
+                "description": m.get("description"),
+                # No descriptionTrie
+            }
+
+            serialized_matches.append(cleaned)
+
+        return {"matches": serialized_matches}
+
     except Exception as e:
         return {500: f"Matching error: {str(e)}"}
