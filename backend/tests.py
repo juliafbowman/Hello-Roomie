@@ -51,6 +51,7 @@ def convertDBtoDict():
     profiles = json.dumps(getAllProfiles())
     print(profiles)
 
+
 def testInsertProfiles(): 
     for profile in all_test_profiles:
         profile_dict = {
@@ -73,7 +74,11 @@ def testInsertProfiles():
         result = insertProfile(profile_dict)
         print(result)
 
-
+def testFilterQuery();
+    db = DatabaseManager()
+    filters = {'age' : ('>' , 25)}
+    results = db.filter_query(filters)
+    db.close()
 def deleteElement(id):
     db = DatabaseManager()
     db.execute_query("DELETE from posts where id=?", params=(id,))

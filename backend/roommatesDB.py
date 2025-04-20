@@ -53,25 +53,44 @@ class DatabaseManager:
         
 
     #function intention to filter query and return a fetched table
-    #def filter_query(self, query, filter_params):
-        #'''Query = SQL Query
-        #filter_params = Values you want to find in query
-        #'''
+    # what needs to be done for this to work is make a mapping of filters like this
+    '''
+    filters = {
+        'age': 25,
+        'smoking' : 0,
+        'country': 'USA'
+    }
+    '''
+    def filter_query(self, filter_params):
+        '''Query = SQL Query
+        filter_params = Values you want to find in query
+        '''
         
-        #if filter_params is None:
-            #filter_params = {}
+        if not filter_params:
+            query = "SELECT * FROM posts"
         
         # build base query
-        #query = "SELECT * FROM posts"
-        #where_clauses = []
-        #params = []
+        where_clauses = []
+        params = {}
 
         # define filter mappings with their sql conditions
 
-        #filter_mappings = {
-            #'age' : 
-        #}
-        #return self.fetch_query(query, params);
+        for key,value in filter_params.items():
+            #this checks for multiple values (for case of comparison values)
+            if isinstance(value, tuple) and len(value) == 2:
+                operator, val = value
+                param_key = f"{key}_{operator}"
+                where_clauses.append(f"{key} {operator} :{param_key}")
+
+            else:
+                where_clauses.append(f"{key} = :{key}")
+                params[key] = value
+
+        where_statement = "AND".join(where_clauses)
+
+        query = f"SELECT * FROM posts WHERE {where_statement}"
+        
+        return self.fetch_query(query, params);
         
     def close(self):
         '''Close the connection with the database'''
