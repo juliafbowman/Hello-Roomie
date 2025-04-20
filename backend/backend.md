@@ -43,3 +43,47 @@ pip install -r requirements.txt
                   500 : Unsuccessful with exception E returned in a JSON Dictionary, 
                   400 : Bad request, invalid data -> returned as JSON, format is not right, a non nullable value is given a null value, etc.
 
+- 3. url/matchProfiles : 
+    - Method : POST
+    - Input : Dictionary -> contains the user's roommate matching preferences
+    - {
+        "age": "integer (required) - e.g., 22",
+        "smoking": "integer (required, must be 0 or 1) - e.g., 0",
+        "drinking_socially": "integer (required, must be 0 or 1) - e.g., 1",
+        "subleasing": "integer (required, must be 0 or 1) - e.g., 1",
+        "country": "string (required, max 99 characters) - e.g., 'India'",
+        "language": "string (required, max 49 characters) - e.g., 'Hindi'",
+        "language_2": "string or null (optional, max 49 characters) - e.g., 'English' or null",
+        "sex": "string (required, 1 character: 'M' or 'F') - e.g., 'F'",
+        "max_rent": "integer (required, must be between 300 and 10000) - e.g., 1200",
+        "description_tags": "list of strings (required) - e.g., ['quiet', 'clean', 'organized']"
+      }
+
+    - Output : {
+        "matches": [
+            {
+                "id": 7,
+                "first_name": "Kamala",
+                "last_name": "Khan",
+                "age": 18,
+                "smoking": 0,
+                "drinking_socially": 0,
+                "max_rent": 1200,
+                "subleasing": 0,
+                "country": "United States",
+                "language": "English",
+                "language_2": "Urdu",
+                "sex": "F",
+                "email": "msmarvel@gmail.com",
+                "social_link": "instagram.com/msmarvel",
+                "phone_number": "1233211234",
+                "description": "Need a roommate who loves Marvel... comics or universe."
+            },
+            ...
+        ]
+      }
+
+    Error Code -> 200 : Successful, 
+                  500 : Matching error or invalid user input returned as {500: "error message"}, 
+                  400 : Bad request, empty or malformed input
+
