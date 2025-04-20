@@ -21,6 +21,14 @@ function Home() {
     <div className = "home-layout">
         <div className = "profile-column">
             <h1>Find Yourself a Roommate</h1>
+
+            {/* <button
+                className="filter-toggle-button"
+                onClick={() => setShowFilters(prev => !prev)}
+                >
+                    {showFilters ? 'Hide Filters' : 'Show Filters'}
+                </button> */}
+
             {profiles.map((p, index) => (
                 <ProfileCard
                 key={index}
