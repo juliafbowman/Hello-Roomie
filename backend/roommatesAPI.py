@@ -1,4 +1,5 @@
 from roommatesDB import * 
+from findBestMatches import *
 
 def getAllProfiles():
     db = DatabaseManager()
@@ -173,3 +174,71 @@ def filter_query(filter_params):
 # if __name__ == "__main__":
 #     app.run(debug=True)
 
+
+
+def matchProfiles(user_prefs):
+    required_fields = {
+        "age": int,
+        "smoking": int,
+        "drinking_socially": int,
+        "subleasing": int,
+        "country": str,
+        "language": str,
+        "sex": str,
+        "max_rent": int,
+        "description_tags": list  # List of tags to match in Trie
+    }
+
+    optional_fields = {
+        "language_2": str
+    }
+
+    # Validate required fields
+    for field, expected_type in required_fields.items():
+        if field not in user_prefs:
+            return {500: f"Missing required field: {field}"}
+        if not isinstance(user_prefs[field], expected_type):
+            return {500: f"Field '{field}' must be of type {expected_type.__name__}"}
+
+    # Validate binary fields
+    for field in ["smoking", "drinking_socially", "subleasing"]:
+        if user_prefs[field] not in (0, 1):
+            return {500: f"Field '{field}' must be 0 or 1"}
+
+    # Validate sex
+    if user_prefs["sex"] not in ("M", "F"):
+        return {500: "Field 'sex' must be 'M' or 'F'"}
+
+    # Validate ranges
+    if not (300 <= user_prefs["max_rent"] <= 10000):
+        return {500: "Field 'max_rent' must be between 300 and 10000"}
+
+    # Validate string lengths
+    if len(user_prefs["country"]) >= 100:
+        return {500: "Field 'country' must be less than 100 characters"}
+    if len(user_prefs["language"]) >= 50:
+        return {500: "Field 'language' must be less than 50 characters"}
+
+    # Validate optional fields
+    if "language_2" in user_prefs and user_prefs["language_2"]:
+        if not isinstance(user_prefs["language_2"], str):
+            return {500: "Field 'language_2' must be a string"}
+        if len(user_prefs["language_2"]) >= 50:
+            return {500: "Field 'language_2' must be less than 50 characters"}
+
+    # Validate description_tags list (optional but required type check)
+    if not all(isinstance(tag, str) for tag in user_prefs["description_tags"]):
+        return {500: "All description tags must be strings"}
+
+    try:
+        matches = get_best_matches(user_prefs, limit=5)
+        
+        # Remove non-serializable fields
+        for m in matches:
+            if "description" in m and hasattr(m["description"], "__class__"):
+                m["descriptionTrie"] = None  # Optional: set to None or remove
+                del m["descriptionTrie"]         # safest: remove the Trie entirely
+
+        return {"matches": matches}
+    except Exception as e:
+        return {500: f"Matching error: {str(e)}"}

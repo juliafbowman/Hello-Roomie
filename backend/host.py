@@ -44,7 +44,23 @@ def insert_profile():
     except Exception as e:
         return jsonify({500: f"Server error: {str(e)}"}), 500
 
-@app.route("/filterProfile", methods =["POST"])
+@app.route("/matchProfiles", methods=["POST"])
+def find_best_matches():
+    try:
+
+        user_prefs = request.get_json()
+
+        if not user_prefs:
+            return jsonify({500: "No JSON data provided"}), 400
+
+        result = matchProfiles(user_prefs)
+        status_code = 500 if 500 in result else 200
+        print(result)
+        return jsonify(result), status_code
+
+    except Exception as e:
+        return jsonify({500: f"Server error: {str(e)}"}), 500
+    @app.route("/filterProfile", methods =["POST"])
 def filter_profiles():
     filters = request.get_json()
     

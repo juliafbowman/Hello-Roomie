@@ -1,6 +1,7 @@
 from roommatesDB import * 
 from roommatesAPI import *
 from profileManager import * 
+from findBestMatches import *
 import json
 
 #test profiles to insert into the database
@@ -116,15 +117,20 @@ def testProfielManager():
     manager = ProfileManager()
     print(manager.get_all_profiles())
 
+
 if __name__ == '__main__':
-    #testProfielManager()
-    clearPosts()
-    testInsertProfiles()
-    print("\n=== All profiles in DB ===")
-    printDB()
-     
-    print("\n=== Convert DB to JSON ===")
-    convertDBtoDict()
-     
-    print("\n=== Running FilterQuery Tests ===")
-    testFilterQuery()
+    preferences = {
+    "age": 22,
+    "smoking": 0,
+    "drinking_socially": 1,
+    "subleasing": 1,
+    "country": "USA",
+    "language": "English",
+    "language_2": None,
+    "sex": "M",
+    "max_rent": 900,
+    "description_tags": ["clean", "quiet", "friendly"]
+    }
+
+    top_profiles = get_best_matches(preferences, limit=3)
+    print(top_profiles)
