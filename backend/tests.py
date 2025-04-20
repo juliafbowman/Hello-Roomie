@@ -102,12 +102,12 @@ def deleteElement(id):
     db.close()
 
 if __name__ == '__main__':
-    testInsertProfiles()
-    print("\n=== All profiles in DB ===")
-    printDB()
+    # testInsertProfiles()
+    # print("\n=== All profiles in DB ===")
+    # printDB()
      
-    print("\n=== Convert DB to JSON ===")
-    convertDBtoDict()
+    # print("\n=== Convert DB to JSON ===")
+    # convertDBtoDict()
      
-    print("\n=== Running FilterQuery Tests ===")
-    testFilterQuery()
+    # print("\n=== Running FilterQuery Tests ===")
+    # testFilterQuery()
