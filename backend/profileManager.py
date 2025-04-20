@@ -70,7 +70,7 @@ class ProfileManager:
         for row in rows:
             profile = dict(row)
             description_text = profile.get("description")
-            profile["description"] = self._description_to_trie(description_text)
+            profile["descriptionTrie"] = self._description_to_trie(description_text)
             self.profiles.append(profile)
 
     def insert_profile(self, profile_dict):
@@ -78,7 +78,7 @@ class ProfileManager:
         Inserts a profile into memory (not DB), converting 'description' to Trie.
         """
         desc_text = profile_dict.get("description")
-        profile_dict["description"] = self._description_to_trie(desc_text)
+        profile_dict["descriptionTrie"] = self._description_to_trie(desc_text)
         self.profiles.append(profile_dict)
 
     def search_description_prefix(self, prefix):
