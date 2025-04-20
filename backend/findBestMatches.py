@@ -7,6 +7,8 @@ def compute_score(profile, preferences):
     # Age ±2 = 30 pts
     if abs(profile["age"] - preferences["age"]) <= 2:
         score += 10
+    else: 
+        score -= 5
 
     # Exact Matches = 10 pts each
     for key in ["smoking", "drinking_socially", "subleasing", "sex"]:
