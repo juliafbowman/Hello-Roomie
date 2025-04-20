@@ -1,5 +1,6 @@
 from roommatesDB import * 
 from roommatesAPI import *
+from profileManager import * 
 import json
 
 #test profiles to insert into the database
@@ -79,5 +80,10 @@ def deleteElement(id):
     db.execute_query("DELETE from posts where id=?", params=(id,))
     db.close()
 
-# if __name__ == '__main__':
-#     deleteElement(10)
+
+def testProfielManager():
+    manager = ProfileManager()
+    print(manager.get_all_profiles())
+
+if __name__ == '__main__':
+    testProfielManager()

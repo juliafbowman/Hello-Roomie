@@ -55,6 +55,7 @@
         <input type="text" id="social_link" placeholder="Social Link (optional)">
         <input type="text" id="phone_number" placeholder="Phone Number (optional)">
         <textarea id="description" placeholder="Description (optional)"></textarea>
+        <input type="number" id="max_rent" placeholder="Max Rent ($300–$10,000)" min="300" max="10000" required>
 
         <label>Smokes?
             <select id="smoking">
@@ -114,6 +115,7 @@
                 social_link: document.getElementById("social_link").value || null,
                 phone_number: document.getElementById("phone_number").value || null,
                 description: document.getElementById("description").value || null,
+                max_rent: parseInt(document.getElementById("max_rent").value),
                 smoking: parseInt(document.getElementById("smoking").value),
                 drinking_socially: parseInt(document.getElementById("drinking_socially").value),
                 subleasing: parseInt(document.getElementById("subleasing").value)
@@ -158,6 +160,7 @@
                     <strong>Country:</strong> ${profile.country}<br>
                     <strong>Languages:</strong> ${profile.language}${profile.language_2 ? ", " + profile.language_2 : ""}<br>
                     <strong>Description:</strong> ${profile.description || "N/A"}<br>
+                    <strong>Max Rent:</strong> $${profile.max_rent}<br>
                     <strong>Drinks Socially?:</strong> ${profile.drinking_socially ? "Yes" : "No"}<br>
                     <strong>Smokes?:</strong> ${profile.smoking ? "Yes" : "No"}<br>
                     <strong>Subleasing?:</strong> ${profile.subleasing ? "Yes" : "No"}<br>
@@ -173,7 +176,7 @@
             const fields = [
                 "first_name", "last_name", "age", "sex", "country",
                 "language", "language_2", "email", "social_link",
-                "phone_number", "description"
+                "phone_number", "description", "max_rent"
             ];
             fields.forEach(id => document.getElementById(id).value = "");
             document.getElementById("smoking").value = "0";

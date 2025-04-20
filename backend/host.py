@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from roommatesAPI import *
 from flask_cors import CORS
+from profileManager import * 
 
 app = Flask(__name__)
 CORS(app)
@@ -23,6 +24,8 @@ def get_all_profiles():
 @app.route("/insertProfile", methods = ["POST"])
 def insert_profile():
     try:
+        manager = ProfileManager() # to update the local data structure
+
         # Parse JSON input from frontend
         user_data = request.get_json()
 
@@ -33,6 +36,9 @@ def insert_profile():
 
        
         status_code = 500 if 500 in result else 200
+
+        if (status_code != 500): 
+            manager.insert_profile(user_data) #update the local singleton data structure everytime something is installed 
         return jsonify(result), status_code
 
     except Exception as e:
