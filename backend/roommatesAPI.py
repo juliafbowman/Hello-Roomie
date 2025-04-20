@@ -133,6 +133,7 @@ def filter_query(filter_params):
         "!=": "ne",
         "<>": "ne"
     }
+    
     try:
         if not filter_params:
             raise ValueError("No filter parameters provided")

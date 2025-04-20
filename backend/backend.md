@@ -87,3 +87,35 @@ pip install -r requirements.txt
                   500 : Matching error or invalid user input returned as {500: "error message"}, 
                   400 : Bad request, empty or malformed input
 
+- 4. url/filterProfiles :
+    - Method : POST
+    - Input: JSON object contianing one or more filter criteria. Each key must be one of the profile columns, and each value can be like this:
+        1. equality (string or int)
+        {"country": "United States"}
+
+        2. Single Comparison as a two-element list [operator, value]
+        { "age": [">", 25] }
+
+        3. Range / multi-check as a list of comparisons
+        {
+            'age' : [('>' , 25) , ('<',50)],
+            "max_rent" : [("<=", 3000), (">=", 1000)]
+        }
+
+        example input :
+        {'age' : [('>' , 25) , ('<',50)] , 'country' : 'United States'}
+
+        example output :
+            {'id': 421, 'first_name': 'John', 'last_name': 'Cena', 'age': 40, 'smoking': 0, 'drinking_socially': 1, 'max_rent': 3000, 'subleasing': 0, 'country': 'United States', 'language': 'English', 'language_2': 'Mandarin', 'sex': 'M', 'email': 'jcena@gmail.com', 'social_link': 'instagram.com/johncena', 'phone_number': '6405905903', 'description': 'Looking for roommates who don’t call me invisible'}
+            {'id': 428, 'first_name': 'Clark', 'last_name': 'Kent', 'age': 35, 'smoking': 0, 'drinking_socially': 0, 'max_rent': 2800, 'subleasing': 1, 'country': 'United States', 'language': 'English', 'language_2': 'Kryptonian', 'sex': 'M', 'email': 'superman@gmail.com', 'social_link': 'instagram.com/superman', 'phone_number': '0000000000', 'description': 'Super clean and respectful roommate (but may fly off occasionally).'}
+            {'id': 429, 'first_name': 'Bruce', 'last_name': 'Wayne', 'age': 40, 'smoking': 0, 'drinking_socially': 0, 'max_rent': 4500, 'subleasing': 0, 'country': 'United States', 'language': 'English', 'language_2': 'French', 'sex': 'M', 'email': 'batman@gmail.com', 'social_link': 'instagram.com/batman', 'phone_number': '1010101010', 'description': 'Quiet. Keeps to himself. Might be out at night.'}
+            {'id': 431, 'first_name': 'Tony', 'last_name': 'Stark', 'age': 45, 'smoking': 1, 'drinking_socially': 1, 'max_rent': 5000, 'subleasing': 1, 'country': 'United States', 'language': 'English', 'language_2': 'Italian', 'sex': 'M', 'email': 'ironman@starkindustries.com', 'social_link': None, 'phone_number': '9999999999', 'description': 'Genius, billionaire, playboy, philanthropist.'}
+            {'id': 433, 'first_name': 'Bruce', 'last_name': 'Banner', 'age': 39, 'smoking': 0, 'drinking_socially': 0, 'max_rent': 2000, 'subleasing': 0, 'country': 'United States', 'language': 'English', 'language_2': 'Latin', 'sex': 'M', 'email': 'hulk@greenmail.com', 'social_link': 'instagram.com/hulk', 'phone_number': '4545454545', 'description': 'Will not smash as long as chores are done.'}
+            {'id': 436, 'first_name': 'Carol', 'last_name': 'Danvers', 'age': 34, 'smoking': 0, 'drinking_socially': 1, 'max_rent': 2800, 'subleasing': 0, 'country': 'United States', 'language': 'English', 'language_2': 'Kree', 'sex': 'F', 'email': 'captainmarvel@avengers.com', 'social_link': 'instagram.com/danvers', 'phone_number': None, 'description': 'Travels a lot. Needs someone grounded.'}
+            {'id': 439, 'first_name': 'Scott', 'last_name': 'Lang', 'age': 38, 'smoking': 0, 'drinking_socially': 1, 'max_rent': 2100, 'subleasing': 0, 'country': 'United States', 'language': 'English', 'language_2': None, 'sex': 'M', 'email': 'antman@quantum.com', 'social_link': 'instagram.com/antman', 'phone_number': '4561237890', 'description': 'Great with kids. Shrinks clutter.'}
+            {'id': 440, 'first_name': 'Hope', 'last_name': 'van Dyne', 'age': 35, 'smoking': 0, 'drinking_socially': 1, 'max_rent': 2700, 'subleasing': 0, 'country': 'United States', 'language': 'English', 'language_2': 'French', 'sex': 'F', 'email': 'wasp@quantum.com', 'social_link': 'instagram.com/wasp', 'phone_number': '3214569870', 'description': 'Clean, professional, and organized.'}
+            {'id': 441, 'first_name': 'Sam', 'last_name': 'Wilson', 'age': 34, 'smoking': 0, 'drinking_socially': 0, 'max_rent': 1900, 'subleasing': 0, 'country': 'United States', 'language': 'English', 'language_2': 'Spanish', 'sex': 'M', 'email': 'falcon@shield.com', 'social_link': None, 'phone_number': None, 'description': 'Great with teamwork. Brings good vibes.'}
+            {'id': 449, 'first_name': 'Jean', 'last_name': 'Grey', 'age': 29, 'smoking': 0, 'drinking_socially': 0, 'max_rent': 2500, 'subleasing': 1, 'country': 'United States', 'language': 'English', 'language_2': 'French', 'sex': 'F', 'email': 'phoenix@xmen.com', 'social_link': 'instagram.com/jeangrey', 'phone_number': '1112223333', 'description': 'Emotionally intense, but kind roommate.'}
+            
+    - Output: -> 200 : OK with a JSON array of profile objects matching all filters
+                 500 : Unexpected backend failure. Responds with ""error" <message>"
