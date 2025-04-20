@@ -18,6 +18,7 @@ const AddProfilePage = () => {
         language: '',
         language_2: '',
         sex: '',
+        max_rent: '',
         email: '',
         social_link: '',
         phone_number: '',
@@ -42,6 +43,7 @@ const AddProfilePage = () => {
             drinking_socially: parseInt(formData.drinking_socially),
             subleasing: parseInt(formData.subleasing),
             language_2: formData.language_2 || null,
+            max_rent: parseInt(formData.max_rent),
             social_link: formData.social_link || null,
             phone_number: formData.phone_number || null,
             description: formData.description || null
@@ -131,6 +133,16 @@ const AddProfilePage = () => {
             <option value="M">Male</option>
             <option value="F">Female</option>
         </select>
+
+        <input 
+            name="max_rent" 
+            type="number" 
+            placeholder="Max Rent" 
+            value={formData.max_rent}
+            required
+            onChange={handleChange}
+            className="add-profile-input"
+        />
 
         <input 
             name="email" 
