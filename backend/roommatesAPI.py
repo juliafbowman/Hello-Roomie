@@ -144,17 +144,22 @@ def filter_query(filter_params):
 
         for key,value in filter_params.items():
             #this checks for multiple values (for case of comparison values)
-            if isinstance(value, (list,tuple)) and len(value) == 2:
-                op, val = value
-                token = OP_MAP.get(op)
-                if not token:
-                    raise ValueError("Unsupported operator: {op!r}")
-                param_key = f"{key}_{token}"
-                where_clauses.append(f"{key} {op} :{param_key}")
-                params[param_key] = val
+            if isinstance(value, tuple) and len(value) == 2:
+                checks = [value]
+            elif isinstance(value, list):
+                checks = value
             else:
                 where_clauses.append(f"{key} = :{key}")
                 params[key] = value
+                continue
+            
+            for i, (op, val) in enumerate(checks, start = 1):
+                token = OP_MAP.get(op)
+                if token is None:
+                    raise ValueError(f"Unsupported operator: {op!r}")
+                param_name = f"{key}_{token}_{i}"
+                where_clauses.append(f"{key} {op} :{param_name}")
+                params[param_name] = val
 
         where_statement = " AND ".join(where_clauses)
         query = f"SELECT * FROM posts WHERE {where_statement}"

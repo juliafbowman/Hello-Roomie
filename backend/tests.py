@@ -81,7 +81,9 @@ def testFilterQuery():
     """
     
     examples = [
-        {'age' : ('>', 25), 'country' : 'Nepal'},
+        {'country' : 'United States'},
+        {'age' : [('>', 25), ('<', 30)], 'country' : 'United States'},
+        {'age' : [('<', 50)], 'country' : 'United States'},
         {'country' : 'United States', 'max_rent' : ("<=", 3000)}
     ]
     for filters in examples:
@@ -97,28 +99,32 @@ def testFilterQuery():
         for r in results:
             print(r)
 
+def clearPosts():
+    db = DatabaseManager()
+    db.execute_query("DELETE FROM posts")
+    db.close()
+from roommatesAPI import filter_query, insertProfile, getAllProfiles
+import json
+
 def deleteElement(id):
     db = DatabaseManager()
     db.execute_query("DELETE from posts where id=?", params=(id,))
     db.close()
 
-<<<<<<< HEAD
-if __name__ == '__main__':
-    # testInsertProfiles()
-    # print("\n=== All profiles in DB ===")
-    # printDB()
-     
-    # print("\n=== Convert DB to JSON ===")
-    # convertDBtoDict()
-     
-    # print("\n=== Running FilterQuery Tests ===")
-    # testFilterQuery()
-=======
 
 def testProfielManager():
     manager = ProfileManager()
     print(manager.get_all_profiles())
 
 if __name__ == '__main__':
-    testProfielManager()
->>>>>>> main
+    #testProfielManager()
+    clearPosts()
+    testInsertProfiles()
+    print("\n=== All profiles in DB ===")
+    printDB()
+     
+    print("\n=== Convert DB to JSON ===")
+    convertDBtoDict()
+     
+    print("\n=== Running FilterQuery Tests ===")
+    testFilterQuery()
