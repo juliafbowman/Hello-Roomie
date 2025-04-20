@@ -134,3 +134,15 @@ if __name__ == '__main__':
 
     top_profiles = get_best_matches(preferences, limit=3)
     print(top_profiles)
+    
+    # #testProfielManager()
+    # clearPosts()
+    # testInsertProfiles()
+    # print("\n=== All profiles in DB ===")
+    # printDB()
+     
+    # print("\n=== Convert DB to JSON ===")
+    # convertDBtoDict()
+     
+    # print("\n=== Running FilterQuery Tests ===")
+    # testFilterQuery()

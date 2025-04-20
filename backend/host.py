@@ -60,7 +60,8 @@ def find_best_matches():
 
     except Exception as e:
         return jsonify({500: f"Server error: {str(e)}"}), 500
-    @app.route("/filterProfile", methods =["POST"])
+
+@app.route("/filterProfile", methods =["POST"])
 def filter_profiles():
     filters = request.get_json()
     
