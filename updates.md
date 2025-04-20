@@ -55,3 +55,4 @@ Added dropdowns for countries on frontend
 ## 4/20/25
 Added data structures and best match functionality
 Loading data into a backend data struct (list of dicts with a trie) -> returns best matches
+Added documentation for filtering profiles
