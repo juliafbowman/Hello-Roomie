@@ -6,16 +6,16 @@ def getAllProfiles():
     db.close()
     return [dict(row) for row in allProfiles]
 
-def filter_profiles():
-    try:
-        data = request.get_json # Expects {"age" : ["<", 25], "country" : "USA"}
-        print(data)
-        db = DatabaseManager()
-        results=  db.filter_query(data)
-        db.close()
-        return [dict(row) for row in results]
-    except Exception as e:
-        return {500: "error"}
+# def filter_profiles():
+#     try:
+#         data = request.get_json # Expects {"age" : ["<", 25], "country" : "USA"}
+#         print(data)
+#         db = DatabaseManager()
+#         results=  db.filter_query(data)
+#         db.close()
+#         return [dict(row) for row in results]
+#     except Exception as e:
+#         return {500: "error"}
 
 def insertProfile(user_data):
     db = DatabaseManager()
@@ -98,5 +98,73 @@ def insertProfile(user_data):
         db.close()
         return {500: f"Database error: {str(e)}"}
 
-if __name__ == "__main__":
-    app.run(debug=True)
+
+#function intention to filter query and return a fetched table
+    # what needs to be done for this to work is make a mapping of filters like this
+    # '''
+    # filters = {
+    #     'age': 25,
+    #     'smoking' : 0,
+    #     'country': 'USA'
+    # }
+    # '''
+
+def filter_query(filter_params):
+    '''Query = SQL Query
+    filter_params = Values you want to find in query
+    '''
+        
+    '''
+        AGE : 25
+        COUNTRY : 'USA'
+            
+        WHERE  + AGE = ? AND COUNTRY = ?
+        params = [25, 'USA']
+    '''
+    db = DatabaseManager()
+    
+    OP_MAP ={
+        "=" : "eq",
+        ">": "gt",
+        "<": "lt",
+        ">=": "ge",
+        "<=": "le",
+        "!=": "ne",
+        "<>": "ne"
+    }
+    try:
+        if not filter_params:
+            raise ValueError("No filter parameters provided")
+        # build base query
+        
+        where_clauses = []
+        params = {}
+
+        # define filter mappings with their sql conditions
+
+        for key,value in filter_params.items():
+            #this checks for multiple values (for case of comparison values)
+            if isinstance(value, (list,tuple)) and len(value) == 2:
+                op, val = value
+                token = OP_MAP.get(op)
+                if not token:
+                    raise ValueError("Unsupported operator: {op!r}")
+                param_key = f"{key}_{token}"
+                where_clauses.append(f"{key} {op} :{param_key}")
+                params[param_key] = val
+            else:
+                where_clauses.append(f"{key} = :{key}")
+                params[key] = value
+
+        where_statement = " AND ".join(where_clauses)
+        query = f"SELECT * FROM posts WHERE {where_statement}"
+        
+        rows = db.fetch_query(query = query, params = params)
+        return [dict(r) for r in rows]
+    
+    finally:
+        db.close()
+    
+# if __name__ == "__main__":
+#     app.run(debug=True)
+

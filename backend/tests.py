@@ -75,15 +75,39 @@ def testInsertProfiles():
         print(result)
 
 def testFilterQuery():
-    db = DatabaseManager()
-    filters = {'age' : ('>' , 25)}
-    results = db.filter_query(filters)
-    db.close()
+    """
+    Test the filter_query function with example filters
+    """
+    
+    examples = [
+        {'age' : ('>', 25), 'country' : 'Nepal'},
+        {'country' : 'United States', 'max_rent' : ("<=", 3000)}
+    ]
+    for filters in examples:
+        print(f"\n>>>Filters: {filters}")
+        try:
+            results = filter_query(filters)
+        except Exception as e:
+            print("Error running filter_query:", e)
+            continue
+        
+        if not results:
+            print("no matching profiles.")
+        for r in results:
+            print(r)
 
 def deleteElement(id):
     db = DatabaseManager()
     db.execute_query("DELETE from posts where id=?", params=(id,))
     db.close()
 
-# if __name__ == '__main__':
-#     deleteElement(10)
+if __name__ == '__main__':
+    testInsertProfiles()
+    print("\n=== All profiles in DB ===")
+    printDB()
+     
+    print("\n=== Convert DB to JSON ===")
+    convertDBtoDict()
+     
+    print("\n=== Running FilterQuery Tests ===")
+    testFilterQuery()

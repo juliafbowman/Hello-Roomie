@@ -38,6 +38,19 @@ def insert_profile():
     except Exception as e:
         return jsonify({500: f"Server error: {str(e)}"}), 500
 
+@app.route("/filterProfile", methods =["POST"])
+def filter_profiles():
+    filters = request.get_json()
+    
+    if not filters:
+        return jsonify({"error" : "No filter parameters provided"}),500
+    
+    try:
+        results = filter_query(filters)
+        return jsonify(results), 200
+    except Exception as e:
+        return jsonify({"error" : str(e)}), 500
+        
 
 if __name__ == "__main__":
     app.run(debug=True)
