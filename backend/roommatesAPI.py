@@ -6,6 +6,16 @@ def getAllProfiles():
     db.close()
     return [dict(row) for row in allProfiles]
 
+def filter_profiles():
+    try:
+        data = request.get_json # Expects {"age" : ["<", 25], "country" : "USA"}
+        print(data)
+        db = DatabaseManager()
+        results=  db.filter_query(data)
+        db.close()
+        return [dict(row) for row in results]
+    except Exception as e:
+        return {500: "error"}
 
 def insertProfile(user_data):
     db = DatabaseManager()
@@ -87,3 +97,6 @@ def insertProfile(user_data):
     except Exception as e:
         db.close()
         return {500: f"Database error: {str(e)}"}
+
+if __name__ == "__main__":
+    app.run(debug=True)
