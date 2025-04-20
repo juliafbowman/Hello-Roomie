@@ -212,42 +212,39 @@ const AddProfilePage = () => {
 
         <div className="preferences-section">
             <div className="preference-item">
-                <span className="preference-label">Smoking</span>
-                <select 
-                    name="smoking" 
-                    value={formData.smoking}
-                    onChange={handleChange} 
-                    className="add-profile-select"
+                {/* <span className="preference-label">Smoking</span> */}
+                <div
+                    className={`toggle-bubble ${formData.smoking === 1 ? 'yes-state' : 'no-state'}`}
+                    onClick={() =>
+                    setFormData((prev) => ({ ...prev, smoking: prev.smoking === 1 ? 0 : 1 }))
+                    }
                 >
-                    <option value={0}>No</option>
-                    <option value={1}>Yes</option>
-                </select>
+                    Smoking: {formData.smoking === 1 ? 'Yes' : 'No'}
+                </div>
             </div>
 
             <div className="preference-item">
-                <span className="preference-label">Drinking Socially</span>
-                <select 
-                    name="drinking_socially" 
-                    value={formData.drinking_socially}
-                    onChange={handleChange} 
-                    className="add-profile-select"
+                {/* <span className="preference-label">Drinking Socially</span> */}
+                <div
+                    className={`toggle-bubble ${formData.drinking_socially === 1 ? 'yes-state' : 'no-state'}`}
+                    onClick={() =>
+                    setFormData((prev) => ({ ...prev, drinking_socially: prev.drinking_socially === 1 ? 0 : 1 }))
+                    }
                 >
-                    <option value={0}>No</option>
-                    <option value={1}>Yes</option>
-                </select>
+                    Drinking Socially: {formData.drinking_socially === 1 ? 'Yes' : 'No'}
+                </div>
             </div>
 
             <div className="preference-item">
-                <span className="preference-label">Subleasing</span>
-                <select 
-                    name="subleasing" 
-                    value={formData.subleasing}
-                    onChange={handleChange} 
-                    className="add-profile-select"
+                {/* <span className="preference-label">Subleasing</span> */}
+                <div
+                    className={`toggle-bubble ${formData.subleasing === 1 ? 'yes-state' : 'no-state'}`}
+                    onClick={() =>
+                    setFormData((prev) => ({ ...prev, subleasing: prev.subleasing === 1 ? 0 : 1 }))
+                    }
                 >
-                    <option value={0}>No</option>
-                    <option value={1}>Yes</option>
-                </select>
+                    Subleasing: {formData.subleasing === 1 ? 'Yes' : 'No'}
+                </div>
             </div>
         </div>
 
