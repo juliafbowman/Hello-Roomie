@@ -5,21 +5,18 @@ class TrieNode:
     def __init__(self):
         self.children = {}
         self.is_end_of_word = False
-        self.weight = 0  # frequency of this word
 
 class Trie:
     def __init__(self):
         self.root = TrieNode()
 
-    def insert(self, word, count=1):
+    def insert(self, word):
         node = self.root
         for char in word.lower():
             if char not in node.children:
                 node.children[char] = TrieNode()
             node = node.children[char]
         node.is_end_of_word = True
-        node.weight = count  
-
 
     def search(self, prefix):
         node = self.root
@@ -28,14 +25,6 @@ class Trie:
                 return False
             node = node.children[char]
         return node.is_end_of_word
-
-    def get_weight(self, word):
-        node = self.root
-        for char in word.lower():
-            if char not in node.children:
-                return 0
-            node = node.children[char]
-        return node.weight if node.is_end_of_word else 0
 
 
 class ProfileManager:
@@ -58,10 +47,9 @@ class ProfileManager:
     def _description_to_trie(self, text):
         trie = Trie()
         if text:
-            words = text.strip().split()
-            word_counts = Counter(words)
-            for word, count in word_counts.items():
-                trie.insert(word, count)  
+            words = text.strip().lower().split()  # convert whole description to lowercase
+            for word in words:
+                trie.insert(word)
         return trie
 
     def _load_profiles(self):
@@ -74,20 +62,14 @@ class ProfileManager:
             self.profiles.append(profile)
 
     def insert_profile(self, profile_dict):
-        """
-        Inserts a profile into memory (not DB), converting 'description' to Trie.
-        """
         desc_text = profile_dict.get("description")
         profile_dict["descriptionTrie"] = self._description_to_trie(desc_text)
         self.profiles.append(profile_dict)
 
     def search_description_prefix(self, prefix):
-        """
-        Returns list of profiles where description Trie contains the prefix.
-        """
         matching = []
         for profile in self.profiles:
-            desc_trie = profile.get("description")
+            desc_trie = profile.get("descriptionTrie")
             if desc_trie and desc_trie.search(prefix):
                 matching.append(profile)
         return matching

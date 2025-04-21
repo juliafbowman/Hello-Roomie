@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify,render_template
 from roommatesAPI import *
 from flask_cors import CORS
 from profileManager import * 
@@ -63,17 +63,19 @@ def find_best_matches():
 
 @app.route("/filterProfile", methods =["POST"])
 def filter_profiles():
-    filters = request.get_json()
-    
-    if not filters:
-        return jsonify({"error" : "No filter parameters provided"}),500
     
     try:
+        filters = request.get_json()
+        print("Received filters:",filters) #debug
+        
+        if not filters:
+            return jsonify({"error" : "No filter parameters provided"}),500
+    
         results = filter_query(filters)
         return jsonify(results), 200
     except Exception as e:
         return jsonify({"error" : str(e)}), 500
-        
 
 if __name__ == "__main__":
     app.run(debug=True)
+

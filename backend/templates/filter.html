@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filter Roommate Profiles</title>
+</head>
+<body>
+    <h2>Filter Roommate Profiles</h2>
+    <form id="filterForm">
+        <label>Minimum Age:
+            <input type="number" name="age_min" id="age_min">
+        </label><br><br>
+
+        <label>Maximum Age:
+            <input type="number" name="age_max" id="age_max">
+        </label><br><br>
+
+        <label>Smoking:
+            <select id="smoking">
+                <option value="">Any</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+        </label><br><br>
+
+        <label>Drinking Socially:
+            <select id="drinking_socially">
+                <option value="">Any</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+        </label><br><br>
+
+        <label>Subleasing:
+            <select id="subleasing">
+                <option value="">Any</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+        </label><br><br>
+
+        <label>Country:
+            <input type="text" id="country">
+        </label><br><br>
+
+        <label>Language:
+            <input type="text" id="language">
+        </label><br><br>
+
+        <label>Max Rent:
+            <input type="number" id="max_rent">
+        </label><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <h3>Filtered Results</h3>
+    <pre id="results"></pre>
+
+    <script>
+        document.getElementById("filterForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const minAge = document.getElementById("age_min").value;
+            const maxAge = document.getElementById("age_max").value;
+
+            const data = {
+                smoking: document.getElementById("smoking").value || null,
+                drinking_socially: document.getElementById("drinking_socially").value || null,
+                subleasing: document.getElementById("subleasing").value || null,
+                country: document.getElementById("country").value || null,
+                language: document.getElementById("language").value || null,
+                max_rent: document.getElementById("max_rent").value || null
+            };
+
+            // Handle age range if at least one bound is given
+            let ageFilters = [];
+            if (minAge) ageFilters.push([">=", parseInt(minAge)]);
+            if (maxAge) ageFilters.push(["<=", parseInt(maxAge)]);
+            if (ageFilters.length > 0) data.age = ageFilters;
+
+            // Remove null or empty values
+            Object.keys(data).forEach(k => (data[k] === null || data[k] === "") && delete data[k]);
+
+            console.log("Sending filters:", data); // For debug
+
+            const response = await fetch("/filterProfile", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            document.getElementById("results").textContent = JSON.stringify(result, null, 2);
+        });
+    </script>
+</body>
+</html>

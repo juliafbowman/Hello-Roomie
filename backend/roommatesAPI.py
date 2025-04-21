@@ -146,22 +146,37 @@ def filter_query(filter_params):
 
         for key,value in filter_params.items():
             #this checks for multiple values (for case of comparison values)
-            if isinstance(value, tuple) and len(value) == 2:
-                checks = [value]
-            elif isinstance(value, list):
-                checks = value
+            if isinstance(value, list) and len(value) == 2:
+                op1,val1 = value[0]
+                op2,val2 = value[1]
+                token1 = OP_MAP.get(op1)
+                token2 = OP_MAP.get(op2)
+
+                if token1 is None or token2 is None:
+                    raise ValueError(f"Unsupported operator in range: {op1} or {op2}")
+                
+                param_name1 = f"{key}_{token1}"
+                param_name2 = f"{key}_{token2}"
+
+                where_clauses.append(f"{key} {op1} :{param_name1} AND {key} {op2} :{param_name2}")
+                params[param_name1] = val1
+                params[param_name2] = val2
+
             else:
-                where_clauses.append(f"{key} = :{key}")
-                params[key] = value
-                continue
+                if isinstance(value, (list,tuple)):
+                    raise ValueError(f"Expected scalar for {key}, got list. ")
+                # handle other cases (single value)
+                if key in {"age", "max_rent"}:
+                    op = ">="
+                    param_name = f"{key}_ge_default"
+                    where_clauses.append(f"{key} {op} :{param_name}")
+                    params[param_name] = int(value) #ensure it's an integer
+
+                else:
+                    where_clauses.append(f"{key} = :{key}")
+                    params[key] = value
             
-            for i, (op, val) in enumerate(checks, start = 1):
-                token = OP_MAP.get(op)
-                if token is None:
-                    raise ValueError(f"Unsupported operator: {op!r}")
-                param_name = f"{key}_{token}_{i}"
-                where_clauses.append(f"{key} {op} :{param_name}")
-                params[param_name] = val
+            
 
         where_statement = " AND ".join(where_clauses)
         query = f"SELECT * FROM posts WHERE {where_statement}"
@@ -224,9 +239,12 @@ def matchProfiles(user_prefs):
         if len(user_prefs["language_2"]) >= 50:
             return {500: "Field 'language_2' must be less than 50 characters"}
 
-    # Validate description_tags list (optional but required type check)
+    # Validate and normalize description_tags
     if not all(isinstance(tag, str) for tag in user_prefs["description_tags"]):
         return {500: "All description tags must be strings"}
+
+    # Convert all tags to lowercase
+    user_prefs["description_tags"] = [tag.lower() for tag in user_prefs["description_tags"]]
 
     try:
         matches = get_best_matches(user_prefs, limit=5)
