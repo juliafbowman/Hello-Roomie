@@ -110,6 +110,8 @@ def insertProfile(user_data):
     # }
     # '''
 
+
+
 def filter_query(filter_params):
     '''Query = SQL Query
     filter_params = Values you want to find in query
@@ -134,6 +136,7 @@ def filter_query(filter_params):
         "<>": "ne"
     }
     
+    
     try:
         if not filter_params:
             raise ValueError("No filter parameters provided")
@@ -143,6 +146,8 @@ def filter_query(filter_params):
         params = {}
 
         # define filter mappings with their sql conditions
+
+        # TO DO : make print statement in function if data type is not correct
 
         for key,value in filter_params.items():
             #this checks for multiple values (for case of comparison values)
@@ -167,7 +172,7 @@ def filter_query(filter_params):
                     raise ValueError(f"Expected scalar for {key}, got list. ")
                 # handle other cases (single value)
                 if key in {"age", "max_rent"}:
-                    op = ">="
+                    op = "<="
                     param_name = f"{key}_ge_default"
                     where_clauses.append(f"{key} {op} :{param_name}")
                     params[param_name] = int(value) #ensure it's an integer
