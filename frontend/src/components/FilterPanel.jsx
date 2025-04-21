@@ -44,7 +44,7 @@ export default function FilterPanel({ onSubmit, formData, isFiltered, onReset })
     if (form.age_max) payload.age.push(["<=", parseInt(form.age_max)]);
 
     try {
-        const res = await fetch('http://127.0.0.1:5000/matchProfiles', {
+        const res = await fetch('http://127.0.0.1:5000/filterProfile', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
@@ -101,32 +101,37 @@ export default function FilterPanel({ onSubmit, formData, isFiltered, onReset })
                     <div className="filter-section">
                         <h3 className="section-title">Personal Information</h3>
                             <div className="input-grid">
-                                <div className="input-wrapper">
+                            <div className="input-wrapper full-width">
+                                {/* for the slider */}
+                                <label className="preference-label">Preferred Age Range: {form.age_min} – {form.age_max}</label>
+                                <div className="dual-slider-track">
                                     <input
-                                        id="age_min"
-                                        type="number"
-                                        placeholder="Minimum Age"
-                                        value={form.age_min}
-                                        onChange={handleChange}
-                                        min="18"
-                                        max="120"
-                                        required
-                                        className="filter-input"
+                                    type="range"
+                                    min="18"
+                                    max="100"
+                                    step="1"
+                                    value={form.age_min}
+                                    onChange={(e) => {
+                                        const val = Math.min(Number(e.target.value), form.age_max - 1);
+                                        setForm(prev => ({ ...prev, age_min: val }));
+                                    }}
+                                    className="range-thumb"
+                                    />
+                                    <input
+                                    type="range"
+                                    min="18"
+                                    max="100"
+                                    step="1"
+                                    value={form.age_max}
+                                    onChange={(e) => {
+                                        const val = Math.max(Number(e.target.value), form.age_min + 1);
+                                        setForm(prev => ({ ...prev, age_max: val }));
+                                    }}
+                                    className="range-thumb"
                                     />
                                 </div>
-                                <div classname="input-wrapper">
-                                    <input
-                                        id="max_age"
-                                        type="number"
-                                        placeholder="Maximum Age"
-                                        value={form.max_age}
-                                        onChange={handleChange}
-                                        min="18"
-                                        max="120"
-                                        required
-                                        className="filter-input"
-                                    />
                                 </div>
+
                                 <div className="input-wrapper">
                                     <input
                                         id="sex"
