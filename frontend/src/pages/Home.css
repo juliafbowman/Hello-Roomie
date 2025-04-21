@@ -18,3 +18,150 @@
     max-width: 300px;
   }
   
+  .browse-mode {
+    flex-direction: column;
+  }
+  
+  .filtered-mode {
+    flex-direction: row;
+  }
+  
+  .match-heading {
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    color: #5e7ce2;
+  }
+
+  .meet-users {
+    margin-left: 1rem; 
+    color: var(--primary-color);
+    font-weight: 700; 
+    border-bottom: 3px solid var(--light-blue);
+  }
+  
+  /* the accordian styling */
+  .accordion-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    animation: fadeInUp 0.4s ease-out both;
+  }
+  
+  .accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.75rem;
+    background-color: var(--card-background, #fcfcff);
+    border: 1px solid var(--border-color, #e9ecef);
+    border-radius: 18px;
+    box-shadow: 0 4px 15px var(--shadow-color, rgba(0, 0, 0, 0.06));
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+  
+  /* this is the gradient at top */ 
+  .accordion-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(to right, var(--light-blue, #cfe4ff), var(--light-purple, #e2d4f8));
+    border-radius: 0;
+  }
+  
+  .accordion-title {
+    color: var(--primary-color, #5e7ce2);
+    font-size: 1.4rem;
+    margin: 0;
+    font-weight: 600;
+  }
+  
+  /* little carrot */ 
+  .accordion-icon {
+    font-size: 1.5rem;
+    color: var(--secondary-color, #7c8db5);
+    transition: transform 0.3s ease;
+  }
+  
+  .accordion-icon.open {
+    transform: rotate(180deg);
+  }
+  
+  .accordion-body {
+    overflow: hidden;
+    border-radius: 18px; 
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  /* keep it to three columns max */ 
+  .profile-grid {
+    display: grid;
+    gap: 1.5rem;
+    padding-top: 1rem;
+    margin: 0 auto;
+  }
+  
+  /* smaller screen columns */ 
+  @media (min-width: 1024px) {
+    .profile-grid {
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 1000px;
+    }
+  }
+  
+  @media (min-width: 600px) and (max-width: 1023px) {
+    .profile-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 599px) {
+    .profile-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0; 
+      transform: translateY(12px); 
+    }
+    to {
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+  
+  /* different screen sizing */
+  @media (max-width: 992px) {
+    .home-layout.filtered-mode {
+      flex-direction: column;
+    }
+    
+    .filter-column {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .home-layout {
+      padding: 1rem;
+      gap: 1rem;
+    }
+  }

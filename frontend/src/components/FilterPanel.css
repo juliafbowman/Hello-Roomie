@@ -1,21 +1,308 @@
-/* basic css for now - will replace this */ 
-.home-layout {
-    display: flex;
-    gap: 2rem;
-    padding: 2rem;
-    max-width: 1200px;
+/* root styles again */ 
+:root {
+    --primary-color: #5e7ce2; 
+    --secondary-color: #7c8db5; 
+    --yes-color: #58cc90; 
+    --no-color: #e27c7c; 
+    --light-color: #ffffff;
+    --border-color: #e9ecef; 
+    --text-color: #333333; 
+    --text-secondary: #6c757d; 
+    --shadow-color: rgba(0, 0, 0, 0.06); 
+    --transition-speed: 0.3s; 
+    --light-blue: #cfe4ff; 
+    --light-purple: #e2d4f8; 
+    --light-pink: #ffd6e6; 
+    --light-green: #d4f8e2; 
+    --card-background: #fcfcff; 
+}
+
+/* filter panel - the entire card */
+.filter-panel-container {
+    width: 100%;
     margin: 0 auto;
-  }
-  
-  .profile-column {
-    flex: 2;
+    animation: fadeInUp 0.4s ease-out both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0; 
+        transform: translateY(12px); 
+    }
+    to {
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* the card alone , solid outline around the edges */ 
+.filter-panel-wrapper {
+    border: 1px solid var(--border-color);
+    border-radius: 0 0 18px 18px;
+    padding: 1.75rem;
+    background-color: var(--card-background);
+    color: var(--text-color);
+    box-shadow: 0 4px 15px var(--shadow-color);
+    border-top: none;
+}
+
+/* Only add shadow and border to the wrapper when it's in the filtered view */
+.filtered-mode .filter-panel-wrapper {
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+/* gradient bar at top - only add when in filtered view */
+.filtered-mode .filter-panel-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(to right, var(--light-blue), var(--light-purple));
+    border-radius: 0;
+}
+
+/* Panel Title */
+.filter-panel-title {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    margin: 0 0 1rem;
+    font-weight: 600;
+}
+
+/* where all of the information goes / user inputs / includes search button */
+.filter-grid {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-  }
-  
-  .filter-column {
+}
+
+/* each section - personal info, languages, etc */
+.filter-section {
+    width: 100%;
+}
+
+/* title for each section */
+.section-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+/* spacing between each input box in a section */
+.input-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+/* input boxes each */
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper.full-width {
+    grid-column: 1 / -1;
+}
+
+/* input boxes styling */
+.filter-input {
+    width: 90%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--light-color);
+    color: var(--text-color);
+    transition: all var(--transition-speed);
+    font-size: 0.95rem;
+}
+
+.filter-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(94, 124, 226, 0.2);
+}
+
+.filter-input:hover {
+    border-color: var(--secondary-color);
+}
+
+/* description styling for where u type input */
+.filter-textarea {
+    width: 95%; /* change this */ 
+    min-height: 100px;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--light-color);
+    color: var(--text-color);
+    transition: all var(--transition-speed);
+    resize: vertical;
+    font-size: 0.95rem;
+    font-family: inherit;
+}
+
+.filter-textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(94, 124, 226, 0.2);
+}
+
+.filter-textarea:hover {
+    border-color: var(--secondary-color);
+}
+
+/* example info under the description */
+.helper-text {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 0.35rem;
+    margin-left: 0.25rem;
+}
+
+/* preferences stffu in the profile cards */
+.preferences-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.preference-item {
     flex: 1;
-    max-width: 300px;
-  }
+    min-width: 200px;
+}
+
+.preference-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+    font-size: 0.85rem;
+}
+
+.preference-select {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--light-color);
+    color: var(--text-color);
+    transition: all var(--transition-speed);
+    font-size: 0.95rem;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237c8db5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1em;
+}
+
+.preference-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(94, 124, 226, 0.2);
+}
+
+.preference-select:hover {
+    border-color: var(--secondary-color);
+}
+
+/* submit */
+.filter-submit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: linear-gradient(to right, var(--primary-color), var(--light-purple));
+    color: var(--light-color);
+    border: none;
+    border-radius: 999px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    margin-top: 1rem;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(94, 124, 226, 0.3);
+    align-self: center;
+}
+
+.filter-submit-button:hover {
+    box-shadow: 0 4px 12px rgba(94, 124, 226, 0.4);
+    transform: translateY(-2px);
+}
+
+/* hiding the overflowing gradient line at the top */ 
+.filter-panel-container {
+    border-radius: 18px;
+    overflow: hidden; 
+}
+
+.search-icon {
+    font-size: 1.1rem;
+}
+
+/* read only filter summary stuff , literally the info as lines */
+.readonly-summary p {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    font-size: 0.95rem;
+}
   
+.readonly-summary strong {
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+/* for the reset button */
+.reset-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--border-color);
+    border: none;
+    padding: 0.6rem 1.25rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-color);
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all var(--transition-speed);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+  
+.reset-button:hover {
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+    transform: translateY(-1px);
+}
+
+/* smaller screens  */
+@media (max-width: 768px) {
+    .input-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .preferences-section {
+        flex-direction: column;
+    }
+    
+    .preference-item {
+        width: 100%;
+    }
+    
+    .filter-panel-wrapper {
+        padding: 1.25rem;
+    }
+}

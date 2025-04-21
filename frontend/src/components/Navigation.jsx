@@ -6,7 +6,7 @@ function Navigation() {
     const [menuOpen, setMenuOpen] = useState(false);
     return (
         <nav className = "navbar">
-            <div className = "navbar-logo">Roommate Finder</div>
+            <div className = "navbar-logo">HelloRoomie</div>
 
             <button 
              className = "navbar-toggle"
