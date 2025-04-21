@@ -23,47 +23,50 @@ export default function FilterPanel({ onSubmit, formData, isFiltered, onReset })
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-    const payload = {
-        age: [],
-        smoking: parseInt(form.smoking),
-        drinking_socially: parseInt(form.drinking_socially),
-        subleasing: parseInt(form.subleasing),
-        country: form.country.trim(),
-        language: form.language.trim(),
-        language_2: form.language_2.trim() || null,
-        sex: form.sex.trim().toUpperCase(),
-        max_rent: parseInt(form.max_rent),
-        description_tags: form.description_tags
-        .split(',')
-        .map(tag => tag.trim())
-        .filter(tag => tag)
-    };
-
-    if (form.age_min) payload.age.push([">=", parseInt(form.age_min)]);
-    if (form.age_max) payload.age.push(["<=", parseInt(form.age_max)]);
-
-    try {
-        const res = await fetch('http://127.0.0.1:5000/filterProfile', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-        });
-
-        const data = await res.json();
-        if (data.matches) {
-            // also send the form data
-            onSubmit(data.matches, payload);
-        } 
-        else {
-            // no matches
-            onSubmit([], payload); 
+    
+        const payload = {};
+    
+        if (form.age_min) payload.age = [[">=", parseInt(form.age_min)]];
+        if (form.age_max) {
+            if (!payload.age) payload.age = [];
+            payload.age.push(["<=", parseInt(form.age_max)]);
         }
-    } 
-    catch (err) {
-        console.error('Match error:', err);
-    }
+    
+        if (form.smoking !== '') payload.smoking = parseInt(form.smoking);
+        if (form.drinking_socially !== '') payload.drinking_socially = parseInt(form.drinking_socially);
+        if (form.subleasing !== '') payload.subleasing = parseInt(form.subleasing);
+    
+        if (form.country.trim()) payload.country = form.country.trim();
+        if (form.language.trim()) payload.language = form.language.trim();
+        if (form.language_2.trim()) payload.language_2 = form.language_2.trim();
+        if (form.sex.trim()) payload.sex = form.sex.trim().toUpperCase();
+        if (form.max_rent) payload.max_rent = parseInt(form.max_rent);
+    
+        const tags = form.description_tags
+            .split(',')
+            .map(tag => tag.trim())
+            .filter(tag => tag);
+    
+        if (tags.length > 0) payload.description_tags = tags;
+    
+        try {
+            const res = await fetch('http://127.0.0.1:5000/filterProfile', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+    
+            const data = await res.json();
+            if (data.matches) {
+                onSubmit(data.matches, payload);
+            } else {
+                onSubmit([], payload); 
+            }
+        } catch (err) {
+            console.error('Match error:', err);
+        }
     };
+    
 
     // read only shown after the user has put in their filters
     if (isFiltered && formData) {
@@ -80,7 +83,7 @@ export default function FilterPanel({ onSubmit, formData, isFiltered, onReset })
                             <p><strong>Smoking:</strong> {formData.smoking === 1 ? 'Yes' : 'No'}</p>
                             <p><strong>Drinking Socially:</strong> {formData.drinking_socially === 1 ? 'Yes' : 'No'}</p>
                             <p><strong>Subleasing:</strong> {formData.subleasing === 1 ? 'Yes' : 'No'}</p>
-                            <p><strong>Tags:</strong> {formData.description_tags.join(', ')}</p>
+                            <p><strong>Tags:</strong> {Array.isArray(formData.description_tags) ? formData.description_tags.join(', ') : '—'}</p>
                         </div>
                         <button onClick={onReset} className="reset-button">
                         Reset Filters
@@ -140,7 +143,6 @@ export default function FilterPanel({ onSubmit, formData, isFiltered, onReset })
                                         value={form.sex}
                                         onChange={handleChange}
                                         maxLength="1"
-                                        required
                                         className="filter-input"
                                     />
                                 </div>
@@ -151,7 +153,6 @@ export default function FilterPanel({ onSubmit, formData, isFiltered, onReset })
                                         placeholder="Country"
                                         value={form.country}
                                         onChange={handleChange}
-                                        required
                                         className="filter-input"
                                     />
                                 </div>
@@ -168,7 +169,6 @@ export default function FilterPanel({ onSubmit, formData, isFiltered, onReset })
                                 placeholder="Primary Language"
                                 value={form.language}
                                 onChange={handleChange}
-                                required
                                 className="filter-input"
                             />
                         </div>
@@ -191,7 +191,6 @@ export default function FilterPanel({ onSubmit, formData, isFiltered, onReset })
                                 onChange={handleChange}
                                 min="300"
                                 max="10000"
-                                required
                                 className="filter-input"
                             />
                         </div>
