@@ -86,7 +86,7 @@ def testFilterQuery():
     """
     
     examples = [
-        {'age' : [['>=' , 25] , ['<=',43]] , 'country' : 'United States', 'language' : 'English', 'max_rent' : 7999, 'smoking' : 0, 'drinking_socially' : 0, 'subleasing' : 0}
+        {'age' : [['>=' , 28] , ['<=',36]] , 'country' : 'United States', 'language' : 'English', 'max_rent' : 8000, 'smoking' : 0, 'drinking_socially' : 0, 'subleasing' : 0}
     ]
     for filters in examples:
         print(f"\n>>>Filters: {filters}")
