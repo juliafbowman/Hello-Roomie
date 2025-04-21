@@ -4,16 +4,22 @@ from profileManager import *
 def compute_score(profile, preferences):
     score = 0
 
-    # Age ±2 = 30 pts
+    # Age ±2 = 20 pts
     if abs(profile["age"] - preferences["age"]) <= 2:
-        score += 10
+        score += 20
     else: 
         score -= 5
 
-    # Exact Matches = 10 pts each
-    for key in ["smoking", "drinking_socially", "subleasing", "sex"]:
+    # Exact Matches
+    for key in ["smoking", "drinking_socially", "subleasing"]:
         if profile[key] == preferences[key]:
             score += 10
+
+    # Give more weight to sex match
+    if profile["sex"] == preferences["sex"]:
+        score += 20
+    else: 
+        score -= 5
 
     # Country match = 10 pts
     if profile["country"].lower() == preferences["country"].lower():
@@ -28,7 +34,7 @@ def compute_score(profile, preferences):
        profile["language_2"].lower() == preferences["language_2"].lower():
         score += 5
 
-    # Rent = 25 pts if within budget
+    # Rent = 15 pts if within budget
     if profile["max_rent"] <= preferences["max_rent"]:
         score += 15
 
@@ -37,7 +43,7 @@ def compute_score(profile, preferences):
         desc_trie = profile["descriptionTrie"]  # This is your Trie object
         for tag in preferences.get("description_tags", []):
             if desc_trie.search(tag):
-                score += 2
+                score += 20
 
     return score
 

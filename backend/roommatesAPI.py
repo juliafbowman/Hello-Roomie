@@ -224,9 +224,12 @@ def matchProfiles(user_prefs):
         if len(user_prefs["language_2"]) >= 50:
             return {500: "Field 'language_2' must be less than 50 characters"}
 
-    # Validate description_tags list (optional but required type check)
+    # Validate and normalize description_tags
     if not all(isinstance(tag, str) for tag in user_prefs["description_tags"]):
         return {500: "All description tags must be strings"}
+
+    # Convert all tags to lowercase
+    user_prefs["description_tags"] = [tag.lower() for tag in user_prefs["description_tags"]]
 
     try:
         matches = get_best_matches(user_prefs, limit=5)
