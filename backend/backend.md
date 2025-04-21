@@ -98,8 +98,8 @@ pip install -r requirements.txt
 
         3. Range / multi-check as a list of comparisons
         {
-            'age' : [('>' , 25) , ('<',50)],
-            "max_rent" : [("<=", 3000), (">=", 1000)]
+            'age' : [['>' , 25] , ['<',50]],
+            "max_rent" : [["<=", 3000], [">=", 1000]]
         }
 
         example input :

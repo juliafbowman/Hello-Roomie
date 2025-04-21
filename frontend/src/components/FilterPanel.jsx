@@ -3,7 +3,8 @@ import './FilterPanel.css';
 
 export default function FilterPanel({ onSubmit, formData, isFiltered, onReset }) {
     const [form, setForm] = useState({
-        age: '',
+        age_min: '',
+        age_max: '', 
         smoking: '0',
         drinking_socially: '0',
         subleasing: '0',
@@ -24,7 +25,7 @@ export default function FilterPanel({ onSubmit, formData, isFiltered, onReset })
         e.preventDefault();
 
     const payload = {
-        age: parseInt(form.age),
+        age: [],
         smoking: parseInt(form.smoking),
         drinking_socially: parseInt(form.drinking_socially),
         subleasing: parseInt(form.subleasing),
@@ -38,6 +39,9 @@ export default function FilterPanel({ onSubmit, formData, isFiltered, onReset })
         .map(tag => tag.trim())
         .filter(tag => tag)
     };
+
+    if (form.age_min) payload.age.push([">=", parseInt(form.age_min)]);
+    if (form.age_max) payload.age.push(["<=", parseInt(form.age_max)]);
 
     try {
         const res = await fetch('http://127.0.0.1:5000/matchProfiles', {
@@ -68,7 +72,7 @@ export default function FilterPanel({ onSubmit, formData, isFiltered, onReset })
                 <div className="filter-panel-wrapper">
                     <h2 className="filter-panel-title">Your Filters</h2>
                         <div className="readonly-summary">
-                            <p><strong>Age:</strong> {formData.age}</p>
+                            <p><strong>Age:</strong> {formData.age?.map(([op, val]) => `${op} ${val}`).join(', ')}</p>
                             <p><strong>Sex:</strong> {formData.sex}</p>
                             <p><strong>Country:</strong> {formData.country}</p>
                             <p><strong>Languages:</strong> {formData.language}{formData.language_2 ? `, ${formData.language_2}` : ''}</p>
@@ -99,11 +103,26 @@ export default function FilterPanel({ onSubmit, formData, isFiltered, onReset })
                             <div className="input-grid">
                                 <div className="input-wrapper">
                                     <input
-                                        id="age"
+                                        id="age_min"
                                         type="number"
-                                        placeholder="Your Age"
-                                        value={form.age}
+                                        placeholder="Minimum Age"
+                                        value={form.age_min}
                                         onChange={handleChange}
+                                        min="18"
+                                        max="120"
+                                        required
+                                        className="filter-input"
+                                    />
+                                </div>
+                                <div classname="input-wrapper">
+                                    <input
+                                        id="max_age"
+                                        type="number"
+                                        placeholder="Maximum Age"
+                                        value={form.max_age}
+                                        onChange={handleChange}
+                                        min="18"
+                                        max="120"
                                         required
                                         className="filter-input"
                                     />
@@ -236,7 +255,7 @@ export default function FilterPanel({ onSubmit, formData, isFiltered, onReset })
                     <span className="search-icon">🔍</span>
                     <span>Find Matches</span>
                 </button>
-                
+
                 </div>
             </form>
             </div>

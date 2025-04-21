@@ -19,6 +19,7 @@ function Navigation() {
             <div className = {`navbar-links ${menuOpen ? 'active' : ''}`}>
                 <Link to = "/" onClick = {() => setMenuOpen(false)}>Home</Link>
                 <Link to = "/add-profile" onClick = {() => setMenuOpen(false)}>List Yourself</Link>
+                <Link to="/best-match">Find My Best Match</Link>
             </div>
         </nav>
     );
