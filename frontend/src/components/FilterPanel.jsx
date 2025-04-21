@@ -13,7 +13,6 @@ export default function FilterPanel({ onSubmit, formData, isFiltered, onReset })
         language_2: '',
         sex: '',
         max_rent: '',
-        description_tags: ''
     });
 
     const handleChange = (e) => {
@@ -41,13 +40,6 @@ export default function FilterPanel({ onSubmit, formData, isFiltered, onReset })
         if (form.language_2.trim()) payload.language_2 = form.language_2.trim();
         if (form.sex.trim()) payload.sex = form.sex.trim().toUpperCase();
         if (form.max_rent) payload.max_rent = parseInt(form.max_rent);
-    
-        const tags = form.description_tags
-            .split(',')
-            .map(tag => tag.trim())
-            .filter(tag => tag);
-    
-        if (tags.length > 0) payload.description_tags = tags;
     
         try {
             const res = await fetch('http://127.0.0.1:5000/filterProfile', {
@@ -83,7 +75,6 @@ export default function FilterPanel({ onSubmit, formData, isFiltered, onReset })
                             <p><strong>Smoking:</strong> {formData.smoking === 1 ? 'Yes' : 'No'}</p>
                             <p><strong>Drinking Socially:</strong> {formData.drinking_socially === 1 ? 'Yes' : 'No'}</p>
                             <p><strong>Subleasing:</strong> {formData.subleasing === 1 ? 'Yes' : 'No'}</p>
-                            <p><strong>Tags:</strong> {Array.isArray(formData.description_tags) ? formData.description_tags.join(', ') : '—'}</p>
                         </div>
                         <button onClick={onReset} className="reset-button">
                         Reset Filters
@@ -236,22 +227,6 @@ export default function FilterPanel({ onSubmit, formData, isFiltered, onReset })
                                 <option value="1">Yes</option>
                             </select>
                         </div>
-                    </div>
-                </div>
-
-                <div className="filter-section">
-                    <h3 className="section-title">About You</h3>
-                    <div className="input-wrapper full-width">
-                    <textarea
-                        id="description_tags"
-                        placeholder="Tags (comma-separated)"
-                        value={form.description_tags}
-                        onChange={handleChange}
-                        className="filter-textarea"
-                    ></textarea>
-                    <p className="helper-text">
-                        e.g. tidy, quiet, early-riser, pet-friendly, vegan
-                    </p>
                     </div>
                 </div>
 
