@@ -187,8 +187,9 @@ def filter_query(filter_params):
         query = f"SELECT * FROM posts WHERE {where_statement}"
         
         rows = db.fetch_query(query = query, params = params)
-        return [dict(r) for r in rows]
-    
+        return {"matches" : [dict(r) for r in rows]}
+    except Exception as e:
+        return {"error" : str(e)} , 500
     finally:
         db.close()
     
