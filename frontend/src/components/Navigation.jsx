@@ -6,9 +6,11 @@ function Navigation() {
     const [menuOpen, setMenuOpen] = useState(false);
     return (
         <nav className = "navbar">
-           <div className="navbar-logo">
+            <div className="navbar-logo">
                 <img src="/logo/logo.png" alt="HelloRoomie logo" className="logo-img" />
-                HelloRoomie
+                <Link to="/" className="logo-link">
+                    <span className="logo-text">HelloRoomie</span>
+                </Link>
             </div>
 
             <button 

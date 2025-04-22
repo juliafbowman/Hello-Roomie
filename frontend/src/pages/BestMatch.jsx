@@ -58,7 +58,16 @@ function BestMatch() {
     }
   };
 
-  const countries = [ "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Argentina", "Australia", "Austria", "Bangladesh", "Belgium", "Brazil", "Canada", "Chile", "China", "Colombia", "Denmark", "Dominican Republic", "Egypt", "Finland", "France", "Germany", "Greece", "Hungary", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Kenya", "Mexico", "Morocco", "Netherlands", "New Zealand", "Nigeria", "Norway", "Pakistan", "Peru", "Philippines", "Poland", "Portugal", "Romania", "Russia", "Saudi Arabia", "Singapore", "South Africa", "South Korea", "Spain", "Sri Lanka", "Sweden", "Switzerland", "Thailand", "Turkey", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Venezuela", "Vietnam", "Zambia", "Zimbabwe" ];
+  const countries = [ 
+    "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Argentina", "Australia", 
+    "Austria", "Bangladesh", "Belgium", "Brazil", "Canada", "Chile", "China", "Colombia", "Denmark", 
+    "Dominican Republic", "Egypt", "Finland", "France", "Germany", "Greece", "Hungary", "India", "Indonesia", 
+    "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Kenya", "Mexico", "Morocco", "Netherlands", 
+    "New Zealand", "Nigeria", "Norway", "Pakistan", "Peru", "Philippines", "Poland", "Portugal", "Romania", 
+    "Russia", "Saudi Arabia", "Singapore", "South Africa", "South Korea", "Spain", "Sri Lanka", "Sweden", 
+    "Switzerland", "Thailand", "Turkey", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", 
+    "United States", "Venezuela", "Vietnam", "Zambia", "Zimbabwe" 
+  ];
 
   return (
     <div className="add-profile-container">
@@ -105,36 +114,34 @@ function BestMatch() {
         />
 
         {/* Sex Toggle Buttons */}
-        <div className="preferences-section">
-  <div className="preference-item">
-    <div
-      className={`toggle-bubble gender-toggle ${formData.sex === "M" ? "male-state" : ""}`}
-      onClick={() => setFormData((prev) => ({ ...prev, sex: "M" }))}
-    >
-      Male
+    <div className="preferences-section">
+    <div className="preference-item">
+        <div
+        className={`toggle-bubble gender-toggle ${formData.sex === "M" ? "male-state" : ""}`}
+        onClick={() => setFormData((prev) => ({ ...prev, sex: "M" }))}
+        >
+        Male
+        </div>
     </div>
-  </div>
 
-  <div className="preference-item">
-    <div
-      className={`toggle-bubble gender-toggle ${formData.sex === "F" ? "female-state" : ""}`}
-      onClick={() => setFormData((prev) => ({ ...prev, sex: "F" }))}
-    >
-      Female
+    <div className="preference-item">
+        <div
+        className={`toggle-bubble gender-toggle ${formData.sex === "F" ? "female-state" : ""}`}
+        onClick={() => setFormData((prev) => ({ ...prev, sex: "F" }))}
+        >
+        Female
+        </div>
     </div>
-  </div>
 
-  <div className="preference-item">
-    <div
-      className={`toggle-bubble gender-toggle ${formData.sex === "O" ? "other-state" : ""}`}
-      onClick={() => setFormData((prev) => ({ ...prev, sex: "O" }))}
-    >
-      Other
+    <div className="preference-item">
+        <div
+        className={`toggle-bubble gender-toggle ${formData.sex === "O" ? "other-state" : ""}`}
+        onClick={() => setFormData((prev) => ({ ...prev, sex: "O" }))}
+        >
+        Other
+        </div>
     </div>
-  </div>
-</div>
-
-
+    </div>
 
         <input
           className="add-profile-input"

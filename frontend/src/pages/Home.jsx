@@ -95,7 +95,7 @@ function Home() {
         <div className="home-layout">
             <div className="profile-column">
             <h2 className="match-heading">
-                {isFiltered ? 'All Users' : 'Meet Our Newest Users'}
+                {isFiltered ? 'Users For You' : 'Meet Our Newest Users'}
             </h2>
     
             <div className="profile-grid">
@@ -117,7 +117,7 @@ function Home() {
             </div>
         </div> 
     </div>
-    
+
     {/* footer  */}
     {!isFiltered && (
         <div className="home-footer-section">
