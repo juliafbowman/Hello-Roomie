@@ -9,7 +9,16 @@
     position: relative;
     overflow: hidden;
 }
-  
+
+/* make sure padding isnt adding width */ 
+.heading-card,
+.accordion-header,
+.accordion-body {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
 /* little overlay */
 .heading-section::before {
     content: "";
