@@ -3,8 +3,8 @@ import './FilterPanel.css';
 
 export default function FilterPanel({ onSubmit, formData, isFiltered, onReset }) {
     const [form, setForm] = useState({
-        age_min: '',
-        age_max: '', 
+        age_min: '25',
+        age_max: '35', 
         smoking: '0',
         drinking_socially: '0',
         subleasing: '0',
@@ -97,7 +97,7 @@ export default function FilterPanel({ onSubmit, formData, isFiltered, onReset })
                             <div className="input-grid">
                             <div className="input-wrapper full-width">
                                 {/* for the slider */}
-                                <label className="preference-label">Preferred Age Range: {form.age_min} – {form.age_max}</label>
+                                <label className="preference-label">Preferred Age Range: {form.age_min} to {form.age_max}</label>
                                 <div className="dual-slider-track">
                                     <input
                                     type="range"
