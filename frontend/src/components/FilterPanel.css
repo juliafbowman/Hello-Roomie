@@ -177,14 +177,14 @@
 }
 
 /* example info under the description */
-.helper-text {
+/* .helper-text {
     font-size: 0.8rem;
     color: var(--text-secondary);
     margin-top: 0.35rem;
     margin-left: 0.25rem;
-}
+} */
 
-/* preferences stffu in the profile cards */
+/* preferences stffu in the profile cards - smoke, drink, sublease */
 .preferences-section {
     display: flex;
     flex-wrap: wrap;
@@ -213,7 +213,7 @@
     border: 1px solid var(--border-color);
     border-radius: 8px;
     background-color: var(--light-color);
-    color: var(--text-color);
+    color: var(--text-secondary);
     transition: all var(--transition-speed);
     font-size: 0.95rem;
     appearance: none;
@@ -232,6 +232,35 @@
 .preference-select:hover {
     border-color: var(--secondary-color);
 }
+
+.sex-button-group {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+  }
+  
+  .sex-button {
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    border: 1px solid var(--border-color);
+    background-color: var(--light-color);
+    color: var(--text-color);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+  }
+  
+  .sex-button:hover {
+    border-color: var(--secondary-color);
+    background-color: var(--light-purple);
+  }
+  
+  .sex-button.active {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border-color: var(--primary-color);
+  }
+  
 
 /* submit button - just the button itself */
 .filter-submit-button {
@@ -391,3 +420,12 @@
         padding: 1.25rem;
     }
 }
+
+/* Match the size and layout of the heading card */
+/* .filter-panel-fixed-width {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem;
+    width: 100%;
+    box-sizing: border-box;
+} */

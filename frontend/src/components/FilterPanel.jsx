@@ -58,42 +58,68 @@ export default function FilterPanel({ onSubmit, formData, isFiltered, onReset })
             console.error('Match error:', err);
         }
     };
+
+    const countries = [
+        "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia",
+        "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin",
+        "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi",
+        "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia",
+        "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica",
+        "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia",
+        "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea",
+        "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland",
+        "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, North", "Korea, South",
+        "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania",
+        "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius",
+        "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia",
+        "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway", "Oman",
+        "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal",
+        "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa",
+        "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore",
+        "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan",
+        "Suriname", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo",
+        "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates",
+        "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen",
+        "Zambia", "Zimbabwe"
+    ];
+      
     
 
     // read only shown after the user has put in their filters
     if (isFiltered && formData) {
         return (
-            <div className="filter-panel-container">
+            <div className="filter-panel-fixed-width">
                 <div className="filter-panel-wrapper">
                     <h2 className="filter-panel-title">Your Filters</h2>
-                        <div className="readonly-summary">
-                            <p><strong>Age:</strong> {formData.age?.map(([op, val]) => `${op} ${val}`).join(', ')}</p>
-                            <p><strong>Sex:</strong> {formData.sex}</p>
-                            <p><strong>Country:</strong> {formData.country}</p>
-                            <p><strong>Languages:</strong> {formData.language}{formData.language_2 ? `, ${formData.language_2}` : ''}</p>
-                            <p><strong>Max Rent:</strong> ${formData.max_rent}</p>
-                            <p><strong>Smoking:</strong> {formData.smoking === 1 ? 'Yes' : 'No'}</p>
-                            <p><strong>Drinking Socially:</strong> {formData.drinking_socially === 1 ? 'Yes' : 'No'}</p>
-                            <p><strong>Subleasing:</strong> {formData.subleasing === 1 ? 'Yes' : 'No'}</p>
-                        </div>
-                        <button onClick={onReset} className="reset-button">
+                    <div className="readonly-summary">
+                        <p><strong>Age:</strong> {formData.age?.map(([op, val]) => `${op} ${val}`).join(', ')}</p>
+                        <p><strong>Sex:</strong> {formData.sex}</p>
+                        <p><strong>Country:</strong> {formData.country}</p>
+                        <p><strong>Languages:</strong> {formData.language}{formData.language_2 ? `, ${formData.language_2}` : ''}</p>
+                        <p><strong>Max Rent:</strong> ${formData.max_rent}</p>
+                        <p><strong>Smoking:</strong> {formData.smoking === 1 ? 'Yes' : 'No'}</p>
+                        <p><strong>Drinking Socially:</strong> {formData.drinking_socially === 1 ? 'Yes' : 'No'}</p>
+                        <p><strong>Subleasing:</strong> {formData.subleasing === 1 ? 'Yes' : 'No'}</p>
+                    </div>
+                    <button onClick={onReset} className="reset-button">
                         Reset Filters
                     </button>
                 </div>
             </div>
         );
     }
+    
 
     // show the one you can input into if not filtered already 
     return (
-        <div className="filter-panel-container">
-            <div className="filter-panel-wrapper">
+        <div className="filter-panel-fixed-width">
+        <div className="filter-panel-wrapper">
             {/* <h2 className="filter-panel-title">Find Your Match</h2> */}
 
             <form className="filter-form" onSubmit={handleSubmit}>
                 <div className="filter-grid">
                     <div className="filter-section">
-                        <h3 className="section-title">Personal Information</h3>
+                        <h3 className="section-title">General</h3>
                             <div className="input-grid">
                             <div className="input-wrapper full-width">
                                 {/* for the slider */}
@@ -135,25 +161,37 @@ export default function FilterPanel({ onSubmit, formData, isFiltered, onReset })
                                 </div>
 
                                 <div className="input-wrapper">
-                                    <input
-                                        id="sex"
-                                        type="text"
-                                        placeholder="Sex (M/F)"
-                                        value={form.sex}
-                                        onChange={handleChange}
-                                        maxLength="1"
-                                        className="filter-input"
-                                    />
+                                    <label className="preference-label">Gender</label>
+                                    <div className="sex-button-group">
+                                        {["M", "F", "O"].map((value) => (
+                                        <button
+                                            key={value}
+                                            type="button"
+                                            className={`sex-button ${form.sex === value ? "active" : ""}`}
+                                            onClick={() => setForm((prev) => ({ ...prev, sex: value }))}
+                                        >
+                                            {value === "M" ? "Male" : value === "F" ? "Female" : "Other"}
+                                        </button>
+                                        ))}
+                                    </div>
                                 </div>
+
                                 <div className="input-wrapper">
-                                    <input
-                                        id="country"
-                                        type="text"
-                                        placeholder="Country"
-                                        value={form.country}
-                                        onChange={handleChange}
-                                        className="filter-input"
-                                    />
+                                <label className="preference-label">Country</label>
+                                    <select
+                                    id="country"
+                                    value={form.country}
+                                    onChange={handleChange}
+                                    className="preference-select"
+                                    >
+                                    <option value="">Select a country</option>
+                                    {countries.map((country) => (
+                                        <option key={country} value={country}>
+                                        {country}
+                                        </option>
+                                    ))}
+                                    </select>
+
                                 </div>
                             </div>
                     </div>
@@ -200,7 +238,7 @@ export default function FilterPanel({ onSubmit, formData, isFiltered, onReset })
                     <h3 className="section-title">Lifestyle Preferences</h3>
                     <div className="preferences-section">
                         <div className="preference-item">
-                            <label className="preference-label">Do you smoke?</label>
+                            <label className="preference-label">Smoking</label>
                             <select
                                 id="smoking"
                                 value={form.smoking}
@@ -212,7 +250,7 @@ export default function FilterPanel({ onSubmit, formData, isFiltered, onReset })
                             </select>
                         </div>
                         <div className="preference-item">
-                            <label className="preference-label">Do you drink socially?</label>
+                            <label className="preference-label">Social Drinking</label>
                             <select
                                 id="drinking_socially"
                                 value={form.drinking_socially}
@@ -224,7 +262,7 @@ export default function FilterPanel({ onSubmit, formData, isFiltered, onReset })
                             </select>
                         </div>
                         <div className="preference-item">
-                            <label className="preference-label">Open to subleasing?</label>
+                            <label className="preference-label">Subleasing</label>
                             <select
                                 id="subleasing"
                                 value={form.subleasing}
