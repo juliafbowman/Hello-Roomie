@@ -105,6 +105,62 @@
     padding-top: 1rem;
     margin: 0 auto;
   }
+
+  .why-hello-roomie {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    color: #1d1d1f;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    text-decoration: none;
+    border-bottom: none;
+  }
+
+  .feature-column {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px;
+  }
+  
+  .feature-icon {
+    background-color: #e8efff;
+    color: #5e7ce2;
+    border-radius: 50%;
+    padding: 12px;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+    box-sizing: content-box;
+  }
+  
+  .feature-item h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin-bottom: 0.5rem;
+  }
+  
+  .feature-item p {
+    font-size: 0.95rem;
+    color: #6c757d;
+    max-width: 360px;
+    line-height: 1.5;
+  }
+  
   
   /* smaller screen columns */ 
   @media (min-width: 1024px) {
