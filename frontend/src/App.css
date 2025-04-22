@@ -1,7 +1,4 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
   text-align: center;
   --primary-color: #5e7ce2;
   --secondary-color: #7c8db5;
@@ -18,6 +15,12 @@
   --light-pink: #ffd6e6;
   --light-green: #d4f8e2;
   --card-background: #fcfcff;
+}
+
+.page-wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem; 
 }
 
 /* getting rid of browser default background */
