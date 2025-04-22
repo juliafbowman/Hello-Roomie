@@ -93,8 +93,7 @@
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
     width: 100%; 
-    outline: 1px solid red; 
-
+    /* outline: 1px solid red;  */
 }
 
 /* each section - personal info, languages, etc */

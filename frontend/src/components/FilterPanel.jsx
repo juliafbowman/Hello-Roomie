@@ -106,9 +106,12 @@ export default function FilterPanel({ onSubmit, formData, isFiltered, onReset })
                                     step="1"
                                     value={form.age_min}
                                     onChange={(e) => {
-                                        const val = Math.min(Number(e.target.value), form.age_max - 1);
-                                        setForm(prev => ({ ...prev, age_min: val }));
-                                    }}
+                                        const newMin = Math.min(Number(e.target.value), form.age_max - 1);
+                                        setForm(prev => ({
+                                          ...prev,
+                                          age_min: newMin
+                                        }));
+                                      }}
                                     className="range-thumb"
                                     />
                                     <input
@@ -118,9 +121,14 @@ export default function FilterPanel({ onSubmit, formData, isFiltered, onReset })
                                     step="1"
                                     value={form.age_max}
                                     onChange={(e) => {
-                                        const val = Math.max(Number(e.target.value), form.age_min + 1);
-                                        setForm(prev => ({ ...prev, age_max: val }));
-                                    }}
+                                        const minVal = Number(form.age_min);
+                                        const rawVal = Number(e.target.value);
+                                        const newMax = Math.max(rawVal, minVal + 1);
+                                        setForm(prev => ({
+                                          ...prev,
+                                          age_max: newMax
+                                        }));
+                                      }}
                                     className="range-thumb"
                                     />
                                 </div>
