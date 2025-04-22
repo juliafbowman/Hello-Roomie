@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import ProfileCard from '../components/ProfileCard';
 import HeadingSection from '../components/HeadingSection';
 import './Home.css';
+// import './FeaturesColumn.css';
 import { Info, Star, Globe } from 'lucide-react';
 
 
@@ -61,29 +62,32 @@ function Home() {
         onReset={handleReset}
         />
     
+    {!isFiltered && (
     <div className="why-hello-roomie">
-        <h2 className="section-title">Why Choose HelloRoomie?</h2>
+        <h2 className="feature-section-title">Why Choose HelloRoomie?</h2>
         <div className="feature-column">
-            <div className="feature-item">
-                <Globe className="feature-icon" />
-                    <h3>Global Network</h3>
-                    <p>Connect with potential roommates from around the world.</p>
-            </div>
-            <div className="feature-item">
-                <Star className="feature-icon" />
-                    <h3>Compatibility Matching</h3>
-                    <p>Our algorithm finds roommates that match your lifestyle and preferences.</p>
-            </div>
-            <div className="feature-item">
-                <Info className="feature-icon" />
-                    <h3>Detailed Filters</h3>
-                    <p>Narrow your search by age, habits, budget, language, and more — find exactly who you're looking for.</p>
-            </div>
+        <div className="feature-item">
+            <Globe className="feature-icon" />
+            <h3>Global Network</h3>
+            <p>Connect with potential roommates from around the world.</p>
+        </div>
+        <div className="feature-item">
+            <Star className="feature-icon" />
+            <h3>Compatibility Matching</h3>
+            <p>Our algorithm finds roommates that match your lifestyle and preferences.</p>
+        </div>
+        <div className="feature-item">
+            <Info className="feature-icon" />
+            <h3>Detailed Filters</h3>
+            <p>Narrow your search by age, habits, budget, language, and more — find exactly who you're looking for.</p>
+        </div>
         </div>
     </div>
+    )}
 
-        {/* wrap layout to center the content */}
-        <div className="page-wrapper">
+
+    {/* wrap layout to center the content */}
+    <div className="page-wrapper">
         <div className="home-layout">
             <div className="profile-column">
             <h2 className="match-heading">
@@ -101,7 +105,7 @@ function Home() {
             </div>
             </div>
         </div>
-        </div>
+    </div>
     </>
     );
 }
