@@ -115,8 +115,23 @@ function Home() {
                 </div>
                 )}
             </div>
-        </div>
+        </div> 
     </div>
+    
+    {/* footer  */}
+    {!isFiltered && (
+        <div className="home-footer-section">
+            <div className="content-container">
+            <h2 className="heading-title">Ready to Find Your Perfect Roommate?</h2>
+            <p className="heading-subtitle">Join thousands of users who have found their ideal living situation</p>
+            <div className="footer-buttons">
+                <Link to="/add-profile" className="footer-primary">Create Your Profile</Link>
+                <Link to="/all-profiles" className="footer-secondary">Browse Roommates</Link>
+            </div>
+            </div>
+        </div>
+    )}
+
     </>
     );
 }
