@@ -19,8 +19,9 @@ function Home() {
       .then(res => res.json())
       .then(data => {
         console.log(".･☆.･｡ Profiles fetched:", data);
-        setProfiles(data);
-        setFilteredProfiles(data);
+        const sorted = [...data].sort((a, b) => b.id - a.id); 
+        setProfiles(sorted);
+        setFilteredProfiles(sorted);
       })
       .catch(err => console.error("╯•ᗣ•╰ ERROR fetching profiles:", err));
   }, []);
