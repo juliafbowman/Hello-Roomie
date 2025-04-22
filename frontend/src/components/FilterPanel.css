@@ -24,6 +24,20 @@
     animation: fadeInUp 0.4s ease-out both;
 }
 
+.filter-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* this is for the centering of the find filterd results button */ 
+.filter-form::after {
+    content: "";
+    display: block;
+    width: 100%;
+    clear: both;
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0; 
@@ -65,7 +79,7 @@
     border-radius: 0;
 }
 
-/* Panel Title */
+/* the panel's title */
 .filter-panel-title {
     color: var(--primary-color);
     font-size: 1.4rem;
@@ -75,9 +89,12 @@
 
 /* where all of the information goes / user inputs / includes search button */
 .filter-grid {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
+    width: 100%; 
+    outline: 1px solid red; 
+
 }
 
 /* each section - personal info, languages, etc */
@@ -100,8 +117,8 @@
 /* spacing between each input box in a section */
 .input-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
 }
 
 /* input boxes each */
@@ -109,9 +126,9 @@
     position: relative;
 }
 
-.input-wrapper.full-width {
+/* .input-wrapper.full-width {
     grid-column: 1 / -1;
-}
+} */
 
 /* input boxes styling */
 .filter-input {
@@ -181,6 +198,7 @@
     min-width: 200px;
 }
 
+/* label above each input section */ 
 .preference-label {
     display: block;
     margin-bottom: 0.5rem;
@@ -189,6 +207,7 @@
     font-size: 0.85rem;
 }
 
+/* bool values */ 
 .preference-select {
     width: 100%;
     padding: 0.6rem 1rem;
@@ -215,7 +234,7 @@
     border-color: var(--secondary-color);
 }
 
-/* submit */
+/* submit button - just the button itself */
 .filter-submit-button {
     display: flex;
     align-items: center;
@@ -229,10 +248,15 @@
     font-weight: 600;
     cursor: pointer;
     transition: all var(--transition-speed);
-    margin-top: 1rem;
+    /* left and right auto margins */ 
+    margin: 1.5rem auto 0.5rem auto;
     font-size: 1rem;
     box-shadow: 0 2px 8px rgba(94, 124, 226, 0.3);
-    align-self: center;
+    width: auto;
+    max-width: 220px;
+    min-width: 180px;
+    /* button fills all columns so it can be centered */ 
+    grid-column: 1 / -1;
 }
 
 .filter-submit-button:hover {
@@ -331,18 +355,22 @@
 
 /* smaller screens  */
 @media (max-width: 768px) {
+    .filter-grid {
+        grid-template-columns: 1fr;
+    }
+
     .input-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .preferences-section {
         flex-direction: column;
     }
-    
+
     .preference-item {
         width: 100%;
     }
-    
+
     .filter-panel-wrapper {
         padding: 1.25rem;
     }
