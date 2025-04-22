@@ -7,13 +7,14 @@ export default function HeadingSection({ onSearch, isFiltered, submittedFilter, 
     const [location, setLocation] = useState('');
     const [accordionOpen, setAccordionOpen] = useState(false);
 
+
     const handleSearch = async () => {
         const trimmed = location.trim();
         if (!trimmed) return;
         
         const payload = { country: trimmed };
         try {
-            const res = await fetch('http://127.0.0.1:5000/filterProfiles', {
+            const res = await fetch('http://127.0.0.1:5000/filterProfile', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
@@ -64,10 +65,13 @@ export default function HeadingSection({ onSearch, isFiltered, submittedFilter, 
                     {accordionOpen && (
                         <div className="accordion-body">
                             <FilterPanel
-                                onSubmit={onSearch}
-                                formData={submittedFilter}
-                                isFiltered={isFiltered}
-                                onReset={onReset}
+                            onSubmit={onSearch}
+                            formData={submittedFilter}
+                            isFiltered={isFiltered}
+                            onReset={() => {
+                                onReset(); 
+                                setAccordionOpen(false);
+                            }}
                             />
                         </div>
                     )}
