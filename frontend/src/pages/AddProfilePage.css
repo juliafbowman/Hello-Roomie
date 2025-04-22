@@ -260,3 +260,26 @@
         height: 4px;
     }
 }
+
+/* gender stuff  */
+.gender-toggle {
+    background-color: #e2e8f0;
+    color: #333;
+    transition: all 0.3s ease;
+  }
+  
+  .male-state {
+    background-color:var(--primary-color);
+    color: white;
+  }
+  
+  .female-state {
+    background-color:var(--primary-color);
+    color: white;
+  }
+  
+  .other-state {
+    background-color:var(--primary-color);
+    color: white;
+  }
+  

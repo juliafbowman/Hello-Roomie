@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import ProfileCard from '../components/ProfileCard';
-import './BestMatch.css';
+import './AddProfilePage.css';
 
 function BestMatch() {
   const [formData, setFormData] = useState({
     age: '',
-    smoking: '0',
-    drinking_socially: '0',
-    subleasing: '0',
+    smoking: 0,
+    drinking_socially: 0,
+    subleasing: 0,
     country: '',
     language: '',
     language_2: '',
@@ -29,18 +29,18 @@ function BestMatch() {
     try {
       const payload = {
         age: parseInt(formData.age),
-        smoking: parseInt(formData.smoking),
-        drinking_socially: parseInt(formData.drinking_socially),
-        subleasing: parseInt(formData.subleasing),
+        smoking: formData.smoking,
+        drinking_socially: formData.drinking_socially,
+        subleasing: formData.subleasing,
         country: formData.country.trim(),
         language: formData.language.trim(),
         language_2: formData.language_2.trim() || null,
         sex: formData.sex.trim().toUpperCase(),
         max_rent: parseInt(formData.max_rent),
         description_tags: formData.description_tags
-            .split(',')
-            .map(tag => tag.trim())
-            .filter(tag => tag)
+          .split(',')
+          .map(tag => tag.trim())
+          .filter(tag => tag)
       };
 
       const res = await fetch('http://127.0.0.1:5000/matchProfiles', {
@@ -58,44 +58,141 @@ function BestMatch() {
     }
   };
 
+  const countries = [ "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Argentina", "Australia", "Austria", "Bangladesh", "Belgium", "Brazil", "Canada", "Chile", "China", "Colombia", "Denmark", "Dominican Republic", "Egypt", "Finland", "France", "Germany", "Greece", "Hungary", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Kenya", "Mexico", "Morocco", "Netherlands", "New Zealand", "Nigeria", "Norway", "Pakistan", "Peru", "Philippines", "Poland", "Portugal", "Romania", "Russia", "Saudi Arabia", "Singapore", "South Africa", "South Korea", "Spain", "Sri Lanka", "Sweden", "Switzerland", "Thailand", "Turkey", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Venezuela", "Vietnam", "Zambia", "Zimbabwe" ];
+
   return (
-    <div className="best-match-page" style={{ padding: '2rem', maxWidth: '600px', margin: '0 auto' }}>
-      <h2 className="best-match-title">Find Your Ideal Roommate</h2>
+    <div className="add-profile-container">
+      <h2 className="add-profile-title">Find Your Ideal Roommate</h2>
 
-<div className="best-match-form">
-  <input className="best-match-input" type="number" id="age" placeholder="Your Age" value={formData.age} onChange={handleChange} />
+      <div className="add-profile-form">
+        <input
+          className="add-profile-input"
+          type="number"
+          id="age"
+          placeholder="Your Age"
+          value={formData.age}
+          onChange={handleChange}
+        />
 
-  <label>Do you smoke?
-    <select className="best-match-select" id="smoking" value={formData.smoking} onChange={handleChange}>
-      <option value="0">No</option>
-      <option value="1">Yes</option>
-    </select>
-  </label>
+        <select
+          id="country"
+          value={formData.country}
+          onChange={handleChange}
+          className="add-profile-select"
+        >
+          <option value="">Select Country</option>
+          {countries.map((country, idx) => (
+            <option key={idx} value={country}>{country}</option>
+          ))}
+        </select>
 
-  <label>Do you drink socially?
-    <select className="best-match-select" id="drinking_socially" value={formData.drinking_socially} onChange={handleChange}>
-      <option value="0">No</option>
-      <option value="1">Yes</option>
-    </select>
-  </label>
+        <input
+          className="add-profile-input"
+          type="text"
+          id="language"
+          placeholder="Primary Language"
+          value={formData.language}
+          onChange={handleChange}
+        />
 
-  <label>Open to subleasing?
-    <select className="best-match-select" id="subleasing" value={formData.subleasing} onChange={handleChange}>
-      <option value="0">No</option>
-      <option value="1">Yes</option>
-    </select>
-  </label>
+        <input
+          className="add-profile-input"
+          type="text"
+          id="language_2"
+          placeholder="Secondary Language (optional)"
+          value={formData.language_2}
+          onChange={handleChange}
+        />
 
-  <input className="best-match-input" type="text" id="country" placeholder="Country" value={formData.country} onChange={handleChange} />
-  <input className="best-match-input" type="text" id="language" placeholder="Primary Language" value={formData.language} onChange={handleChange} />
-  <input className="best-match-input" type="text" id="language_2" placeholder="Secondary Language (optional)" value={formData.language_2} onChange={handleChange} />
-  <input className="best-match-input" type="text" id="sex" placeholder="Sex (M/F)" maxLength="1" value={formData.sex} onChange={handleChange} />
-  <input className="best-match-input" type="number" id="max_rent" placeholder="Max Rent ($300–$10,000)" value={formData.max_rent} onChange={handleChange} />
-  <textarea className="best-match-textarea" id="description_tags" placeholder="Description Tags (comma-separated)" value={formData.description_tags} onChange={handleChange} />
+        {/* Sex Toggle Buttons */}
+        <div className="preferences-section">
+  <div className="preference-item">
+    <div
+      className={`toggle-bubble gender-toggle ${formData.sex === "M" ? "male-state" : ""}`}
+      onClick={() => setFormData((prev) => ({ ...prev, sex: "M" }))}
+    >
+      Male
+    </div>
+  </div>
 
-  <button className="best-match-button" onClick={handleSubmit}>🔍 Find Matches</button>
+  <div className="preference-item">
+    <div
+      className={`toggle-bubble gender-toggle ${formData.sex === "F" ? "female-state" : ""}`}
+      onClick={() => setFormData((prev) => ({ ...prev, sex: "F" }))}
+    >
+      Female
+    </div>
+  </div>
+
+  <div className="preference-item">
+    <div
+      className={`toggle-bubble gender-toggle ${formData.sex === "O" ? "other-state" : ""}`}
+      onClick={() => setFormData((prev) => ({ ...prev, sex: "O" }))}
+    >
+      Other
+    </div>
+  </div>
 </div>
 
+
+
+        <input
+          className="add-profile-input"
+          type="number"
+          id="max_rent"
+          placeholder="Max Rent ($300–$10,000)"
+          value={formData.max_rent}
+          onChange={handleChange}
+        />
+
+        {/* Lifestyle Preferences */}
+        <div className="preferences-section">
+          <div className="preference-item">
+            <div
+              className={`toggle-bubble ${formData.smoking === 1 ? 'yes-state' : 'no-state'}`}
+              onClick={() =>
+                setFormData(prev => ({ ...prev, smoking: prev.smoking === 1 ? 0 : 1 }))
+              }
+            >
+              Smoking: {formData.smoking === 1 ? 'Yes' : 'No'}
+            </div>
+          </div>
+
+          <div className="preference-item">
+            <div
+              className={`toggle-bubble ${formData.drinking_socially === 1 ? 'yes-state' : 'no-state'}`}
+              onClick={() =>
+                setFormData(prev => ({ ...prev, drinking_socially: prev.drinking_socially === 1 ? 0 : 1 }))
+              }
+            >
+              Drinking: {formData.drinking_socially === 1 ? 'Yes' : 'No'}
+            </div>
+          </div>
+
+          <div className="preference-item">
+            <div
+              className={`toggle-bubble ${formData.subleasing === 1 ? 'yes-state' : 'no-state'}`}
+              onClick={() =>
+                setFormData(prev => ({ ...prev, subleasing: prev.subleasing === 1 ? 0 : 1 }))
+              }
+            >
+              Subleasing: {formData.subleasing === 1 ? 'Yes' : 'No'}
+            </div>
+          </div>
+        </div>
+
+        <textarea
+          className="add-profile-textarea"
+          id="description_tags"
+          placeholder="Description Tags (comma-separated)"
+          value={formData.description_tags}
+          onChange={handleChange}
+        />
+
+        <button className="add-profile-button" onClick={handleSubmit}>
+          🔍 Find Matches
+        </button>
+      </div>
 
       {error && <p style={{ color: 'red' }}>❌ {error}</p>}
 
