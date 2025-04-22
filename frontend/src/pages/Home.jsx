@@ -4,6 +4,7 @@ import HeadingSection from '../components/HeadingSection';
 import './Home.css';
 // import './FeaturesColumn.css';
 import { Info, Star, Globe } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 
 function Home() {
@@ -12,19 +13,21 @@ function Home() {
   // store form data 
   const [submittedFilter, setSubmittedFilter] = useState(null); 
 
-  const isFiltered = filteredProfiles.length !== profiles.length;
+  const isFiltered = submittedFilter !== null;
 
   useEffect(() => {
     fetch('http://127.0.0.1:5000/profiles')
       .then(res => res.json())
       .then(data => {
         console.log(".･☆.･｡ Profiles fetched:", data);
-        const sorted = [...data].sort((a, b) => b.id - a.id); 
+        const sorted = [...data].sort((a, b) => b.id - a.id);
         setProfiles(sorted);
-        setFilteredProfiles(sorted);
+        // show newest 3 profiles on front page 
+        setFilteredProfiles(sorted.slice(0, 3));
       })
       .catch(err => console.error("╯•ᗣ•╰ ERROR fetching profiles:", err));
   }, []);
+  
 
   const handleFilter = (matches, formData) => {
     setFilteredProfiles(matches);
@@ -92,7 +95,7 @@ function Home() {
         <div className="home-layout">
             <div className="profile-column">
             <h2 className="match-heading">
-                {isFiltered ? 'Best Matches for You' : 'Meet Our Newest Users'}
+                {isFiltered ? 'All Users' : 'Meet Our Newest Users'}
             </h2>
     
             <div className="profile-grid">
@@ -100,10 +103,17 @@ function Home() {
                 <p>No matches found.</p>
                 ) : (
                 filteredProfiles.map((p, index) => (
-                    <ProfileCard key={index} {...formatProfileProps(p)} />
-                ))
+                    <ProfileCard key={index} {...formatProfileProps(p)} preview={!isFiltered} />
+                    ))
                 )}
             </div>
+            {!isFiltered && (
+                <div className="see-all-container">
+                    <Link to="/all-profiles" className="browse-all-button">
+                    Browse All Roomies
+                    </Link>
+                </div>
+                )}
             </div>
         </div>
     </div>

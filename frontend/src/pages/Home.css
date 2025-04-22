@@ -30,6 +30,7 @@
     margin-bottom: 1rem;
     font-size: 1.8rem;
     color: #5e7ce2;
+    text-align: center; 
 }
 
 .meet-users {
@@ -220,3 +221,26 @@
     max-width: 360px;
     line-height: 1.5;
 }
+
+.see-all-container {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  .browse-all-button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 999px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 2px 6px var(--shadow-color);
+    transition: background-color 0.3s ease;
+    display: inline-block;
+  }
+  
+  .browse-all-button:hover {
+    background-color: #4a69c9;
+  }
+  
