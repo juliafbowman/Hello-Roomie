@@ -35,6 +35,15 @@
     user-select: none;
 }
 
+.logo-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    margin-right: 0.5rem;
+    margin-left: 0.25rem; 
+    transform: translateY(5px);
+}
+
 /* toggle stuff */
 .navbar-toggle {
     display: none;

@@ -6,7 +6,10 @@ function Navigation() {
     const [menuOpen, setMenuOpen] = useState(false);
     return (
         <nav className = "navbar">
-            <div className = "navbar-logo">HelloRoomie</div>
+           <div className="navbar-logo">
+                <img src="/logo/logo.png" alt="HelloRoomie logo" className="logo-img" />
+                HelloRoomie
+            </div>
 
             <button 
              className = "navbar-toggle"
