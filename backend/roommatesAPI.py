@@ -181,15 +181,16 @@ def filter_query(filter_params):
                     params[f"{key}_min"] = int(value[0]) #ensure it's an integer
                     params[f"{key}_max"] = int(value[1])
                     continue
-                elif key == "age" and not isinstance(value,list):
+                if key == "age" and not isinstance(value,list):
                     #treat the scalar as an exact match
                     where_clauses.append(f"{key} = :{key}")
                     params[key] = int(value)
                     continue
                 # max_rent gets appeneded in where clauses with less than or equal operator
-                elif key == "max_rent":
-                    where_clauses.append(f"{key} <= :{key}")
-                    params[key] = value
+                if key == "max_rent":
+                    where_clauses.append("max_rent <= :max_rent")
+                    params["max_rent"] = int(value)
+                    continue
             
             #default  for everythiing else
             where_clauses.append(f"{key} = :{key}")
