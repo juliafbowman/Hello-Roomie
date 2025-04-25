@@ -21,3 +21,40 @@ export const countries = [
     "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen",
     "Zambia", "Zimbabwe"
 ];
+
+export const neighborhoods = [
+    "Rogers Park", "West Ridge", "Uptown", "Lincoln Square", "North Center",
+    "Lake View", "Lincoln Park", "Near North Side", "Edison Park", "Norwood Park",
+    "Jefferson Park", "Forest Glen", "North Park", "Albany Park", "Portage Park",
+    "Irving Park", "Dunning", "Montclare", "Belmont Cragin", "Hermosa",
+    "Avondale", "Logan Square", "Humboldt Park", "West Town", "Austin",
+    "West Garfield Park", "East Garfield Park", "Near West Side", "North Lawndale",
+    "South Lawndale", "Lower West Side", "Loop", "Near South Side", "Armour Square",
+    "Douglas", "Oakland", "Fuller Park", "Grand Boulevard", "Kenwood", "Washington Park",
+    "Hyde Park", "Woodlawn", "South Shore", "Chatham", "Avalon Park", "South Chicago",
+    "Burnside", "Calumet Heights", "Roseland", "Pullman", "South Deering", "East Side",
+    "West Pullman", "Riverdale", "Hegewisch", "Garfield Ridge", "Archer Heights",
+    "Brighton Park", "McKinley Park", "Bridgeport", "New City", "West Elsdon",
+    "Gage Park", "Clearing", "West Lawn", "Chicago Lawn", "West Englewood",
+    "Englewood", "Greater Grand Crossing", "Ashburn", "Auburn Gresham", "Beverly",
+    "Washington Heights", "Mount Greenwood", "Morgan Park", "O'Hare", "Edgewater",
+  
+    "Evanston", "Skokie", "Wilmette", "Winnetka", "Northbrook", "Glenview", "Glencoe", "Lincolnwood",
+    "Des Plaines", "Park Ridge", "Niles", "Morton Grove", "Buffalo Grove", "Highland Park", "Lake Forest",
+    "Arlington Heights", "Mount Prospect", "Palatine", "Rolling Meadows", "Prospect Heights",
+    "Schaumburg", "Elk Grove Village", "Hoffman Estates", "Itasca", "Roselle", "Streamwood",
+    "Bartlett", "Hanover Park", "Carol Stream", "Addison", "Bensenville", "Elmhurst", "Lombard",
+    "Villa Park", "Oak Brook", "Downers Grove", "Lisle", "Naperville", "Wheaton", "Glen Ellyn",
+    "Westmont", "Darien", "Willowbrook", "Woodridge", "Bolingbrook", "Plainfield", "Romeoville",
+    "Lockport", "Homer Glen", "Lemont", "New Lenox", "Frankfort", "Mokena", "Orland Park",
+    "Orland Hills", "Tinley Park", "Oak Lawn", "Evergreen Park", "Burbank", "Bridgeview",
+    "Justice", "Summit", "Stickney", "Forest View", "Lyons", "Brookfield", "La Grange",
+    "La Grange Park", "Western Springs", "Hinsdale", "Clarendon Hills", "Burr Ridge",
+    "Berwyn", "Cicero", "Maywood", "Bellwood", "Broadview", "Melrose Park", "River Grove",
+    "River Forest", "Forest Park", "North Riverside", "Riverside", "Chicago Ridge", "Hometown",
+    "Alsip", "Midlothian", "Crestwood", "Blue Island", "Calumet Park", "Robbins", "Posen",
+    "Markham", "Harvey", "Dixmoor", "Phoenix", "South Holland", "Dolton", "Calumet City",
+    "Lansing", "Homewood", "Flossmoor", "Olympia Fields", "Matteson", "Country Club Hills",
+    "Hazel Crest", "East Hazel Crest", "Glenwood", "Chicago Heights", "Park Forest", "Steger",
+    "University Park", "Crete", "Beecher", "Monee", "Peotone", "Manhattan", "Joliet", "Shorewood"
+  ];

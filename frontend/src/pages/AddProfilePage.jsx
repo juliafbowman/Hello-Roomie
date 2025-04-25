@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // i havent used axios much but i read online that its really good at simplifying stuff with the json 
 // so im trying it 
 import axios from 'axios';
-import { countries } from '../components/Dropdown';
+import { countries , neighborhoods } from '../components/Dropdown';
 import './AddProfilePage.css';
 
 const AddProfilePage = () => {
@@ -16,6 +16,7 @@ const AddProfilePage = () => {
         drinking_socially: 0,
         subleasing: 0,
         country: '',
+        neighborhood: '', 
         language: '',
         language_2: '',
         sex: '',
@@ -112,6 +113,19 @@ const AddProfilePage = () => {
             <option value="">Select Sex</option>
             <option value="M">Male</option>
             <option value="F">Female</option>
+        </select>
+
+        <select 
+            name="neighborhood" 
+            value={formData.neighborhood}
+            required
+            onChange={handleChange}
+            className="add-profile-select"
+            >
+            <option value="">Select Neighborhood</option>
+            {neighborhoods.map((area, i) => (
+                <option key={i} value={area}>{area}</option>
+            ))}
         </select>
 
         <input 

@@ -53,7 +53,8 @@ function Home() {
       smoking: !!p.smoking,
       drinking: !!p.drinking_socially,
       subleasing: !!p.subleasing,
-      max_rent: p.max_rent
+      max_rent: p.max_rent,
+      neighborhood: p.neighborhood,
     };
   }
 
