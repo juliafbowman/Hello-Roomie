@@ -28,6 +28,9 @@ function ProfileCard({
 }) {
     const imageSrc = getStableRandomImage(email || name);
 
+    // debug 
+    console.log("ProfileCard received max_rent:", max_rent);
+
     return (
         <div className={`profile-card ${preview ? 'preview-card' : ''}`}>
             {/* previews */}
@@ -43,8 +46,10 @@ function ProfileCard({
 
             <p><strong>Location:</strong> {location}</p>
             <p><strong>Languages:</strong> {languages.split(',')[0]}</p>
-            <p><strong>Max Rent:</strong> ${max_rent}</p>
-            
+            {max_rent !== undefined && (
+                <p><strong>Max Rent:</strong> ${max_rent.toLocaleString()}</p>
+            )}
+
             {/* add description to the previews */}
             {description && (
             <>

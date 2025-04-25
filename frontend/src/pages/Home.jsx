@@ -90,7 +90,6 @@ function Home() {
     </div>
     )}
 
-
     {/* wrap layout to center the content */}
     <div className="page-wrapper">
         <div className="home-layout">
@@ -104,6 +103,7 @@ function Home() {
                 <p>No matches found.</p>
                 ) : (
                 filteredProfiles.map((p, index) => (
+                    
                     <ProfileCard key={index} {...formatProfileProps(p)} preview={!isFiltered} />
                     ))
                 )}

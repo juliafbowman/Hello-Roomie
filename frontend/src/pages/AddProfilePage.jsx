@@ -50,6 +50,10 @@ const AddProfilePage = () => {
             description: formData.description || null
         };
 
+        // debug max rent stuff 
+        console.log("Submitting profile:");
+        console.log("Payload being sent:", formattedData);
+
         try {
             const response = await axios.post('http://127.0.0.1:5000/insertProfile', formattedData);
             console.log(response.data)
