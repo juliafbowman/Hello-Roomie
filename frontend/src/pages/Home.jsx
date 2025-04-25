@@ -84,7 +84,7 @@ function Home() {
         <div className="feature-item">
             <Info className="feature-icon" />
             <h3>Detailed Filters</h3>
-            <p>Narrow your search by age, habits, budget, language, and more — find exactly who you're looking for.</p>
+            <p>Narrow your search by age, habits, budget, language, and more so you can find exactly what you're looking for.</p>
         </div>
         </div>
     </div>

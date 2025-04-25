@@ -25,7 +25,7 @@ function Navigation() {
                 <Link to = "/" onClick = {() => setMenuOpen(false)}>Home</Link>
                 <Link to="/all-profiles">Browse All Roomies</Link>
                 <Link to = "/add-profile" onClick = {() => setMenuOpen(false)}>List Yourself</Link>
-                <Link to="/best-match">Find My Best Match</Link>
+                <Link to="/best-match">Your Best Match</Link>
             </div>
         </nav>
     );

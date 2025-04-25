@@ -184,7 +184,7 @@ const AddProfilePage = () => {
 
         <textarea 
             name="description" 
-            placeholder="Description (Optional)" 
+            placeholder="Description (Optional - Please Include Neighborhood)" 
             value={formData.description}
             onChange={handleChange} 
             className="add-profile-textarea" 
