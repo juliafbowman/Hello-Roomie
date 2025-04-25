@@ -116,12 +116,13 @@ def testFilterQuery():
     """
     
     examples = [
-        {'age' : [['>=' , 28] , ['<=',36]] , 'country' : 'United States', 'language' : 'English', 'max_rent' : 8000, 'smoking' : 0, 'drinking_socially' : 0, 'subleasing' : 0}
-    ]
+        {'age' : 29, 'neighborhood' : 'Wicker Park', 'max_rent' : 8000}
+          ]
     for filters in examples:
         print(f"\n>>>Filters: {filters}")
         try:
             results = filter_query(filters)
+            
         except Exception as e:
             print("Error running filter_query:", e)
             continue
@@ -129,7 +130,8 @@ def testFilterQuery():
         if not results:
             print("no matching profiles.")
         for r in results:
-            print(r)
+            print(print(json.dumps(filter_query(filters), indent=2))
+)
 
 def clearPosts():
     db = DatabaseManager()
@@ -142,7 +144,8 @@ def deleteElement(id):
     db.close()
 
 if __name__ == '__main__':
-    testInsertProfiles()
+    #testInsertProfiles()
+    testFilterQuery()
     # preferences = {
     # "age": 22,
     # "smoking": 0,

@@ -174,14 +174,13 @@ def filter_query(filter_params):
                 if isinstance(value, (list,tuple)):
                     raise ValueError(f"Expected scalar for {key}, got list. ")
                 # handle other cases (single value)
-                if key in {"age", "max_rent"}:
-                    op = "<="
-                    param_name = f"{key}_ge_default"
-                    where_clauses.append(f"{key} {op} :{param_name}")
-                    params[param_name] = int(value) #ensure it's an integer
+                if key == "age":
+                    where_clauses.append(f"{key}  = :{key}")
+                    params[key] = int(value) #ensure it's an integer
 
-                else:
-                    where_clauses.append(f"{key} = :{key}")
+                # max_rent gets appeneded in where clauses with less than or equal operator
+                elif key == "max_rent":
+                    where_clauses.append(f"{key} <= :{key}")
                     params[key] = value
             
             
