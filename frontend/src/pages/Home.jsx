@@ -73,13 +73,13 @@ function Home() {
         <div className="feature-column">
         <div className="feature-item">
             <Globe className="feature-icon" />
-            <h3>Global Network</h3>
-            <p>Connect with potential roommates from around the world.</p>
+            <h3>Chicago Network</h3>
+            <p>Connect with potential roommates throughout Chicagoland and the surrounding suburbs.</p>
         </div>
         <div className="feature-item">
             <Star className="feature-icon" />
             <h3>Compatibility Matching</h3>
-            <p>Our algorithm finds roommates that match your lifestyle and preferences.</p>
+            <p>Our algorithm finds Chicago roommates that match your lifestyle and preferences.</p>
         </div>
         <div className="feature-item">
             <Info className="feature-icon" />
@@ -100,7 +100,7 @@ function Home() {
     
             <div className="profile-grid">
                 {filteredProfiles.length === 0 ? (
-                <p>No matches found.</p>
+                <p>No matches found. Try adjusting your filters.</p>
                 ) : (
                 filteredProfiles.map((p, index) => (
                     
@@ -111,7 +111,7 @@ function Home() {
             {!isFiltered && (
                 <div className="see-all-container">
                     <Link to="/all-profiles" className="browse-all-button">
-                    Browse All Roomies
+                    Browse All Chicago Roomies
                     </Link>
                 </div>
                 )}
@@ -124,7 +124,7 @@ function Home() {
         <div className="home-footer-section">
             <div className="content-container">
             <h2 className="heading-title">Ready to Find Your Perfect Roommate?</h2>
-            <p className="heading-subtitle">Join thousands of users who have found their ideal living situation</p>
+            <p className="heading-subtitle">Join hundreds of Chicagoans who have found their ideal living situation</p>
             <div className="footer-buttons">
                 <Link to="/add-profile" className="footer-primary">Create Your Profile</Link>
                 <Link to="/all-profiles" className="footer-secondary">Browse Roommates</Link>

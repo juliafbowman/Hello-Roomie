@@ -44,8 +44,8 @@ function ProfileCard({
                 </div>
             </div>
 
-            <p><strong>Location:</strong> {location}</p>
-            <p><strong>Languages:</strong> {languages.split(',')[0]}</p>
+            <p><strong>From:</strong> {location}</p>
+            <p><strong>Language:</strong> {languages.split(',')[0]}</p>
             {max_rent !== undefined && (
                 <p><strong>Max Rent:</strong> ${max_rent.toLocaleString()}</p>
             )}

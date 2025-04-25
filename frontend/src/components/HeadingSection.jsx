@@ -32,9 +32,9 @@ export default function HeadingSection({ onSearch, isFiltered, submittedFilter, 
 
     return (
         <div className="heading-section">
-            <h1 className="heading-title">Find Your Perfect Roommate</h1>
+            <h1 className="heading-title">Find Your Perfect Chicago Roomie</h1>
             <p className="heading-subtitle">
-                Connect with compatible roommates based on lifestyle, preferences, and location.
+                Connect with compatible roommates based on lifestyle, preferences, and budget.
             </p>
             
             <div className="content-container">

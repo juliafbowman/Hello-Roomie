@@ -141,7 +141,7 @@ const AddProfilePage = () => {
             onChange={handleChange} 
             className="add-profile-select country-select"
         >
-            <option value="">Select Country</option>
+            <option value="">Select Country of Origin</option>
             {countries.map((country, index) => (
                 <option key={index} value={country}>
                     {country}
