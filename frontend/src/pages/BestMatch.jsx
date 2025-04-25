@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ProfileCard from '../components/ProfileCard';
+import { countries } from '../components/Dropdown';
 import './AddProfilePage.css';
 
 function BestMatch() {
@@ -57,17 +58,6 @@ function BestMatch() {
       setError(err.message || 'Unknown error');
     }
   };
-
-  const countries = [ 
-    "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Argentina", "Australia", 
-    "Austria", "Bangladesh", "Belgium", "Brazil", "Canada", "Chile", "China", "Colombia", "Denmark", 
-    "Dominican Republic", "Egypt", "Finland", "France", "Germany", "Greece", "Hungary", "India", "Indonesia", 
-    "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Kenya", "Mexico", "Morocco", "Netherlands", 
-    "New Zealand", "Nigeria", "Norway", "Pakistan", "Peru", "Philippines", "Poland", "Portugal", "Romania", 
-    "Russia", "Saudi Arabia", "Singapore", "South Africa", "South Korea", "Spain", "Sri Lanka", "Sweden", 
-    "Switzerland", "Thailand", "Turkey", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", 
-    "United States", "Venezuela", "Vietnam", "Zambia", "Zimbabwe" 
-  ];
 
   return (
     <div className="add-profile-container">
