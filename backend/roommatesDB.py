@@ -28,9 +28,11 @@ class DatabaseManager:
                 email TEXT NOT NULL CHECK (length(email) < 200),
                 social_link TEXT CHECK (length(social_link) < 300),
                 phone_number TEXT CHECK (length(phone_number) < 50),
-                description TEXT CHECK (length(description) < 300)
+                description TEXT CHECK (length(description) < 300),
+                neighborhood TEXT NOT NULL CHECK (length(neighborhood) <= 100)
             );
         ''')
+
         self.conn.commit()
 
     def execute_query(self, query, params=()):
