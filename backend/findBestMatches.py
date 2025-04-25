@@ -8,7 +8,7 @@ def compute_score(profile, preferences):
     if abs(profile["age"] - preferences["age"]) <= 2:
         score += 20
     else: 
-        score -= 5
+        score -= 10
 
     # Exact Matches
     for key in ["smoking", "drinking_socially", "subleasing"]:
@@ -19,26 +19,26 @@ def compute_score(profile, preferences):
     if profile["sex"] == preferences["sex"]:
         score += 20
     else: 
-        score -= 5
+        score -= 10
 
     # Country match = 10 pts
     if profile["country"].lower() == preferences["country"].lower():
         score += 10
 
     # Language 1 = 10 pts
-    if profile["language"].lower() == preferences["language"].lower():
-        score += 10
+    if profile["language"].lower().strip() == preferences["language"].lower().strip():
+        score += 20
 
-    # Language 2 = 5 pts
+    # Language 2 = 20 pts
     if preferences.get("language_2") and profile.get("language_2") and \
        profile["language_2"].lower() == preferences["language_2"].lower():
-        score += 5
+        score += 20
 
     # Rent = 15 pts if within budget
     if profile["max_rent"] <= preferences["max_rent"]:
         score += 15
 
-    # Description tag matches = 10 pts per match
+    # Description tag matches = 20 pts per match
     if profile["description"]:
         desc_trie = profile["descriptionTrie"]  # This is your Trie object
         for tag in preferences.get("description_tags", []):
@@ -49,12 +49,14 @@ def compute_score(profile, preferences):
 
 def get_best_matches(preferences, limit=5):
     manager = ProfileManager()
+    manager._load_profiles()
     profiles = manager.get_all_profiles()
     heap = []
 
     for profile in profiles:
         score = compute_score(profile, preferences)
         # Use profile ID as tiebreaker
+
         heapq.heappush(heap, (-score, profile["id"], profile))
 
     matches = []

@@ -39,7 +39,6 @@ class ProfileManager:
     def __init__(self):
         if self._initialized:
             return
-        self.db = DatabaseManager()
         self.profiles = []
         self._load_profiles()
         self._initialized = True
@@ -54,12 +53,14 @@ class ProfileManager:
 
     def _load_profiles(self):
         self.profiles.clear()
-        rows = self.db.fetch_query("SELECT * FROM posts")
+        db = DatabaseManager()
+        rows = db.fetch_query("SELECT * FROM posts")
         for row in rows:
             profile = dict(row)
             description_text = profile.get("description")
             profile["descriptionTrie"] = self._description_to_trie(description_text)
             self.profiles.append(profile)
+        db.close()
 
     def insert_profile(self, profile_dict):
         desc_text = profile_dict.get("description")
@@ -77,5 +78,3 @@ class ProfileManager:
     def get_all_profiles(self):
         return self.profiles
 
-    def close(self):
-        self.db.close()
