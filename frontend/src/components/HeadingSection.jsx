@@ -7,7 +7,6 @@ export default function HeadingSection({ onSearch, isFiltered, submittedFilter, 
     const [location, setLocation] = useState('');
     const [accordionOpen, setAccordionOpen] = useState(false);
 
-
     const handleSearch = async () => {
         const trimmed = location.trim();
         if (!trimmed) return;

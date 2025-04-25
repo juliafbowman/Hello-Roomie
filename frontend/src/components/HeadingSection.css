@@ -1,5 +1,7 @@
 .heading-section {
-    background: linear-gradient(to right, #5e7ce2, #7c8db5);
+    background: linear-gradient(-45deg, #1565C0, #5e7ce2, #7e99d7, #4FC3F7);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
     padding: 4rem 2rem;
     text-align: center;
     color: white;
@@ -8,6 +10,52 @@
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
+}
+
+.animated-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+    opacity: 0.5;
+    z-index: 5;
+    animation: pulse 8s infinite alternate;
+}
+
+/* keep animation smooth */ 
+@keyframes pulse {
+    0% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 50% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    75% {
+        background-position: 50% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* make sure padding isnt adding width */ 
