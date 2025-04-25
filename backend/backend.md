@@ -7,7 +7,10 @@
 - Data structures 1 (profileManager.py) - file structure where first the whole database is stored and the description is a trie for each profile
 - Data structure 2 (findBestMatches.py) - file where priority queue is used to get the best match profiled
 
-pip install -r requirements.txt
+# How to run the backend
+pip install -r requirements.txt 
+You need to have python installed for this project. Please run the above command to install the requirements for the backend! All you have to do from then is run the command "python host.py" which wll start the backend server using flask
+
 
 # API Information 
 - 1. url/profiles :
