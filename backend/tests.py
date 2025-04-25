@@ -5,7 +5,6 @@ from findBestMatches import *
 import json
 
 #test profiles to insert into the database
-# firstname, last name, age, smoking, drinking socially, max_rent, subleasing, country, language1, language 2, sex, email, social, phone number, description
 # all_test_profiles = [
 #     ["John", "Cena", 40, 0, 1, 3000, 0, "United States", "English", "Mandarin", 'M', "jcena@gmail.com", "instagram.com/johncena", "6405905903", "Looking for roommates who don’t call me invisible"],
 #     ["Michael", "Myers", 80, 0, 0, 1500, 0, "United States", "English", None, 'M', "mMyers@gmail.com", "instagram.com/mikaelmyer", "911", "Favorite festival is Halloween"],
@@ -39,44 +38,33 @@ import json
 #     ["Logan", "Howlett", 137, 0, 0, 2200, 0, "Canada", "English", "Japanese", 'M', "wolverine@xmen.com", None, "2323232323", "I like silence. And beer."]
 # ]
 
+# firstname, last name, age, smoking, drinking socially, max_rent, subleasing, country, neighborhood, language1, language 2, sex, email, social, phone number, description
 all_test_profiles = [
-    ["Mwikali", "Otieno", 29, 0, 0, 1452, 1, "Kenya", "Swahili", "English", 'F', "mwikali.otieno@email.com", "instagram.com/mwikaliotieno", "5317883173", "I work a lot so you'll barely see me."],
-    ["Brian", "Mutua", 32, 0, 0, 1792, 0, "Kenya", "Swahili", "English", 'M', "brian.mutua@email.com", "instagram.com/brianmutua", "7048823304", "Wanna split Netflix?"],
-    ["Ashley", "Miller", 25, 1, 0, 1643, 1, "United States", "English", None, 'F', "ashley.miller@email.com", "instagram.com/ashleymiller", "5587341203", "Pretty chill, just don’t leave dishes in the sink."],
-    ["Rohan", "Patel", 24, 0, 0, 1499, 0, "India", "Hindi", "English", 'M', "rohan.patel@email.com", "instagram.com/rohanpatel", "7226848579", "Clean-ish and friendly. Open to splitting groceries."],
-    ["Charlotte", "Davies", 23, 0, 0, 1195, 1, "United Kingdom", "English", None, 'F', "charlotte.davies@email.com", "instagram.com/charlottedavies", "6695421539", "Early riser, into yoga and iced coffee."],
-    ["Luis", "Martinez", 28, 1, 0, 1550, 1, "Mexico", "Spanish", "English", 'M', "luis.martinez@email.com", "instagram.com/luismartinez", "3892846631", "Wanna split Netflix?"],
-    ["Camille", "Moreau", 31, 0, 0, 1515, 0, "France", "French", "English", 'F', "camille.moreau@email.com", "instagram.com/camillemoreau", "9112180133", "Pretty chill, just don’t leave dishes in the sink."],
-    ["Bo", "Li", 34, 0, 1, 1086, 1, "China", "Mandarin", "English", 'M', "bo.li@email.com", "instagram.com/boli", "7925566347", "Love to cook, just need someone chill."],
-    ["Anjali", "Verma", 22, 0, 1, 1003, 0, "India", "Hindi", "English", 'F', "anjali.verma@email.com", "instagram.com/anjaliverma", "3425383759", "Clean-ish and friendly. Open to splitting groceries."],
-    ["Minho", "Choi", 32, 1, 1, 1454, 1, "South Korea", "Korean", "English", 'M', "minho.choi@email.com", "instagram.com/minhochoi", "7992893580", "Pretty chill, just don’t leave dishes in the sink."],
-    ["Grace", "Wilson", 35, 0, 0, 1250, 0, "Canada", "English", None, 'F', "grace.wilson@email.com", "instagram.com/gracewilson", "4576109483", "Love to cook, just need someone chill."],
-    ["Lucas", "Bernard", 23, 0, 0, 1708, 1, "France", "French", "English", 'M', "lucas.bernard@email.com", "instagram.com/lucasbernard", "7321348785", "Not a party person, but cool with small hangouts."],
-    ["Usman", "Iqbal", 27, 0, 1, 1516, 0, "Pakistan", "Urdu", "English", 'M', "usman.iqbal@email.com", "instagram.com/usmaniqbal", "4734658711", "Wanna split Netflix?"],
-    ["Emily", "Clark", 25, 0, 1, 1676, 0, "United Kingdom", "English", None, 'F', "emily.clark@email.com", "instagram.com/emilyclark", "7641658277", "Early riser, into yoga and iced coffee."],
-    ["Wei", "Zhang", 29, 1, 0, 1063, 0, "China", "Mandarin", "English", 'M', "wei.zhang@email.com", "instagram.com/weizhang", "9136483342", "Clean-ish and friendly. Open to splitting groceries."],
-    ["Charlotte", "Davies", 33, 0, 1, 1712, 0, "United Kingdom", "English", None, 'F', "charlotte.davies@email.com", "instagram.com/charlottedavies", "6137864520", "Not a party person, but cool with small hangouts."],
-    ["Julien", "Leroy", 31, 1, 1, 1583, 0, "France", "French", "English", 'M', "julien.leroy@email.com", "instagram.com/julienleroy", "8149375830", "Pretty chill, just don’t leave dishes in the sink."],
-    ["Valeria", "Gonzalez", 27, 1, 1, 1320, 1, "Mexico", "Spanish", "English", 'F', "valeria.gonzalez@email.com", "instagram.com/valeriagonzalez", "4562937242", "Let's keep the bathroom clean and we’re good."],
-    ["Fatima", "Ahmed", 35, 0, 1, 1788, 1, "Pakistan", "Urdu", "English", 'F', "fatima.ahmed@email.com", "instagram.com/fatimaahmed", "6037591283", "Pretty chill, just don’t leave dishes in the sink."],
-    ["Oliver", "Smith", 22, 0, 1, 1683, 1, "United Kingdom", "English", None, 'M', "oliver.smith@email.com", "instagram.com/oliversmith", "9987321453", "I work a lot so you'll barely see me."],
-    ["Sofia", "Ramirez", 33, 0, 1, 1527, 0, "Mexico", "Spanish", "English", 'F', "sofia.ramirez@email.com", "instagram.com/sofiaramirez", "3291280543", "Clean-ish and friendly. Open to splitting groceries."],
-    ["Rachel", "Anderson", 24, 0, 0, 1702, 1, "United States", "English", None, 'F', "rachel.anderson@email.com", "instagram.com/rachelanderson", "8669842913", "Wanna split Netflix?"],
-    ["George", "Brown", 27, 1, 1, 1775, 1, "United Kingdom", "English", None, 'M', "george.brown@email.com", "instagram.com/georgebrown", "7938154630", "Love to cook, just need someone chill."],
-    ["Liam", "Johnson", 26, 1, 0, 1432, 1, "Canada", "English", None, 'M', "liam.johnson@email.com", "instagram.com/liamjohnson", "6158372049", "Pretty chill, just don’t leave dishes in the sink."],
-    ["Aarav", "Singh", 35, 0, 1, 1227, 0, "India", "Hindi", "English", 'M', "aarav.singh@email.com", "instagram.com/aaravsingh", "3118961574", "Not a party person, but cool with small hangouts."],
-    ["Li", "Mei", 22, 0, 1, 1021, 1, "China", "Mandarin", "English", 'F', "li.mei@email.com", "instagram.com/limei", "7604912582", "Pretty chill, just don’t leave dishes in the sink."],
-    ["Jason", "Davis", 34, 0, 0, 1530, 0, "United States", "English", None, 'M', "jason.davis@email.com", "instagram.com/jasondavis", "5059483921", "Early riser, into yoga and iced coffee."],
-    ["Anjali", "Verma", 31, 0, 1, 1753, 0, "India", "Hindi", "English", 'F', "anjali.verma@email.com", "instagram.com/anjaliverma", "9684382273", "Love to cook, just need someone chill."],
-    ["Mateo", "Lopez", 24, 0, 1, 1393, 1, "Mexico", "Spanish", "English", 'M', "mateo.lopez@email.com", "instagram.com/mateolopez", "5821346804", "Not a party person, but cool with small hangouts."],
-    ["Chloe", "Dubois", 29, 0, 0, 1604, 0, "France", "French", "English", 'F', "chloe.dubois@email.com", "instagram.com/chloedubois", "7379162405", "Let's keep the bathroom clean and we’re good."],
-    ["Kevin", "Odhiambo", 27, 1, 1, 1263, 0, "Kenya", "Swahili", "English", 'M', "kevin.odhiambo@email.com", "instagram.com/kevinodhiambo", "6539822041", "Pretty chill, just don’t leave dishes in the sink."],
-    ["Jungkook", "Jeon", 29, 0, 1, 1430, 1, "South Korea", "Korean", "English", 'M', "jungkook.jeon@email.com", "instagram.com/jungkookjeon", "4738394274", "Clean-ish and friendly. Open to splitting groceries."],
-    ["Amelia", "Thompson", 30, 0, 1, 1321, 0, "Canada", "English", None, 'F', "amelia.thompson@email.com", "instagram.com/ameliathompson", "7134628043", "Pretty chill, just don’t leave dishes in the sink."],
-    ["Bilal", "Hussain", 32, 1, 1, 1444, 1, "Pakistan", "Urdu", "English", 'M', "bilal.hussain@email.com", "instagram.com/bilalhussain", "3751901376", "I work a lot so you'll barely see me."],
-    ["Charlotte", "Davies", 27, 1, 1, 1182, 1, "United Kingdom", "English", None, 'F', "charlotte.davies@email.com", "instagram.com/charlottedavies", "8994560832", "Into plants, coffee, and peace and quiet."],
-    ["Achieng", "Omondi", 22, 0, 1, 1525, 1, "Kenya", "Swahili", "English", 'F', "achieng.omondi@email.com", "instagram.com/achiengomondi", "8078352850", "Pretty chill, just don’t leave dishes in the sink."]
+    ["Mwikali", "Otieno", 29, 0, 0, 1452, 1, "Kenya", "Wicker Park", "Swahili", "English", 'F', "mwikali.otieno@email.com", "instagram.com/mwikaliotieno", "5317883173", "I work a lot so you'll barely see me."],
+    ["Brian", "Mutua", 32, 0, 0, 1792, 0, "Kenya", "Logan Square", "Swahili", "English", 'M', "brian.mutua@email.com", "instagram.com/brianmutua", "7048823304", "Wanna split Netflix?"],
+    ["Ashley", "Miller", 25, 1, 0, 1643, 1, "United States", "Bridgeport", "English", None, 'F', "ashley.miller@email.com", "instagram.com/ashleymiller", "5587341203", "Pretty chill, just don’t leave dishes in the sink."],
+    ["Rohan", "Patel", 24, 0, 0, 1499, 0, "India", "Logan Square", "Hindi", "English", 'M', "rohan.patel@email.com", "instagram.com/rohanpatel", "7226848579", "Clean-ish and friendly. Open to splitting groceries."],
+    ["Charlotte", "Davies", 23, 0, 0, 1195, 1, "United Kingdom", "Logan Square", "English", None, 'F', "charlotte.davies@email.com", "instagram.com/charlottedavies", "6695421539", "Early riser, into yoga and iced coffee."],
+    ["Luis", "Martinez", 28, 1, 0, 1550, 1, "Mexico", "Bridgeport", "Spanish", "English", 'M', "luis.martinez@email.com", "instagram.com/luismartinez", "3892846631", "Wanna split Netflix?"],
+    ["Camille", "Moreau", 31, 0, 0, 1515, 0, "France", "Evanston", "French", "English", 'F', "camille.moreau@email.com", "instagram.com/camillemoreau", "9112180133", "Pretty chill, just don’t leave dishes in the sink."],
+    ["Bo", "Li", 34, 0, 1, 1086, 1, "China", "Hyde Park", "Mandarin", "English", 'M', "bo.li@email.com", "instagram.com/boli", "7925566347", "Love to cook, just need someone chill."],
+    ["Anjali", "Verma", 22, 0, 1, 1003, 0, "India", "Wicker Park", "Hindi", "English", 'F', "anjali.verma@email.com", "instagram.com/anjaliverma", "3425383759", "Clean-ish and friendly. Open to splitting groceries."],
+    ["Minho", "Choi", 32, 1, 1, 1454, 1, "South Korea", "Bridgeport", "Korean", "English", 'M', "minho.choi@email.com", "instagram.com/minhochoi", "7992893580", "Pretty chill, just don’t leave dishes in the sink."],
+    ["Grace", "Wilson", 35, 0, 0, 1250, 0, "Canada", "Oak Park", "English", None, 'F', "grace.wilson@email.com", "instagram.com/gracewilson", "4576109483", "Love to cook, just need someone chill."],
+    ["Lucas", "Bernard", 23, 0, 0, 1708, 1, "France", "Logan Square", "French", "English", 'M', "lucas.bernard@email.com", "instagram.com/lucasbernard", "7321348785", "Not a party person, but cool with small hangouts."],
+    ["Usman", "Iqbal", 27, 0, 1, 1516, 0, "Pakistan", "Wicker Park", "Urdu", "English", 'M', "usman.iqbal@email.com", "instagram.com/usmaniqbal", "4734658711", "Wanna split Netflix?"],
+    ["Emily", "Clark", 25, 0, 1, 1676, 0, "United Kingdom", "Bridgeport", "English", None, 'F', "emily.clark@email.com", "instagram.com/emilyclark", "7641658277", "Early riser, into yoga and iced coffee."],
+    ["Wei", "Zhang", 29, 1, 0, 1063, 0, "China", "Hyde Park", "Mandarin", "English", 'M', "wei.zhang@email.com", "instagram.com/weizhang", "9136483342", "Clean-ish and friendly. Open to splitting groceries."],
+    ["Charlotte", "Davies", 33, 0, 1, 1712, 0, "United Kingdom", "Hyde Park", "English", None, 'F', "charlotte.davies@email.com", "instagram.com/charlottedavies", "6137864520", "Not a party person, but cool with small hangouts."],
+    ["Julien", "Leroy", 31, 1, 1, 1583, 0, "France", "Logan Square", "French", "English", 'M', "julien.leroy@email.com", "instagram.com/julienleroy", "8149375830", "Pretty chill, just don’t leave dishes in the sink."],
+    ["Valeria", "Gonzalez", 27, 1, 1, 1320, 1, "Mexico", "Hyde Park", "Spanish", "English", 'F', "valeria.gonzalez@email.com", "instagram.com/valeriagonzalez", "4562937242", "Let's keep the bathroom clean and we’re good."],
+    ["Fatima", "Ahmed", 35, 0, 1, 1788, 1, "Pakistan", "Logan Square", "Urdu", "English", 'F', "fatima.ahmed@email.com", "instagram.com/fatimaahmed", "6037591283", "Pretty chill, just don’t leave dishes in the sink."],
+    ["Oliver", "Smith", 22, 0, 1, 1683, 1, "United Kingdom", "Oak Park", "English", None, 'M', "oliver.smith@email.com", "instagram.com/oliversmith", "9987321453", "I work a lot so you'll barely see me."],
+    ["Jason", "Carmona", 21, 0, 0, 1700, 0, "United States", "Naperville", "English", None, 'M', "jason2@email.com", None, None, "I love doing art! My favorite festival is halloween and yes i get nightmare before christmas"],
+    ["Julia", "Bowman", 21, 0, 0, 1700, 0, "United States", "Naperville", "English", None, 'F', "juliB@email.com", None, None, "halloween , doomscroll , instagram , repeat"],
+    ["Jash", "Shah", 21, 0, 0, 1700, 0, "United States", "Naperville", "English", None, 'M', "jashs28@email.com", None, None, "i love playing valorant and watching horror movies especially near halloween"]
 ]
+
 
 
 
@@ -105,14 +93,16 @@ def testInsertProfiles():
             "max_rent": profile[5],
             "subleasing": profile[6],
             "country": profile[7],
-            "language": profile[8],
-            "language_2": profile[9],
-            "sex": profile[10],
-            "email": profile[11],
-            "social_link": profile[12],
-            "phone_number": profile[13],
-            "description": profile[14]
+            "neighborhood": profile[8],
+            "language": profile[9],
+            "language_2": profile[10],
+            "sex": profile[11],
+            "email": profile[12],
+            "social_link": profile[13],
+            "phone_number": profile[14],
+            "description": profile[15]
         }
+
         result = insertProfile(profile_dict)
         print(result)
 
@@ -152,7 +142,7 @@ def deleteElement(id):
     db.close()
 
 if __name__ == '__main__':
-    deleteElement(122)
+    testInsertProfiles()
     # preferences = {
     # "age": 22,
     # "smoking": 0,

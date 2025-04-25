@@ -32,6 +32,7 @@ You need to have python installed for this project. Please run the above command
     - "max_rent" : "integer (required, must be between 300 and 10000) - e.g. 500 ", 
     - "subleasing": "integer (required, must be 0 or 1) - e.g., 0",
     - "country": "string (required, max 99 characters) - e.g., 'United States of America'",
+    - "neighborhood": "string (required, max 100 characters) - e.g., 'Naperville, cook, etc'",
     - "language": "string (required, max 49 characters) - e.g., 'English'",
     - "language_2": "string or null (optional, max 49 characters) - e.g., 'Spanish' or null",
     - "sex": "string (required, 1 character: 'M' or 'F') - e.g., 'M'",

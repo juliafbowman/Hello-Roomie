@@ -32,6 +32,7 @@ def insertProfile(user_data):
         "language": str,
         "sex": str,
         "email": str,
+        "neighborhood": str,
     }
 
     optional_fields = {
@@ -69,6 +70,8 @@ def insertProfile(user_data):
         return {500: "Field 'language' must be less than 50 characters"}
     if len(user_data["email"]) >= 200:
         return {500: "Field 'email' must be less than 200 characters"}
+    if len(user_data["neighborhood"]) > 100:
+        return {500: "Field 'neighborhood' must be less than or equal to 100 characters"}
 
     # Validate optional fields (nullable ones)
     for field, max_length in [("language_2", 50), ("social_link", 300), ("phone_number", 50), ("description", 300)]:
