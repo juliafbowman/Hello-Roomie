@@ -23,6 +23,7 @@ function ProfileCard({
     name, age, location, sex, description,
     email, social, phone, languages,
     smoking, drinking, subleasing,
+    max_rent,
     preview = false
 }) {
     const imageSrc = getStableRandomImage(email || name);
@@ -42,7 +43,8 @@ function ProfileCard({
 
             <p><strong>Location:</strong> {location}</p>
             <p><strong>Languages:</strong> {languages.split(',')[0]}</p>
-
+            <p><strong>Max Rent:</strong> ${max_rent}</p>
+            
             {/* add description to the previews */}
             {description && (
             <>

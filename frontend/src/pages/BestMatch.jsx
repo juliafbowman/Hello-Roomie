@@ -211,6 +211,7 @@ function BestMatch() {
             smoking={!!match.smoking}
             drinking={!!match.drinking_socially}
             subleasing={!!match.subleasing}
+            max_rent={match.max_rent}
           />
         ))}
       </div>

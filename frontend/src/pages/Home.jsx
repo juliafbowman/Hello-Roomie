@@ -52,7 +52,8 @@ function Home() {
       languages: [p.language, p.language_2].filter(Boolean).join(', '),
       smoking: !!p.smoking,
       drinking: !!p.drinking_socially,
-      subleasing: !!p.subleasing
+      subleasing: !!p.subleasing,
+      max_rent: p.max_rent
     };
   }
 
