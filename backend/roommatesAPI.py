@@ -154,9 +154,11 @@ def filter_query(filter_params):
 
         for key,value in filter_params.items():
             #this checks for multiple values (for case of comparison values)
-            if isinstance(value, list) and len(value) == 2:
-                op1,val1 = value[0]
-                op2,val2 = value[1]
+            if (
+                isinstance(value, list) and len(value) == 2
+                and all(isinstance(item, (list, tuple)) for item in value)
+                ):
+                (op1, val1) , (op2, val2) = value
                 token1 = OP_MAP.get(op1)
                 token2 = OP_MAP.get(op2)
 
@@ -169,13 +171,12 @@ def filter_query(filter_params):
                 where_clauses.append(f"{key} {op1} :{param_name1} AND {key} {op2} :{param_name2}")
                 params[param_name1] = val1
                 params[param_name2] = val2
-
+                continue
             else:
                 if isinstance(value, (list,tuple)):
                     raise ValueError(f"Expected scalar for {key}, got list. ")
                 # handle other cases (single value)
-                if key == "age" and not isinstance(value, list) and len(value) == 2 \
-       and not (isinstance(value[0], (list, tuple)) or isinstance(value[1], (list, tuple))):
+                if key == "age" and isinstance(value, list) and len(value) == 2 and all (isinstance(v, (int, float)) for v in value):
                     where_clauses.append(f"{key}  BETWEEN :{key}_min AND : {key}_max")
                     params[f"{key}_min"] = int(value[0]) #ensure it's an integer
                     params[f"{key}_max"] = int(value[1])
@@ -190,6 +191,9 @@ def filter_query(filter_params):
                     where_clauses.append(f"{key} <= :{key}")
                     params[key] = value
             
+            #default  for everythiing else
+            where_clauses.append(f"{key} = :{key}")
+            params[key] = value
             
 
         where_statement = " AND ".join(where_clauses)
