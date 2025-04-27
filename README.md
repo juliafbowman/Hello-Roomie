@@ -28,6 +28,26 @@ Search by:
 - Create posts about yourself and browse posts of available roommates
 - Multiple contact methods : email, phone, or social media links
 
+## Application Purpose
+Finding compatible roommates at UIC can be challenging for most students due to:
+1. **Limited Discovery Options**
+    - Current platforms don't have an effective way to match student's based on their needs and preferences
+    - Students often have to rely on social media groups or impoersonal classifieds
+
+2. **Inefficient Search Process**
+    - Manual filtering through dozens of listings is time-consuming
+    - No smart matching system exists for roommate preferences
+
+3. **Safety Concerns**
+    - Random roommate assignemtns don't consider perosnal habits or schedules
+    - Lack of ways to contact Roommates leads to uncertainty
+
+HelloRoomie solves these problems by:
+    ✅ Using Dynamic Data Structures to suggest ideal roommmates
+    ✅ Providing advanced filters to provide precise searching
+    ✅ Creating a UIC-based platform for safer connections
+    ✅ Focusing on lifestyle compatibility beyond just price/location
+
 <!-- Required -->
 <!-- 
 * Here you may add information about how 
@@ -119,14 +139,10 @@ Search by:
 * 
 -->
 
-
-## License<!-- Optional -->
-<!-- 
-* Here you can add project license for copyrights and distribution 
-* 
-* check this website for an easy reference https://choosealicense.com/)
--->
-
+## References
+https://github.com/University-of-Illinois-Chicago/flask-react-demo
+    - Used for helping to create the installation guide for this README
+    - (Thank you Amazing TAs)
 
 <!-- - Use this html element to create a back to top button. -->
 <p align="right"><a href="#how-to-use-this-project">back to top ⬆️</a></p>
