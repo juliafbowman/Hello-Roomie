@@ -42,18 +42,39 @@ Finding compatible roommates at UIC can be challenging for most students due to:
     - Random roommate assignemtns don't consider perosnal habits or schedules
     - Lack of ways to contact Roommates leads to uncertainty
 
-HelloRoomie solves these problems by:
+HelloRoomie solves these problems by:  
     ✅ Using Dynamic Data Structures to suggest ideal roommmates  
     ✅ Providing advanced filters to provide precise searching  
     ✅ Creating a UIC-based platform for safer connections  
     ✅ Focusing on lifestyle compatibility beyond just price/location  
 
-<!-- Required -->
-<!-- 
-* Here you may add information about how 
-* 
-* and why to use this project.
--->
+## React Libraries and Frameworks
+### Backend
+#### Frameworks
+- Flask  
+    - Flask was chosen over Django because it's framework is more flexible and easier to work with. We have the options to choose our components and the Setup time for it all is faster. It is more ideal for our APIs as it is restful and allows our frontend to do the heavy lifting.  
+- Werkzeug  
+- Jinja2  
+
+#### Essential Utilities  
+- click  
+- itsdangerous  
+- MarkupSafe  
+
+#### Libraries  
+- flask-cors  
+- blinker  
+- tabulate  
+- colorama  
+
+### Frontend Dependencies  
+- react  
+- react-dom  
+- react-router-dom  
+- lucide-react  
+- Axios  
+
+
 ## How to Use
 ### 1. Install VSCode
 - Download VSCode from their [official website](https://code.visualstudio.com/download)
