@@ -2,11 +2,9 @@
 
 
 ## About
-<!-- 
 * HelloRoomie is a roommate finder app that helps find compatible roommates through smart matching we call 'Best Matches' and customizable filters. Users can create posts, browse listings , and contact the posters via email,phone-number, or other socials.
 
 * 
--->
 
 
 ## How to use this project<!-- Required -->
