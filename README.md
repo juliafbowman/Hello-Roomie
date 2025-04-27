@@ -28,7 +28,7 @@ Search by:
 - Create posts about yourself and browse posts of available roommates
 - Multiple contact methods : email, phone, or social media links
 
-## How to use this project<!-- Required -->
+<!-- Required -->
 <!-- 
 * Here you may add information about how 
 * 
@@ -60,6 +60,28 @@ Search by:
 - For Mac users, use Homebrew ```brew install node```
 - Confirm installation by running ```node -v``` and ```npm -v```
 ### 5. Setup Flask + React locally
+- Go to the forked version of  this repository on Github, click the green Code button and then copy the URL using HTTPS or SSH.
+- Open VS Code and click *Clone on a repository*. (This can be seen in the home page or under Source Control) Choose a directory to store this project on your local computer. (this can also be done using ''' git clone REPO_URL''')
+- You will now have a local verson of all the files / source code from GitHub.
+#### a. Set up Backend
+- Right click the folder called ```backend``` and click the option ```Open in integrated terminal```
+- Create a new virtual environment ```python -m venv env```
+- Activate the virtual environment
+    - Windows: ```.\env\Scripts\activate```
+    - Mac: ```source env/bin/activate```
+- Now you will see (venv) in front of your command line. This means virtual environment successfully was created
+- install all dependencies and packages by using:
+    - ```pip install -r requirements.txt```
+- If you ever choose to deactivate it, run ```env\Scripts\deactivate.bat```
+- run ```py host.py``` to initalize flask app setup
+- Your flask server will now be running on ```localhost:PORT```. You can find port number inside the terminal
+- If you get any errors for Mac Users, you can reactivate your env by running: ```source env/bin/activate```
+
+#### b. Set up Frontend
+- Open up a new terminal by right clicking the folder called ```frontend``` and clicking on the option ```Open in integrated terminal```
+- Install all packages by running ```npm install```
+- To run the react frontend, write ```npm run dev```
+- Your react app should now be running on ```localhost:PORT```. Follow that link for the port number
 
 ## Demo<!-- Required -->
 <!-- 
