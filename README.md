@@ -2,10 +2,17 @@
 
 
 ## About
-* HelloRoomie is a roommate finder app that helps find compatible roommates through smart matching we call 'Best Matches' and customizable filters. Users can create posts, browse listings , and contact the posters via email,phone-number, or other socials.
+* HelloRoomie is a roommate finder app that helps find compatible roommates through smart matching we call 'Best Matches' and customizable filters.
 
-* 
+*  Users can create posts, browse listings , and contact the posters via email,phone-number, or other socials.
 
+### Key Features
+#### Best Matches Algorithm
+* Suggests ideal roommates by analyzing post descriptions (keywords you are looking for)
+#### Advanced Filters
+* Search by location, max rent wanted, age, and preferences (smoking / drinking socially)
+#### Post Listings
+* Create and browse posts with multiple contact options (email, phone and social media)
 
 ## How to use this project<!-- Required -->
 <!-- 
