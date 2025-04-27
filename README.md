@@ -2,17 +2,31 @@
 
 
 ## About
-* HelloRoomie is a roommate finder app that helps find compatible roommates through smart matching we call 'Best Matches' and customizable filters.
-
-*  Users can create posts, browse listings , and contact the posters via email,phone-number, or other socials.
+HelloRoomie is a roommate finder app that is designed for UIC students that helps you find compatible roommates through:
+- **Best Matches algorithm** - Suggests ideal matches by analyzing post descriptions
+- **Advanced filters** - Search by location, budget, age and lifestyle preferences
+- **Flexible contact options** - Connect via email, phone, or social media
 
 ## Key Features
-    #### Best Matches Algorithm
-    * Suggests ideal roommates by analyzing post descriptions (keywords you are looking for)
-    #### Advanced Filters
-    * Search by location, max rent wanted, age, and preferences (smoking / drinking socially)
-    #### Post Listings
-    * Create and browse posts with multiple contact options (email, phone and social media)
+
+#### Best Matches Algorithm
+- Suggests ideal roommates by analyzing post descriptions (keywords you are looking for)
+- Considers preferences like lifestyle factors
+
+#### Advanced Filters
+Search by:
+- **Age**
+- **Smoking**
+- **Drinking Socially**
+- **Max Rent**
+- **Subleasing**
+- **Country**
+- **Sex**
+- **Neighborhood**
+
+#### Post Listings
+- Create posts about yourself and browse posts of available roommates
+- Multiple contact methods : email, phone, or social media links
 
 ## How to use this project<!-- Required -->
 <!-- 
@@ -20,6 +34,7 @@
 * 
 * and why to use this project.
 -->
+## How to Use
 ### 1. Install VSCode
 - Download VSCode from their [official website](https://code.visualstudio.com/download)
 - Install Python Extension from the left navigation bar
