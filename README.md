@@ -6,7 +6,7 @@
 
 *  Users can create posts, browse listings , and contact the posters via email,phone-number, or other socials.
 
-### Key Features
+## Key Features
 #### Best Matches Algorithm
 * Suggests ideal roommates by analyzing post descriptions (keywords you are looking for)
 #### Advanced Filters
