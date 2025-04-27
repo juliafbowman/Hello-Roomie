@@ -43,9 +43,13 @@ Finding compatible roommates at UIC can be challenging for most students due to:
     - Lack of ways to contact Roommates leads to uncertainty
 
 HelloRoomie solves these problems by:
+
     ✅ Using Dynamic Data Structures to suggest ideal roommmates
+
     ✅ Providing advanced filters to provide precise searching
+
     ✅ Creating a UIC-based platform for safer connections
+
     ✅ Focusing on lifestyle compatibility beyond just price/location
 
 <!-- Required -->
