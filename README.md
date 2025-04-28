@@ -39,7 +39,7 @@ Finding compatible roommates at UIC can be challenging for most students due to:
     - No smart matching system exists for roommate preferences
 
 3. **Safety Concerns**
-    - Random roommate assignemtns don't consider perosnal habits or schedules
+    - Random roommate assignments don't consider perosnal habits or schedules
     - Lack of ways to contact Roommates leads to uncertainty
 
 HelloRoomie solves these problems by:  
@@ -94,8 +94,6 @@ HelloRoomie solves these problems by:
 - For Mac Users, install using Homebrew: ```brew install python```
 - Confirm that Python installed correctly by typing ```python --version``` and ```pip --version``` on Command Prompt
 
-    #### Backend Demo Setup
-    - Go to your Forked Repositoryo n Github and cl
 ### 4. Frontend
 - For windows users, install [Node.js and npm LTS version](https://nodejs.org/en/download)
 - For Mac users, use Homebrew ```brew install node```
@@ -125,7 +123,7 @@ HelloRoomie solves these problems by:
 - Your react app should now be running on ```localhost:PORT```. Follow that link for the port number
 
 ## Contibrutions by each Teammate
-### Jash Shah - BackEnd Developer [LinkedIn](https://www.linkedin.com/in/juliafbowman/)
+### Jash Shah - Back-End Developer [LinkedIn](https://www.linkedin.com/in/juliafbowman/)
 - Developed API
 - Built RESTful endpoints for:
     - userprofiles
@@ -135,7 +133,7 @@ HelloRoomie solves these problems by:
 - Wrote Unit/Integration tests (test.py)
 - API Docs maintained documentation for Other developers to understand logic
         
-### Julia Bowman - FrontEnd Developer [LinkedIn](https://www.linkedin.com/in/jash-sh/)
+### Julia Bowman - Front-End Developer [LinkedIn](https://www.linkedin.com/in/jash-sh/)
 - Implimented UI for:
     - Home page
     - Creating posts
@@ -160,7 +158,7 @@ HelloRoomie solves these problems by:
 * 
 * It's recommended to use GIFs as they are more dynamic
 -->
-
+![hippo](https://imgur.com/a/nNTJajG)
 ## References
 https://github.com/University-of-Illinois-Chicago/flask-react-demo
     - Used for helping to create the installation guide for this README
