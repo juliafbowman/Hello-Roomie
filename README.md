@@ -169,9 +169,9 @@ HelloRoomie solves these problems by:
 ### Create Posts
 
 ### Best Matches
-![Best_Matches](https://github.com/University-of-Illinois-Chicago/fgp-halloween-heapsters/tree/main/gifs/Best_Matches.gif?raw=true)  
+![Best_Matches](https://github.com/University-of-Illinois-Chicago/fgp-halloween-heapsters/blob/main/gifs/Best_Matches.gif?raw=true)  
 ### Filter
-![Filters](https://github.com/University-of-Illinois-Chicago/fgp-halloween-heapsters/tree/main/gifs/Filter.gif?raw=true)    
+![Filters](https://github.com/University-of-Illinois-Chicago/fgp-halloween-heapsters/blob/main/gifs/Filter.gif?raw=true)    
 
 ## References
 https://github.com/University-of-Illinois-Chicago/flask-react-demo
