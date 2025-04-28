@@ -158,7 +158,7 @@ HelloRoomie solves these problems by:
 * 
 * It's recommended to use GIFs as they are more dynamic
 -->
-![hippo](https://imgur.com/a/nNTJajG)
+![Homepage](https://github.com/University-of-Illinois-Chicago/fgp-halloween-heapsters/tree/main/gifs/Homepage.gif)
 ## References
 https://github.com/University-of-Illinois-Chicago/flask-react-demo
     - Used for helping to create the installation guide for this README
