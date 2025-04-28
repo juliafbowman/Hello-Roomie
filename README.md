@@ -124,6 +124,36 @@ HelloRoomie solves these problems by:
 - To run the react frontend, write ```npm run dev```
 - Your react app should now be running on ```localhost:PORT```. Follow that link for the port number
 
+## Contibrutions by each Teammate
+### Jash Shah - BackEnd Developer [LinkedIn](https://www.linkedin.com/in/juliafbowman/)
+- Developed API
+- Built RESTful endpoints for:
+    - userprofiles
+    - inserting
+    - dynamic matching
+- Developed Best Matches for scoring logic
+- Wrote Unit/Integration tests (test.py)
+- API Docs maintained documentation for Other developers to understand logic
+        
+### Julia Bowman - FrontEnd Developer [LinkedIn](https://www.linkedin.com/in/jash-sh/)
+- Implimented UI for:
+    - Home page
+    - Creating posts
+    - filters
+    - Best matches
+- Set up React Context for the global state
+- Connected frontend to Flask endpoints
+- Implemented Routing for improved navigation
+
+### Jason Carmona - Project Lead [LinkedIn](https://www.linkedin.com/in/cs-jason-carmona/)
+- Defined milestones
+- Ran Weekly sync meetings
+- Documented progress in weekly meetings
+- Wrote README documentation
+- Created UI Elements (Logo and Error/Success Images)
+- Helped in debugging minor issues in backend
+- Tested and Developed Minor backend function for Filtering Profiles
+
 ## Demo<!-- Required -->
 <!-- 
 * You can add a demo here GH supports images/ GIFs/videos 
@@ -131,12 +161,7 @@ HelloRoomie solves these problems by:
 * It's recommended to use GIFs as they are more dynamic
 -->
 
-
-
 ## References
 https://github.com/University-of-Illinois-Chicago/flask-react-demo
     - Used for helping to create the installation guide for this README
     - (Thank you Amazing TAs)
-
-<!-- - Use this html element to create a back to top button. -->
-<p align="right"><a href="https://github.com/University-of-Illinois-Chicago/fgp-halloween-heapsters/blob/main/README.md#how-to-use-this-project">back to top ⬆️</a></p>
