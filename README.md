@@ -133,37 +133,10 @@ HelloRoomie solves these problems by:
 
 
 
-## Contributors<!-- Required -->
-<!-- 
-* Without contribution we wouldn't have open source. 
-* 
-* Generate github contributors Image here https://contrib.rocks/preview?repo=angular%2Fangular-ja
--->
-
-
-
-<!-- - Use this html element to create a back to top button. -->
-<p align="right"><a href="#how-to-use-this-project">back to top ⬆️</a></p>
-
-
-## Feedback<!-- Required -->
-<!-- 
-* You can add contacts information like your email and social media account 
-* 
-* Also it's common to add some PR guidance.
--->
-
-## Contact<!-- Required -->
-<!-- 
-* add your email and contact info here
-* 
-* 
--->
-
 ## References
 https://github.com/University-of-Illinois-Chicago/flask-react-demo
     - Used for helping to create the installation guide for this README
     - (Thank you Amazing TAs)
 
 <!-- - Use this html element to create a back to top button. -->
-<p align="right"><a href="#how-to-use-this-project">back to top ⬆️</a></p>
+<p align="right"><a href="https://github.com/University-of-Illinois-Chicago/fgp-halloween-heapsters/blob/main/README.md#how-to-use-this-project">back to top ⬆️</a></p>
