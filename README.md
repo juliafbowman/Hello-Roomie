@@ -56,18 +56,18 @@ HelloRoomie solves these problems by:
 - Werkzeug  
 - Jinja2  
 
-#### Essential Utilities  
+#### Essential Utilities
 - click  
 - itsdangerous  
 - MarkupSafe  
 
-#### Libraries  
+#### Libraries
 - flask-cors  
 - blinker  
 - tabulate  
 - colorama  
 
-### Frontend Dependencies  
+### Frontend Dependencies 
 - react  
 - react-dom  
 - react-router-dom  
