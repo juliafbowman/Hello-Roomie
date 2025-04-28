@@ -165,10 +165,14 @@ HelloRoomie solves these problems by:
 -->
 ### Homepage
 ![Homepage](https://github.com/University-of-Illinois-Chicago/fgp-halloween-heapsters/blob/main/gifs/Homepage.gif?raw=true)
-![Filters](https://github.com/University-of-Illinois-Chicago/fgp-halloween-heapsters/tree/main/gifs/Filter.gif?raw=true)
-![Best_Matches](https://github.com/University-of-Illinois-Chicago/fgp-halloween-heapsters/tree/main/gifs/Best_Matches.gif?raw=true)
+
+### Create Posts
 
 ### Best Matches
+![Best_Matches](https://github.com/University-of-Illinois-Chicago/fgp-halloween-heapsters/tree/main/gifs/Best_Matches.gif?raw=true)
+### Filter
+![Filters](https://github.com/University-of-Illinois-Chicago/fgp-halloween-heapsters/tree/main/gifs/Filter.gif?raw=true)
+
 ## References
 https://github.com/University-of-Illinois-Chicago/flask-react-demo
     - Used for helping to create the installation guide for this README  
