@@ -167,7 +167,7 @@ HelloRoomie solves these problems by:
 ![Homepage](https://github.com/University-of-Illinois-Chicago/fgp-halloween-heapsters/blob/main/gifs/Homepage.gif?raw=true)  
 
 ### Create Posts
-
+![Create_Posts](https://github.com/University-of-Illinois-Chicago/fgp-halloween-heapsters/blob/main/gifs/Create_Posts.gif?raw=true)  
 ### Best Matches
 ![Best_Matches](https://github.com/University-of-Illinois-Chicago/fgp-halloween-heapsters/blob/main/gifs/Best_Matches.gif?raw=true)  
 ### Filter
