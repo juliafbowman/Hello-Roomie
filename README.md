@@ -122,6 +122,11 @@ HelloRoomie solves these problems by:
 - To run the react frontend, write ```npm run dev```
 - Your react app should now be running on ```localhost:PORT```. Follow that link for the port number
 
+
+## Important Reminders:
+- Do **NOT** use Mozilla FireFox, it works well on Google Chrome or Microsoft Edge, or Safari not FireFox.
+- Best Matches will return a Server Error if not used correctly, anything that does not have the **(optional)** tag must be filled in to find matches.
+
 ## Contibrutions by each Teammate
 ### Jash Shah - Back-End Developer [LinkedIn](https://www.linkedin.com/in/juliafbowman/)
 - Developed API
@@ -158,8 +163,13 @@ HelloRoomie solves these problems by:
 * 
 * It's recommended to use GIFs as they are more dynamic
 -->
-![Demo](https://github.com/University-of-Illinois-Chicago/fgp-halloween-heapsters/blob/main/gifs/Homepage.gif?raw=true)
+### Homepage
+![Homepage](https://github.com/University-of-Illinois-Chicago/fgp-halloween-heapsters/blob/main/gifs/Homepage.gif?raw=true)
+![Filters](https://github.com/University-of-Illinois-Chicago/fgp-halloween-heapsters/tree/main/gifs/Filter.gif?raw=true)
+![Best_Matches](https://github.com/University-of-Illinois-Chicago/fgp-halloween-heapsters/tree/main/gifs/Best_Matches.gif?raw=true)
+
+### Best Matches
 ## References
 https://github.com/University-of-Illinois-Chicago/flask-react-demo
-    - Used for helping to create the installation guide for this README
+    - Used for helping to create the installation guide for this README  
     - (Thank you Amazing TAs)
