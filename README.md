@@ -136,7 +136,7 @@ HelloRoomie solves these problems by:
     - dynamic matching
 - Developed Best Matches for scoring logic
 - Wrote Unit/Integration tests (test.py)
-- API Docs maintained documentation for Other developers to understand logic
+- API Docs maintained documentation for other developers to understand logic
         
 ### Julia Bowman - Front-End Developer [LinkedIn](https://www.linkedin.com/in/jash-sh/)
 - Implimented UI for:
@@ -158,20 +158,17 @@ HelloRoomie solves these problems by:
 - Tested and Developed Minor backend function for Filtering Profiles
 
 ## Demo<!-- Required -->
-<!-- 
-* You can add a demo here GH supports images/ GIFs/videos 
-* 
-* It's recommended to use GIFs as they are more dynamic
--->
 ### Homepage
-![Homepage](https://github.com/University-of-Illinois-Chicago/fgp-halloween-heapsters/blob/main/gifs/Homepage.gif?raw=true)  
+![Homepage](https://github.com/user-attachments/assets/fcffbb1a-9855-4ee8-b07a-8b513535b338)
 
 ### Create Posts
-![Create_Posts](https://github.com/University-of-Illinois-Chicago/fgp-halloween-heapsters/blob/main/gifs/Create_Posts.gif?raw=true)  
+![Create_Posts](https://github.com/user-attachments/assets/55ac8bc5-74f4-4b04-b924-a68ac5e1c654)
+
 ### Best Matches
-![Best_Matches](https://github.com/University-of-Illinois-Chicago/fgp-halloween-heapsters/blob/main/gifs/Best_Matches.gif?raw=true)  
+![Best_Matches](https://github.com/user-attachments/assets/c350d7bc-6be2-463f-a22e-46e45184ea4c)
+
 ### Filter
-![Filters](https://github.com/University-of-Illinois-Chicago/fgp-halloween-heapsters/blob/main/gifs/Filter.gif?raw=true)    
+![Filter](https://github.com/user-attachments/assets/4db28bae-888a-4f65-8f99-7b0ffd5ece8b)
 
 ## References
 https://github.com/University-of-Illinois-Chicago/flask-react-demo
