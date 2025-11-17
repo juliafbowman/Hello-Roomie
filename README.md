@@ -7,7 +7,7 @@ HelloRoomie is a roommate finder app that is designed for UIC students that help
 - **Advanced filters** - Search by location, budget, age and lifestyle preferences
 - **Flexible contact options** - Connect via email, phone, or social media
 
-<img width="1137" height="678" alt="Screenshot 2025-11-16 at 7 51 41 PM" src="https://github.com/user-attachments/assets/c67c5923-8d0d-46a0-981a-c4e005c6ef17" />
+<img width="1217" height="592" alt="Screenshot 2025-11-16 at 7 55 14 PM" src="https://github.com/user-attachments/assets/d65fe837-e8bf-4403-ad33-c286271daa19" />
 
 ## Key Features
 
