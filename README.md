@@ -7,6 +7,8 @@ HelloRoomie is a roommate finder app that is designed for UIC students that help
 - **Advanced filters** - Search by location, budget, age and lifestyle preferences
 - **Flexible contact options** - Connect via email, phone, or social media
 
+<img width="1137" height="678" alt="Screenshot 2025-11-16 at 7 51 41 PM" src="https://github.com/user-attachments/assets/c67c5923-8d0d-46a0-981a-c4e005c6ef17" />
+
 ## Key Features
 
 #### Best Matches Algorithm
@@ -47,6 +49,8 @@ HelloRoomie solves these problems by:
     ✅ Providing advanced filters to provide precise searching  
     ✅ Creating a UIC-based platform for safer connections  
     ✅ Focusing on lifestyle compatibility beyond just price/location  
+
+<img width="1029" height="684" alt="Screenshot 2025-11-16 at 7 53 06 PM" src="https://github.com/user-attachments/assets/441e38d1-3887-4f21-a15f-52b4c570062a" />
 
 ## React Libraries and Frameworks
 ### Backend
@@ -126,6 +130,8 @@ HelloRoomie solves these problems by:
 ## Important Reminders:
 - Do **NOT** use Mozilla FireFox, it works well on Google Chrome or Microsoft Edge, or Safari not FireFox.
 - Best Matches will return a Server Error if not used correctly, anything that does not have the **(optional)** tag must be filled in to find matches.
+  
+<img width="1142" height="513" alt="Screenshot 2025-11-16 at 7 52 13 PM" src="https://github.com/user-attachments/assets/8b0400f7-0d50-49d9-bdb7-79610c1d9d23" />
 
 ## Contibrutions by each Teammate
 ### Jash Shah - Back-End Developer [LinkedIn](https://www.linkedin.com/in/juliafbowman/)
