@@ -176,7 +176,3 @@ HelloRoomie solves these problems by:
 ### Filter
 ![Filter](https://github.com/user-attachments/assets/4db28bae-888a-4f65-8f99-7b0ffd5ece8b)
 
-## References
-https://github.com/University-of-Illinois-Chicago/flask-react-demo
-    - Used for helping to create the installation guide for this README  
-    - (Thank you Amazing TAs)
