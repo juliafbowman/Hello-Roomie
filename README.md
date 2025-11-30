@@ -1,5 +1,6 @@
 # HelloRoomie - A Roommate Finder Application For UIC
 
+Advanced Data Structures Spring 2025 Full Stack Group Project. 
 
 ## About
 HelloRoomie is a roommate finder app that is designed for UIC students that helps you find compatible roommates through:
